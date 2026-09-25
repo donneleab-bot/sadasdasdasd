@@ -250,7 +250,56 @@
         }
 
         /* ============================================
-           БОКОВЫЕ КАРТЫ — ЛЕВИТАЦИЯ + ЭЛЕГАНТНЫЙ ПЕРЕВОРОТ
+           ЗОЛОТАЯ ПЫЛЬ — под картами
+           ============================================ */
+        .gold-dust {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .gold-dust .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                rgba(255, 240, 180, 1) 0%,
+                rgba(255, 215, 0, 0.9) 30%,
+                rgba(255, 180, 0, 0.4) 60%,
+                transparent 100%);
+            box-shadow:
+                0 0 6px rgba(255, 215, 0, 0.9),
+                0 0 12px rgba(255, 215, 0, 0.5),
+                0 0 20px rgba(255, 180, 0, 0.3);
+            opacity: 0;
+            animation: dustFloat linear infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes dustFloat {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 0, 0) scale(0.5);
+            }
+            15% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.9;
+                transform: translate3d(var(--dx, 20px), var(--dy, -60px), 0) scale(1);
+            }
+            85% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translate3d(var(--dx2, -10px), var(--dy2, -140px), 0) scale(0.4);
+            }
+        }
+
+        /* ============================================
+           БОКОВЫЕ КАРТЫ
            ============================================ */
         .side-card {
             position: absolute;
@@ -271,17 +320,13 @@
             transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Класс flipped — карта повёрнута на 180° (лицом) */
         .side-card.flipped .side-card-inner {
             transform: rotateY(180deg);
         }
-
-        /* Быстрый переворот при частых кликах */
         .side-card.flipped.fast .side-card-inner {
             transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Золотой ореол — тонкий, дорогой, появляется при клике */
         .side-card .aura {
             position: absolute;
             top: 50%; left: 50%;
@@ -300,10 +345,8 @@
             filter: blur(8px);
             transition: opacity 0.6s ease;
         }
-
         .side-card.flipped .aura { opacity: 1; }
 
-        /* Тонкая золотая рамка-свечение */
         .side-card .golden-frame {
             position: absolute;
             top: -3px; left: -3px; right: -3px; bottom: -3px;
@@ -320,7 +363,6 @@
             filter: blur(3px);
             transition: opacity 0.6s ease;
         }
-
         .side-card.flipped .golden-frame { opacity: 0.85; }
 
         .side-card-front,
@@ -419,7 +461,6 @@
         .side-card-back .face-corner.top-left { top: 16px; left: 16px; }
         .side-card-back .face-corner.bottom-right { bottom: 16px; right: 16px; transform: rotate(180deg); }
 
-        /* Позиции + ЛЕВИТАЦИЯ */
         .side-card.pos-1 {
             left: -240px;
             animation: levitate1 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
@@ -457,7 +498,7 @@
         .side-card:hover { z-index: 10; }
 
         /* ============================================
-           ГЛАВНЫЕ КАРТЫ — ЛЕВИТАЦИЯ
+           ГЛАВНЫЕ КАРТЫ
            ============================================ */
         .main-cards {
             position: relative;
@@ -485,6 +526,29 @@
         @keyframes levitateMain2 {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-14px); }
+        }
+
+        /* Золотая пыль под главной картой */
+        .main-card-wrapper .dust-pool {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 80px;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(ellipse at center,
+                rgba(255, 215, 0, 0.35) 0%,
+                rgba(255, 200, 0, 0.15) 40%,
+                transparent 75%);
+            filter: blur(20px);
+            animation: dustPulse 5s ease-in-out infinite;
+        }
+
+        @keyframes dustPulse {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.15); }
         }
 
         .card {
@@ -902,6 +966,7 @@
             .game-field { margin-bottom: 30px; padding: 0; }
             .cards-stage { min-height: auto; }
             .side-card { display: none; }
+            .gold-dust { display: none; }
 
             .main-cards {
                 flex-direction: row;
@@ -920,6 +985,11 @@
                 align-items: stretch;
                 margin: 0;
                 padding: 0;
+            }
+            .main-card-wrapper .dust-pool {
+                bottom: -20px;
+                height: 50px;
+                filter: blur(15px);
             }
             @keyframes levitateMain1 {
                 0%, 100% { transform: translateY(0px); }
@@ -1086,7 +1156,10 @@
     <!-- ИГРОВОЕ ПОЛЕ -->
     <div class="game-field">
         <div class="cards-stage">
-            
+
+            <!-- ЗОЛОТАЯ ПЫЛЬ -->
+            <div class="gold-dust" id="goldDust"></div>
+
             <!-- БОКОВЫЕ КАРТЫ -->
             <div class="side-card pos-1">
                 <div class="aura"></div>
@@ -1145,6 +1218,7 @@
             <div class="main-cards">
                 
                 <div class="main-card-wrapper">
+                    <div class="dust-pool"></div>
                     <a href="porno.html" class="card adult left-card">
                         <div class="inner-frame"></div>
                         <div class="card-corner top-left">
@@ -1164,6 +1238,7 @@
                 </div>
 
                 <div class="main-card-wrapper">
+                    <div class="dust-pool"></div>
                     <a href="gore.html" class="card gore right-card">
                         <div class="inner-frame"></div>
                         <div class="card-corner top-left">
@@ -1199,25 +1274,55 @@
     </div>
 
     <!-- ============================================
-         СКРИПТ: элегантный переворот по клику
+         СКРИПТ: генерация золотой пыли + переворот
          ============================================ -->
     <script>
+        /* ----- Золотая пыль ----- */
+        (function spawnDust() {
+            const container = document.getElementById('goldDust');
+            if (!container) return;
+
+            const PARTICLE_COUNT = 60;
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+
+                const size = Math.random() * 3 + 1.5; // 1.5 – 4.5 px
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+
+                // Позиция — распределено по низу игрового поля
+                p.style.left = (Math.random() * 100) + '%';
+                p.style.bottom = (Math.random() * 40) + '%';
+
+                // Случайные направления полёта
+                p.style.setProperty('--dx', (Math.random() * 80 - 40) + 'px');
+                p.style.setProperty('--dy', -(Math.random() * 100 + 60) + 'px');
+                p.style.setProperty('--dx2', (Math.random() * 120 - 60) + 'px');
+                p.style.setProperty('--dy2', -(Math.random() * 200 + 140) + 'px');
+
+                // Задержка и длительность
+                p.style.animationDelay = (Math.random() * 8) + 's';
+                p.style.animationDuration = (Math.random() * 6 + 7) + 's';
+
+                container.appendChild(p);
+            }
+        })();
+
+        /* ----- Переворот боковых карт ----- */
         document.querySelectorAll('.side-card').forEach(card => {
             let clickTimes = [];
 
             card.addEventListener('click', () => {
                 const now = Date.now();
                 clickTimes.push(now);
-                // Оставляем только клики за последние 2 секунды
                 clickTimes = clickTimes.filter(t => now - t < 2000);
 
-                // Переворачиваем карту
                 card.classList.toggle('flipped');
 
-                // Если кликов за 2 сек больше 3 — добавляем класс "fast"
                 if (clickTimes.length > 3) {
                     card.classList.add('fast');
-                    // Снимаем через 1.5 сек
                     clearTimeout(card._fastTimer);
                     card._fastTimer = setTimeout(() => {
                         card.classList.remove('fast');
