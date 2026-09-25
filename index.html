@@ -26,15 +26,12 @@
         body {
             background-color: #0A0101;
             background-image: 
-                /* Сочные пятна */
                 radial-gradient(ellipse at 15% 10%, rgba(139, 0, 0, 0.35) 0%, transparent 35%),
                 radial-gradient(ellipse at 85% 90%, rgba(139, 0, 0, 0.35) 0%, transparent 35%),
                 radial-gradient(ellipse at 50% 50%, rgba(184, 134, 11, 0.08) 0%, transparent 55%),
                 radial-gradient(ellipse at 80% 20%, rgba(255, 0, 0, 0.08) 0%, transparent 30%),
-                /* Казино-сетка */
                 repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(184, 134, 11, 0.04) 18px, rgba(184, 134, 11, 0.04) 19px),
                 repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(184, 134, 11, 0.04) 18px, rgba(184, 134, 11, 0.04) 19px),
-                /* Ромбы */
                 repeating-linear-gradient(0deg, transparent, transparent 70px, rgba(139, 0, 0, 0.06) 70px, rgba(139, 0, 0, 0.06) 71px),
                 repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(139, 0, 0, 0.06) 70px, rgba(139, 0, 0, 0.06) 71px);
             background-attachment: fixed;
@@ -66,7 +63,7 @@
         }
 
         /* ============================================
-           УШИ КРОЛИКА (ФОН)
+           УШИ КРОЛИКА
            ============================================ */
         .rabbit-ears {
             position: fixed;
@@ -117,14 +114,14 @@
            ============================================ */
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             position: relative;
             z-index: 2;
-            animation: fadeInDown 1.6s ease;
+            animation: fadeInDown 1.2s ease;
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
+            from { opacity: 0; transform: translateY(-40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -259,12 +256,12 @@
             align-items: center;
             justify-content: center;
             gap: 25px;
-            margin: 0 auto 70px;
+            margin: 0 auto 60px;
             max-width: 900px;
             width: 100%;
             position: relative;
             z-index: 2;
-            animation: fadeIn 2s ease 0.3s both;
+            animation: fadeIn 1.5s ease 0.3s both;
         }
 
         @keyframes fadeIn {
@@ -319,26 +316,142 @@
         }
 
         /* ============================================
-           КАРТОЧКИ-ПОРТАЛЫ
+           ИГРОВОЕ ПОЛЕ С КАРТАМИ
            ============================================ */
-        .portals {
-            display: flex;
-            gap: 70px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-            max-width: 1000px;
-            margin-bottom: 80px;
+        .game-field {
             position: relative;
+            width: 100%;
+            max-width: 1400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 80px;
             z-index: 2;
-            animation: fadeInUp 1.6s ease 0.5s both;
+            animation: fadeInUp 1.2s ease 0.5s both;
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
+            from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .cards-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            transition: gap 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* При наведении на контейнер — увеличиваем расстояние между центральными картами */
+        .cards-container:hover {
+            gap: 220px;
+        }
+
+        /* ============================================
+           СКРЫТЫЕ КАРТЫ (РАСКРЫВАЮТСЯ ПО СТОРОНАМ)
+           ============================================ */
+        .hidden-card {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) scale(0.85);
+            width: 340px;
+            height: 520px;
+            background: linear-gradient(165deg, #1A0505 0%, #0D0202 50%, #1A0505 100%);
+            border: 2px solid rgba(184, 134, 11, 0.4);
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 1;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(139, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Левые скрытые карты */
+        .hidden-card.left-1 {
+            left: 0;
+            transform: translateY(-50%) translateX(-50%) rotate(-15deg) scale(0.85);
+        }
+
+        .hidden-card.left-2 {
+            left: 0;
+            transform: translateY(-50%) translateX(-50%) rotate(-25deg) scale(0.75);
+        }
+
+        /* Правые скрытые карты */
+        .hidden-card.right-1 {
+            right: 0;
+            transform: translateY(-50%) translateX(50%) rotate(15deg) scale(0.85);
+        }
+
+        .hidden-card.right-2 {
+            right: 0;
+            transform: translateY(-50%) translateX(50%) rotate(25deg) scale(0.75);
+        }
+
+        /* При наведении на контейнер — раскрываем */
+        .cards-container:hover .hidden-card.left-1 {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-120%) rotate(-12deg) scale(0.9);
+        }
+
+        .cards-container:hover .hidden-card.left-2 {
+            opacity: 1;
+            transform: translateY(-50%) translateX(-220%) rotate(-22deg) scale(0.8);
+        }
+
+        .cards-container:hover .hidden-card.right-1 {
+            opacity: 1;
+            transform: translateY(-50%) translateX(120%) rotate(12deg) scale(0.9);
+        }
+
+        .cards-container:hover .hidden-card.right-2 {
+            opacity: 1;
+            transform: translateY(-50%) translateX(220%) rotate(22deg) scale(0.8);
+        }
+
+        /* Содержимое скрытых карт — рубашка */
+        .hidden-card .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.08) 12px, rgba(184, 134, 11, 0.08) 13px),
+                repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.08) 12px, rgba(184, 134, 11, 0.08) 13px);
+            background-color: #1A0505;
+        }
+
+        .hidden-card .card-back::after {
+            content: '❦';
+            font-size: 5rem;
+            color: rgba(184, 134, 11, 0.2);
+            text-shadow: 0 0 30px rgba(184, 134, 11, 0.3);
+        }
+
+        .hidden-card .card-back::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            border-radius: 3px;
+        }
+
+        /* ============================================
+           ОСНОВНЫЕ КАРТЫ (ИГРАЛЬНЫЕ)
+           ============================================ */
         .card {
             position: relative;
             width: 380px;
@@ -348,19 +461,68 @@
             border-radius: 6px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding: 45px;
+            z-index: 2;
             
             box-shadow: 
                 0 0 0 1px rgba(212, 175, 55, 0.2),
                 inset 0 0 150px rgba(0, 0, 0, 0.95),
                 0 25px 70px rgba(0, 0, 0, 0.85),
                 0 0 60px rgba(139, 0, 0, 0.3);
+        }
+
+        /* Уголки карты — как в покере */
+        .card .card-corner {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .card .card-corner.top-left {
+            top: 18px;
+            left: 18px;
+        }
+
+        .card .card-corner.bottom-right {
+            bottom: 18px;
+            right: 18px;
+            transform: rotate(180deg);
+        }
+
+        .card .card-corner .num {
+            font-size: 1.2rem;
+            letter-spacing: 0;
+        }
+
+        .card .card-corner .suit-small {
+            font-size: 1.1rem;
+        }
+
+        /* Центральная масть */
+        .card .suit-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            opacity: 0.08;
+            transition: all 0.3s ease;
+            z-index: 1;
+            font-family: 'Cinzel', serif;
         }
 
         /* Двойная рамка */
@@ -373,8 +535,9 @@
             bottom: 16px;
             border: 1px solid rgba(212, 175, 55, 0.25);
             pointer-events: none;
-            transition: all 0.7s ease;
+            transition: all 0.3s ease;
             z-index: 1;
+            border-radius: 3px;
         }
 
         /* Уголок-кружево */
@@ -385,7 +548,7 @@
             right: 28px;
             color: rgba(212, 175, 55, 0.5);
             font-size: 2.4rem;
-            transition: all 0.7s ease;
+            transition: all 0.3s ease;
             z-index: 2;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
@@ -396,19 +559,20 @@
             left: 28px;
             color: rgba(212, 175, 55, 0.4);
             font-size: 1.4rem;
-            transition: all 0.7s ease;
+            transition: all 0.3s ease;
             z-index: 2;
         }
 
+        /* --- HOVER: БЫСТРО, РЕЗКО, "ЧЕРЕЗ СИЛУ" --- */
         .card:hover {
-            transform: translateY(-25px) scale(1.05);
+            transform: translateY(-15px) scale(1.03);
             border-color: #FFD700;
             box-shadow: 
-                0 60px 150px rgba(139, 0, 0, 1),
-                0 0 0 3px rgba(255, 215, 0, 0.7),
+                0 40px 100px rgba(139, 0, 0, 1),
+                0 0 0 3px rgba(255, 215, 0, 0.8),
                 inset 0 0 200px rgba(0, 0, 0, 0.98),
-                0 0 120px rgba(255, 215, 0, 0.5),
-                0 0 200px rgba(139, 0, 0, 0.5);
+                0 0 120px rgba(255, 215, 0, 0.6),
+                0 0 200px rgba(139, 0, 0, 0.6);
         }
 
         .card:hover::before {
@@ -430,42 +594,21 @@
             transform: rotate(-20deg) scale(1.5);
         }
 
-        /* Масть */
-        .card .suit {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            font-size: 6rem;
-            opacity: 0.18;
-            transition: all 0.7s ease;
-            z-index: 2;
-            font-family: 'Cinzel', serif;
+        .card:hover .suit-center {
+            opacity: 0.7;
+            transform: translate(-50%, -50%) scale(1.2) rotate(-10deg);
+            text-shadow: 0 0 60px currentColor, 0 0 120px currentColor;
         }
 
-        .card:hover .suit {
-            opacity: 0.85;
-            transform: scale(1.4) rotate(-12deg);
-            text-shadow: 0 0 60px currentColor, 0 0 100px currentColor;
+        .card:hover .card-corner {
+            transform: scale(1.15);
         }
 
-        /* Номер карты */
-        .card .card-number {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            color: rgba(212, 175, 55, 0.3);
-            letter-spacing: 4px;
-            transition: all 0.7s ease;
-            z-index: 2;
+        .card:hover .card-corner.bottom-right {
+            transform: rotate(180deg) scale(1.15);
         }
 
-        .card:hover .card-number {
-            color: rgba(255, 215, 0, 1);
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
-        }
-
+        /* Заголовок */
         .card h2 {
             font-family: 'Cinzel', serif;
             font-size: 2.8rem;
@@ -473,7 +616,7 @@
             margin-bottom: 20px;
             letter-spacing: 9px;
             text-transform: uppercase;
-            transition: all 0.7s ease;
+            transition: all 0.3s ease;
             position: relative;
             z-index: 2;
             text-shadow: 
@@ -488,7 +631,7 @@
                 0 0 30px rgba(0, 0, 0, 1),
                 0 0 60px rgba(255, 215, 0, 1),
                 0 0 100px rgba(139, 0, 0, 0.9);
-            letter-spacing: 13px;
+            letter-spacing: 12px;
         }
 
         .card p {
@@ -499,7 +642,7 @@
             font-style: italic;
             position: relative;
             z-index: 2;
-            transition: all 0.7s ease;
+            transition: all 0.3s ease;
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 2px 4px rgba(0, 0, 0, 1);
@@ -520,7 +663,7 @@
             letter-spacing: 8px;
             text-transform: uppercase;
             text-align: center;
-            transition: all 0.6s ease;
+            transition: all 0.3s ease;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(8px);
             position: relative;
@@ -540,7 +683,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
-            transition: left 0.8s ease;
+            transition: left 0.4s ease;
         }
 
         .card:hover .btn-portal::before {
@@ -558,13 +701,14 @@
             text-shadow: none;
         }
 
-        /* --- 18+ КАРТОЧКА --- */
-        .card.adult .suit { color: #FF0000; }
+        /* --- 18+ КАРТА --- */
+        .card.adult .suit-center { color: #FF0000; }
+        .card.adult .card-corner .suit-small { color: #FF0000; }
 
         .card.adult:hover {
             border-color: #FF0000;
             box-shadow: 
-                0 60px 150px rgba(139, 0, 0, 1),
+                0 40px 100px rgba(139, 0, 0, 1),
                 0 0 0 3px rgba(255, 0, 0, 0.9),
                 inset 0 0 200px rgba(0, 0, 0, 0.98),
                 0 0 120px rgba(255, 0, 0, 0.6),
@@ -588,13 +732,14 @@
                 0 0 120px rgba(139, 0, 0, 0.9);
         }
 
-        /* --- GORE КАРТОЧКА --- */
-        .card.gore .suit { color: #8A8A8A; }
+        /* --- GORE КАРТА --- */
+        .card.gore .suit-center { color: #8A8A8A; }
+        .card.gore .card-corner .suit-small { color: #8A8A8A; }
 
         .card.gore:hover {
             border-color: #C0C0C0;
             box-shadow: 
-                0 60px 150px rgba(60, 60, 60, 0.95),
+                0 40px 100px rgba(60, 60, 60, 0.95),
                 0 0 0 3px rgba(200, 200, 200, 0.8),
                 inset 0 0 200px rgba(0, 0, 0, 0.98),
                 0 0 120px rgba(150, 150, 150, 0.5);
@@ -635,7 +780,7 @@
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 2px 4px rgba(0, 0, 0, 1);
-            animation: fadeIn 2s ease 0.9s both;
+            animation: fadeIn 1.5s ease 0.9s both;
         }
 
         .warning .badge {
@@ -696,7 +841,7 @@
             font-size: 2rem;
             color: #FFD700;
             letter-spacing: 4px;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
             text-shadow: 
                 0 0 20px rgba(0, 0, 0, 1),
                 0 0 40px rgba(255, 215, 0, 0.6),
@@ -737,6 +882,16 @@
         /* ============================================
            АДАПТИВ
            ============================================ */
+        @media (max-width: 1200px) {
+            .cards-container:hover {
+                gap: 180px;
+            }
+            .hidden-card {
+                width: 300px;
+                height: 460px;
+            }
+        }
+
         @media (max-width: 1024px) {
             h1 {
                 font-size: 5.5rem;
@@ -744,6 +899,12 @@
             }
             .subtitle {
                 font-size: 2.4rem;
+            }
+            .hidden-card {
+                display: none;
+            }
+            .cards-container:hover {
+                gap: 60px;
             }
         }
 
@@ -759,7 +920,11 @@
                 font-size: 0.9rem;
                 letter-spacing: 6px;
             }
-            .portals {
+            .cards-container {
+                flex-direction: column;
+                gap: 45px;
+            }
+            .cards-container:hover {
                 gap: 45px;
             }
             .card {
@@ -823,7 +988,7 @@
 </head>
 <body>
 
-    <!-- УШИ КРОЛИКА (ФОН) -->
+    <!-- УШИ КРОЛИКА -->
     <div class="rabbit-ears">
         <div class="ear"></div>
         <div class="ear"></div>
@@ -844,27 +1009,61 @@
         <div class="line"></div>
     </div>
 
-    <!-- КАРТОЧКИ-ПОРТАЛЫ -->
-    <div class="portals">
-        
-        <a href="porno.html" class="card adult">
-            <div class="suit">♥</div>
-            <div class="corner">❦</div>
-            <div class="card-number">XVIII</div>
-            <h2>Плоть</h2>
-            <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых.</p>
-            <div class="btn-portal">Войти</div>
-        </a>
+    <!-- ИГРОВОЕ ПОЛЕ -->
+    <div class="game-field">
+        <div class="cards-container">
+            
+            <!-- СКРЫТЫЕ КАРТЫ (ЛЕВЫЕ) -->
+            <div class="hidden-card left-2">
+                <div class="card-back"></div>
+            </div>
+            <div class="hidden-card left-1">
+                <div class="card-back"></div>
+            </div>
 
-        <a href="gore.html" class="card gore">
-            <div class="suit">♠</div>
-            <div class="corner">❦</div>
-            <div class="card-number">XIII</div>
-            <h2>Пепел</h2>
-            <p>Мрак, анатомия, эстетика разрушения. Искусство на грани.</p>
-            <div class="btn-portal">Войти</div>
-        </a>
+            <!-- ОСНОВНАЯ КАРТА 1: 18+ -->
+            <a href="porno.html" class="card adult">
+                <div class="card-corner top-left">
+                    <span class="num">XVIII</span>
+                    <span class="suit-small">♥</span>
+                </div>
+                <div class="suit-center">♥</div>
+                <div class="corner">❦</div>
+                <div class="card-corner bottom-right">
+                    <span class="num">XVIII</span>
+                    <span class="suit-small">♥</span>
+                </div>
+                <h2>Плоть</h2>
+                <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых.</p>
+                <div class="btn-portal">Войти</div>
+            </a>
 
+            <!-- ОСНОВНАЯ КАРТА 2: GORE -->
+            <a href="gore.html" class="card gore">
+                <div class="card-corner top-left">
+                    <span class="num">XIII</span>
+                    <span class="suit-small">♠</span>
+                </div>
+                <div class="suit-center">♠</div>
+                <div class="corner">❦</div>
+                <div class="card-corner bottom-right">
+                    <span class="num">XIII</span>
+                    <span class="suit-small">♠</span>
+                </div>
+                <h2>Пепел</h2>
+                <p>Мрак, анатомия, эстетика разрушения. Искусство на грани.</p>
+                <div class="btn-portal">Войти</div>
+            </a>
+
+            <!-- СКРЫТЫЕ КАРТЫ (ПРАВЫЕ) -->
+            <div class="hidden-card right-1">
+                <div class="card-back"></div>
+            </div>
+            <div class="hidden-card right-2">
+                <div class="card-back"></div>
+            </div>
+
+        </div>
     </div>
 
     <!-- ПРЕДУПРЕЖДЕНИЕ 18+ -->
