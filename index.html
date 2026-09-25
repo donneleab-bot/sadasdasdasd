@@ -250,6 +250,65 @@
         }
 
         /* ============================================
+           БЛЁСТКИ — РАССЫПАЮТСЯ ОТ ГЛАВНЫХ КАРТ
+           ============================================ */
+        .sparkles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 1px;
+            pointer-events: none;
+            z-index: 6;
+        }
+
+        .sparkles .spark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle,
+                rgba(255, 250, 220, 1) 0%,
+                rgba(255, 215, 0, 1) 35%,
+                rgba(255, 180, 0, 0.6) 65%,
+                transparent 100%);
+            border-radius: 50%;
+            box-shadow:
+                0 0 6px rgba(255, 215, 0, 1),
+                0 0 14px rgba(255, 215, 0, 0.7);
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        .sparkles .spark.animate {
+            animation: sparkFly 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes sparkFly {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translate(var(--sx-1, 0), var(--sy-1, -20px)) scale(1.3);
+            }
+            40% {
+                opacity: 0.95;
+                transform: translate(var(--sx-2, 20px), var(--sy-2, -60px)) scale(1);
+            }
+            75% {
+                opacity: 0.5;
+                transform: translate(var(--sx-3, -10px), var(--sy-3, -110px)) scale(0.7);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--sx-4, 30px), var(--sy-4, -160px)) scale(0.2);
+            }
+        }
+
+        /* ============================================
            БОКОВЫЕ КАРТЫ
            ============================================ */
         .side-card {
@@ -277,44 +336,6 @@
         .side-card.flipped.fast .side-card-inner {
             transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
-
-        .side-card .aura {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 108%;
-            height: 108%;
-            transform: translate(-50%, -50%);
-            border-radius: 12px;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0;
-            background: radial-gradient(ellipse at center,
-                rgba(255, 215, 0, 0.25) 0%,
-                rgba(255, 215, 0, 0.12) 40%,
-                rgba(255, 215, 0, 0.04) 70%,
-                transparent 100%);
-            filter: blur(8px);
-            transition: opacity 0.6s ease;
-        }
-        .side-card.flipped .aura { opacity: 1; }
-
-        .side-card .golden-frame {
-            position: absolute;
-            top: -3px; left: -3px; right: -3px; bottom: -3px;
-            border-radius: 13px;
-            pointer-events: none;
-            z-index: -2;
-            opacity: 0;
-            background: linear-gradient(135deg,
-                rgba(255, 215, 0, 0.6) 0%,
-                rgba(184, 134, 11, 0.2) 25%,
-                rgba(255, 215, 0, 0.6) 50%,
-                rgba(184, 134, 11, 0.2) 75%,
-                rgba(255, 215, 0, 0.6) 100%);
-            filter: blur(3px);
-            transition: opacity 0.6s ease;
-        }
-        .side-card.flipped .golden-frame { opacity: 0.85; }
 
         .side-card-front,
         .side-card-back {
@@ -449,7 +470,7 @@
         .side-card:hover { z-index: 10; }
 
         /* ============================================
-           ГЛАВНЫЕ КАРТЫ — БЕЗ ЖЁЛТОГО ПЯТНА
+           ГЛАВНЫЕ КАРТЫ
            ============================================ */
         .main-cards {
             position: relative;
@@ -1081,8 +1102,6 @@
 
             <!-- БОКОВЫЕ КАРТЫ -->
             <div class="side-card pos-1">
-                <div class="aura"></div>
-                <div class="golden-frame"></div>
                 <div class="side-card-inner">
                     <div class="side-card-front"></div>
                     <div class="side-card-back">
@@ -1094,8 +1113,6 @@
                 </div>
             </div>
             <div class="side-card pos-2">
-                <div class="aura"></div>
-                <div class="golden-frame"></div>
                 <div class="side-card-inner">
                     <div class="side-card-front"></div>
                     <div class="side-card-back">
@@ -1107,8 +1124,6 @@
                 </div>
             </div>
             <div class="side-card pos-3">
-                <div class="aura"></div>
-                <div class="golden-frame"></div>
                 <div class="side-card-inner">
                     <div class="side-card-front"></div>
                     <div class="side-card-back">
@@ -1120,8 +1135,6 @@
                 </div>
             </div>
             <div class="side-card pos-4">
-                <div class="aura"></div>
-                <div class="golden-frame"></div>
                 <div class="side-card-inner">
                     <div class="side-card-front"></div>
                     <div class="side-card-back">
@@ -1137,6 +1150,7 @@
             <div class="main-cards">
                 
                 <div class="main-card-wrapper">
+                    <div class="sparkles" data-sparkles></div>
                     <a href="porno.html" class="card adult left-card">
                         <div class="inner-frame"></div>
                         <div class="card-corner top-left">
@@ -1156,6 +1170,7 @@
                 </div>
 
                 <div class="main-card-wrapper">
+                    <div class="sparkles" data-sparkles></div>
                     <a href="gore.html" class="card gore right-card">
                         <div class="inner-frame"></div>
                         <div class="card-corner top-left">
@@ -1191,9 +1206,10 @@
     </div>
 
     <!-- ============================================
-         СКРИПТ: переворот боковых карт
+         СКРИПТ
          ============================================ -->
     <script>
+        /* ----- Переворот боковых карт ----- */
         document.querySelectorAll('.side-card').forEach(card => {
             let clickTimes = [];
 
@@ -1212,6 +1228,50 @@
                     }, 1500);
                 }
             });
+        });
+
+        /* ----- Блёстки, рассыпающиеся от главных карт ----- */
+        document.querySelectorAll('[data-sparkles]').forEach(container => {
+            for (let i = 0; i < 18; i++) {
+                const s = document.createElement('div');
+                s.className = 'spark';
+                container.appendChild(s);
+            }
+
+            const sparks = container.querySelectorAll('.spark');
+
+            function burst() {
+                sparks.forEach((spark, idx) => {
+                    spark.classList.remove('animate');
+                    void spark.offsetWidth;
+
+                    const startX = (Math.random() - 0.5) * 30;
+                    const startY = (Math.random() - 0.5) * 30;
+                    const mid1X = (Math.random() - 0.5) * 200;
+                    const mid1Y = -Math.random() * 80 - 20;
+                    const mid2X = (Math.random() - 0.5) * 300;
+                    const mid2Y = -Math.random() * 180 - 80;
+                    const endX = (Math.random() - 0.5) * 400;
+                    const endY = -Math.random() * 280 - 120;
+
+                    spark.style.setProperty('--sx-1', startX + 'px');
+                    spark.style.setProperty('--sy-1', startY + 'px');
+                    spark.style.setProperty('--sx-2', mid1X + 'px');
+                    spark.style.setProperty('--sy-2', mid1Y + 'px');
+                    spark.style.setProperty('--sx-3', mid2X + 'px');
+                    spark.style.setProperty('--sy-3', mid2Y + 'px');
+                    spark.style.setProperty('--sx-4', endX + 'px');
+                    spark.style.setProperty('--sy-4', endY + 'px');
+
+                    spark.style.animationDelay = (idx * 0.06) + 's';
+                    spark.classList.add('animate');
+                });
+
+                const nextDelay = 3000 + Math.random() * 2000;
+                container._burstTimer = setTimeout(burst, nextDelay);
+            }
+
+            container._burstTimer = setTimeout(burst, 1000 + Math.random() * 1500);
         });
     </script>
 
