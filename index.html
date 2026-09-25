@@ -1164,22 +1164,22 @@
         }
 
         /* ============================================
-           МОБИЛЬНЫЕ (до 768px) — ДВЕ КАРТЫ В РЯД, ПО ЦЕНТРУ
+           МОБИЛЬНЫЕ (до 768px) — КОМПАКТНЫЕ КАРТЫ
            ============================================ */
         @media (max-width: 768px) {
             body {
-                padding: 25px 10px 20px;
+                padding: 25px 8px 20px;
                 justify-content: flex-start;
             }
 
             .rabbit-ears {
-                gap: 50px;
+                gap: 45px;
                 top: 0;
             }
 
             .rabbit-ears .ear {
                 width: 45px;
-                height: 180px;
+                height: 170px;
                 filter: blur(6px);
             }
 
@@ -1189,7 +1189,7 @@
             }
 
             .header {
-                margin-bottom: 25px;
+                margin-bottom: 20px;
                 padding: 0 5px;
             }
 
@@ -1197,7 +1197,7 @@
                 font-size: 0.5rem;
                 letter-spacing: 6px;
                 padding: 6px 14px;
-                margin-bottom: 18px;
+                margin-bottom: 15px;
                 border-width: 1.5px;
             }
 
@@ -1205,25 +1205,25 @@
             .top-badge::after { right: -12px; }
 
             h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
                 letter-spacing: 8px;
             }
 
             .subtitle {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 margin-top: 6px;
                 letter-spacing: 3px;
             }
 
             .tagline {
-                font-size: 0.65rem;
+                font-size: 0.6rem;
                 letter-spacing: 4px;
-                margin-top: 12px;
+                margin-top: 10px;
             }
 
             .lace-divider {
                 gap: 10px;
-                margin-bottom: 30px;
+                margin-bottom: 25px;
                 padding: 0 10px;
             }
 
@@ -1242,7 +1242,7 @@
             }
 
             .game-field {
-                margin-bottom: 35px;
+                margin-bottom: 30px;
                 padding: 0;
             }
 
@@ -1254,12 +1254,12 @@
                 display: none;
             }
 
-            /* ГЛАВНЫЕ КАРТЫ — ДВЕ В РЯД, ПО ЦЕНТРУ */
+            /* ГЛАВНЫЕ КАРТЫ — ДВЕ В РЯД, КОМПАКТНЫЕ */
             .main-cards {
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
-                gap: 12px;
+                gap: 10px;
                 width: 100%;
                 margin: 0 auto;
                 padding: 0 5px;
@@ -1275,15 +1275,17 @@
                 padding: 0;
             }
 
+            /* Карта стала КОРОЧЕ — ближе к пропорциям игральной карты */
             .card {
                 width: 100%;
                 max-width: 100%;
-                height: 420px;
-                padding: 22px 16px;
+                height: 340px;
+                padding: 16px 12px;
                 border-radius: 10px;
                 margin: 0 auto;
                 transform-origin: center center;
                 backdrop-filter: none;
+                justify-content: center;
             }
 
             .card.left-card {
@@ -1303,50 +1305,50 @@
             }
 
             .card .card-corner {
-                font-size: 1rem;
-                gap: 1px;
+                font-size: 0.9rem;
+                gap: 0;
             }
 
             .card .card-corner.top-left {
-                top: 10px;
-                left: 10px;
+                top: 8px;
+                left: 8px;
             }
 
             .card .card-corner.bottom-right {
-                bottom: 10px;
-                right: 10px;
+                bottom: 8px;
+                right: 8px;
             }
 
             .card .card-corner .num {
-                font-size: 0.95rem;
+                font-size: 0.85rem;
                 letter-spacing: 0;
             }
 
             .card .card-corner .suit-small {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
             .card .suit-center {
-                font-size: 4.5rem;
+                font-size: 3.5rem;
             }
 
             .card h2 {
-                font-size: 1.3rem;
-                letter-spacing: 4px;
-                margin-bottom: 8px;
+                font-size: 1.1rem;
+                letter-spacing: 3px;
+                margin-bottom: 6px;
             }
 
             .card p {
-                font-size: 0.7rem;
-                line-height: 1.5;
-                margin-bottom: 14px;
+                font-size: 0.6rem;
+                line-height: 1.4;
+                margin-bottom: 10px;
             }
 
             .card .btn-portal {
-                padding: 12px 16px;
-                font-size: 0.75rem;
-                letter-spacing: 4px;
-                min-height: 42px;
+                padding: 9px 12px;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                min-height: 34px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -1354,85 +1356,85 @@
             }
 
             .card::after {
-                top: 12px;
-                right: 12px;
-                font-size: 1.3rem;
+                top: 9px;
+                right: 9px;
+                font-size: 1rem;
             }
 
             .card .corner {
-                bottom: 12px;
-                left: 12px;
-                font-size: 0.85rem;
+                bottom: 9px;
+                left: 9px;
+                font-size: 0.7rem;
             }
 
             .card .inner-frame {
-                top: 8px;
-                left: 8px;
-                right: 8px;
-                bottom: 8px;
-                border-radius: 8px;
+                top: 6px;
+                left: 6px;
+                right: 6px;
+                bottom: 6px;
+                border-radius: 7px;
             }
 
             .card .inner-frame::before {
-                top: 3px;
-                left: 3px;
-                right: 3px;
-                bottom: 3px;
+                top: 2px;
+                left: 2px;
+                right: 2px;
+                bottom: 2px;
                 border-radius: 5px;
             }
 
             .card:active {
                 box-shadow: 
-                    0 25px 60px rgba(180, 0, 0, 0.9),
+                    0 20px 50px rgba(180, 0, 0, 0.9),
                     0 0 0 2px rgba(255, 215, 0, 0.7),
-                    inset 0 0 150px rgba(0, 0, 0, 0.98),
-                    0 0 60px rgba(255, 215, 0, 0.6);
+                    inset 0 0 120px rgba(0, 0, 0, 0.98),
+                    0 0 50px rgba(255, 215, 0, 0.6);
             }
 
             .card.adult:active {
                 box-shadow: 
-                    0 25px 60px rgba(180, 0, 0, 0.9),
+                    0 20px 50px rgba(180, 0, 0, 0.9),
                     0 0 0 2px rgba(255, 0, 0, 0.8),
-                    inset 0 0 150px rgba(0, 0, 0, 0.98),
-                    0 0 60px rgba(255, 0, 0, 0.6);
+                    inset 0 0 120px rgba(0, 0, 0, 0.98),
+                    0 0 50px rgba(255, 0, 0, 0.6);
             }
 
             .card.gore:active {
                 box-shadow: 
-                    0 25px 60px rgba(60, 60, 60, 0.95),
+                    0 20px 50px rgba(60, 60, 60, 0.95),
                     0 0 0 2px rgba(200, 200, 200, 0.8),
-                    inset 0 0 150px rgba(0, 0, 0, 0.98),
-                    0 0 60px rgba(150, 150, 150, 0.5);
+                    inset 0 0 120px rgba(0, 0, 0, 0.98),
+                    0 0 50px rgba(150, 150, 150, 0.5);
             }
 
             .warning {
-                font-size: 0.75rem;
-                padding-top: 25px;
+                font-size: 0.7rem;
+                padding-top: 22px;
                 letter-spacing: 1px;
                 padding-left: 5px;
                 padding-right: 5px;
             }
 
             .warning .badge {
-                font-size: 0.75rem;
-                letter-spacing: 7px;
-                padding: 8px 18px;
-                margin-bottom: 15px;
+                font-size: 0.7rem;
+                letter-spacing: 6px;
+                padding: 7px 16px;
+                margin-bottom: 12px;
                 border-width: 1.5px;
             }
 
-            .warning .badge::before { left: -16px; }
-            .warning .badge::after { right: -16px; }
+            .warning .badge::before { left: -14px; }
+            .warning .badge::after { right: -14px; }
 
             .warning .rabbit-hint {
-                font-size: 1.3rem;
-                margin-top: 15px;
+                font-size: 1.2rem;
+                margin-top: 12px;
             }
 
             .footer {
-                font-size: 0.55rem;
+                font-size: 0.5rem;
                 letter-spacing: 4px;
-                margin-top: 25px;
+                margin-top: 22px;
                 padding: 0 5px;
             }
         }
@@ -1442,67 +1444,67 @@
            ============================================ */
         @media (max-width: 480px) {
             body {
-                padding: 20px 8px 15px;
+                padding: 20px 6px 15px;
             }
 
             .rabbit-ears {
-                gap: 35px;
+                gap: 30px;
             }
 
             .rabbit-ears .ear {
-                width: 38px;
-                height: 150px;
+                width: 35px;
+                height: 140px;
             }
 
             .rabbit-ears .ear::after {
-                width: 12px;
+                width: 10px;
             }
 
             .header {
-                margin-bottom: 20px;
+                margin-bottom: 18px;
             }
 
             .top-badge {
-                font-size: 0.45rem;
-                letter-spacing: 5px;
-                padding: 5px 12px;
-                margin-bottom: 15px;
+                font-size: 0.42rem;
+                letter-spacing: 4px;
+                padding: 5px 10px;
+                margin-bottom: 12px;
             }
 
-            .top-badge::before { left: -10px; }
-            .top-badge::after { right: -10px; }
+            .top-badge::before { left: -8px; }
+            .top-badge::after { right: -8px; }
 
             h1 {
-                font-size: 2.3rem;
+                font-size: 2.2rem;
                 letter-spacing: 6px;
             }
 
             .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
             }
 
             .tagline {
-                font-size: 0.55rem;
+                font-size: 0.5rem;
                 letter-spacing: 3px;
                 margin-top: 8px;
             }
 
             .lace-divider {
-                margin-bottom: 22px;
-                gap: 8px;
+                margin-bottom: 20px;
+                gap: 6px;
             }
 
             .lace-divider .symbol {
-                font-size: 0.85rem;
-                letter-spacing: 5px;
+                font-size: 0.8rem;
+                letter-spacing: 4px;
             }
 
             .game-field {
-                margin-bottom: 28px;
+                margin-bottom: 25px;
             }
 
             .main-cards {
-                gap: 8px;
+                gap: 7px;
                 padding: 0 3px;
             }
 
@@ -1511,8 +1513,8 @@
             }
 
             .card {
-                height: 380px;
-                padding: 18px 12px;
+                height: 300px;
+                padding: 14px 10px;
                 border-radius: 9px;
             }
 
@@ -1533,68 +1535,68 @@
             }
 
             .card h2 {
-                font-size: 1.1rem;
-                letter-spacing: 3px;
-                margin-bottom: 6px;
+                font-size: 0.95rem;
+                letter-spacing: 2px;
+                margin-bottom: 5px;
             }
 
             .card p {
-                font-size: 0.62rem;
-                line-height: 1.45;
-                margin-bottom: 12px;
+                font-size: 0.55rem;
+                line-height: 1.35;
+                margin-bottom: 9px;
             }
 
             .card .btn-portal {
-                padding: 10px 12px;
-                font-size: 0.68rem;
-                letter-spacing: 3px;
-                min-height: 38px;
-                border-width: 1.5px;
+                padding: 8px 10px;
+                font-size: 0.6rem;
+                letter-spacing: 2px;
+                min-height: 30px;
+                border-width: 1px;
             }
 
             .card .card-corner {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
             .card .card-corner.top-left {
-                top: 8px;
-                left: 8px;
+                top: 6px;
+                left: 6px;
             }
 
             .card .card-corner.bottom-right {
-                bottom: 8px;
-                right: 8px;
+                bottom: 6px;
+                right: 6px;
             }
 
             .card .card-corner .num {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
             }
 
             .card .card-corner .suit-small {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
             }
 
             .card .suit-center {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
 
             .card::after {
-                top: 10px;
-                right: 10px;
-                font-size: 1rem;
+                top: 7px;
+                right: 7px;
+                font-size: 0.85rem;
             }
 
             .card .corner {
-                bottom: 10px;
-                left: 10px;
-                font-size: 0.7rem;
+                bottom: 7px;
+                left: 7px;
+                font-size: 0.6rem;
             }
 
             .card .inner-frame {
-                top: 6px;
-                left: 6px;
-                right: 6px;
-                bottom: 6px;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
             }
 
             .card .inner-frame::before {
@@ -1605,29 +1607,29 @@
             }
 
             .warning {
-                font-size: 0.7rem;
-                padding-top: 20px;
+                font-size: 0.65rem;
+                padding-top: 18px;
             }
 
             .warning .badge {
-                font-size: 0.7rem;
-                letter-spacing: 6px;
-                padding: 7px 14px;
-                margin-bottom: 12px;
+                font-size: 0.65rem;
+                letter-spacing: 5px;
+                padding: 6px 12px;
+                margin-bottom: 10px;
             }
 
-            .warning .badge::before { left: -14px; }
-            .warning .badge::after { right: -14px; }
+            .warning .badge::before { left: -12px; }
+            .warning .badge::after { right: -12px; }
 
             .warning .rabbit-hint {
-                font-size: 1.1rem;
-                margin-top: 12px;
+                font-size: 1rem;
+                margin-top: 10px;
             }
 
             .footer {
-                font-size: 0.5rem;
+                font-size: 0.45rem;
                 letter-spacing: 3px;
-                margin-top: 20px;
+                margin-top: 18px;
             }
         }
 
@@ -1636,45 +1638,45 @@
            ============================================ */
         @media (max-width: 380px) {
             .main-cards {
-                gap: 6px;
+                gap: 5px;
             }
 
             .card {
-                height: 340px;
-                padding: 15px 10px;
+                height: 270px;
+                padding: 12px 8px;
             }
 
             .card h2 {
-                font-size: 0.95rem;
+                font-size: 0.85rem;
                 letter-spacing: 2px;
             }
 
             .card p {
-                font-size: 0.55rem;
-                line-height: 1.4;
+                font-size: 0.5rem;
+                line-height: 1.3;
             }
 
             .card .btn-portal {
-                padding: 8px 10px;
-                font-size: 0.6rem;
+                padding: 7px 8px;
+                font-size: 0.55rem;
                 letter-spacing: 2px;
-                min-height: 34px;
+                min-height: 28px;
             }
 
             .card .suit-center {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .card .card-corner {
-                font-size: 0.75rem;
+                font-size: 0.65rem;
             }
 
             .card .card-corner .num {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
             }
 
             .card .card-corner .suit-small {
-                font-size: 0.65rem;
+                font-size: 0.55rem;
             }
         }
 
@@ -1724,32 +1726,32 @@
             }
 
             .card {
-                height: 340px;
-                padding: 16px 14px;
+                height: 300px;
+                padding: 14px 12px;
                 max-width: 260px;
             }
 
             .card h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
                 letter-spacing: 3px;
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
 
             .card p {
-                font-size: 0.65rem;
-                line-height: 1.45;
-                margin-bottom: 10px;
+                font-size: 0.6rem;
+                line-height: 1.4;
+                margin-bottom: 9px;
             }
 
             .card .btn-portal {
-                padding: 9px 18px;
-                font-size: 0.75rem;
+                padding: 8px 16px;
+                font-size: 0.7rem;
                 letter-spacing: 3px;
-                min-height: 36px;
+                min-height: 32px;
             }
 
             .card .suit-center {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
 
             .warning {
