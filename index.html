@@ -46,7 +46,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px 20px;
+            padding: 60px 20px 30px;
             position: relative;
             overflow-x: hidden;
         }
@@ -66,33 +66,33 @@
         }
 
         /* ============================================
-           УШИ КРОЛИКА
+           УШИ КРОЛИКА (ФОН)
            ============================================ */
         .rabbit-ears {
             position: fixed;
-            top: 1%;
+            top: 2%;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 80px;
-            opacity: 0.1;
+            gap: 100px;
+            opacity: 0.12;
             pointer-events: none;
             z-index: 0;
             animation: breathe 8s ease-in-out infinite;
         }
 
         @keyframes breathe {
-            0%, 100% { opacity: 0.06; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.14; transform: translateX(-50%) scale(1.03); }
+            0%, 100% { opacity: 0.08; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.16; transform: translateX(-50%) scale(1.03); }
         }
 
         .rabbit-ears .ear {
-            width: 70px;
-            height: 320px;
+            width: 80px;
+            height: 350px;
             background: linear-gradient(180deg, transparent, #D4AF37 30%, #D4AF37 70%, transparent);
             border-radius: 50% 50% 0 0;
             transform: rotate(-10deg);
-            filter: blur(5px);
+            filter: blur(6px);
             position: relative;
         }
 
@@ -102,7 +102,7 @@
             top: 20%;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
+            width: 25px;
             height: 60%;
             background: linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.5), transparent);
             border-radius: 50%;
@@ -113,12 +113,11 @@
         }
 
         /* ============================================
-           ЩИТ-КАПИТОНЕ — ГЛАВНЫЙ КОНТЕЙНЕР
+           ЗАГОЛОВОК
            ============================================ */
-        .shield-wrapper {
-            width: 100%;
-            max-width: 1250px;
-            margin: 0 auto 40px;
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
             position: relative;
             z-index: 2;
             animation: fadeInDown 1.6s ease;
@@ -127,283 +126,6 @@
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-50px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- МНОГОСЛОЙНАЯ ОБВОДКА --- */
-        /* Внешнее свечение */
-        .shield-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -25px;
-            left: -25px;
-            right: -25px;
-            bottom: -25px;
-            border-radius: 30px;
-            background: radial-gradient(ellipse at center, 
-                rgba(255, 215, 0, 0.4) 0%, 
-                rgba(139, 0, 0, 0.3) 40%, 
-                transparent 70%);
-            z-index: -1;
-            filter: blur(20px);
-            opacity: 0.8;
-            animation: outerGlow 5s ease-in-out infinite;
-        }
-
-        @keyframes outerGlow {
-            0%, 100% { opacity: 0.6; filter: blur(20px); transform: scale(1); }
-            50% { opacity: 1; filter: blur(30px); transform: scale(1.02); }
-        }
-
-        /* Золотая гравировка */
-        .shield-wrapper::after {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: -12px;
-            right: -12px;
-            bottom: -12px;
-            border: 3px solid transparent;
-            border-image: linear-gradient(135deg, 
-                #D4AF37 0%, 
-                #8B0000 25%, 
-                #FFD700 50%, 
-                #8B0000 75%, 
-                #D4AF37 100%) 1;
-            border-radius: 20px;
-            z-index: -1;
-            pointer-events: none;
-            box-shadow: 
-                0 0 40px rgba(255, 215, 0, 0.3),
-                0 0 80px rgba(139, 0, 0, 0.3),
-                inset 0 0 40px rgba(255, 215, 0, 0.1);
-        }
-
-        /* Дополнительная внутренняя обводка */
-        .shield-wrapper .inner-border {
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            border-radius: 14px;
-            z-index: -1;
-            pointer-events: none;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-        }
-
-        .shield {
-            width: 100%;
-            position: relative;
-            clip-path: polygon(
-                50% 0%, 
-                65% 0%, 
-                80% 3%, 
-                92% 8%, 
-                100% 15%, 
-                100% 75%, 
-                95% 88%, 
-                80% 96%, 
-                50% 100%, 
-                20% 96%, 
-                5% 88%, 
-                0% 75%, 
-                0% 15%, 
-                8% 8%, 
-                20% 3%, 
-                35% 0%
-            );
-            background: #1A0505;
-            box-shadow: 
-                0 0 0 1px rgba(184, 134, 11, 0.4),
-                inset 0 0 200px rgba(0, 0, 0, 0.95),
-                0 50px 120px rgba(0, 0, 0, 0.95),
-                0 0 100px rgba(139, 0, 0, 0.4),
-                0 0 200px rgba(255, 215, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            padding: 90px 70px 80px;
-        }
-
-        .shield::after {
-            content: '';
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            right: 16px;
-            bottom: 16px;
-            border: 2px solid rgba(184, 134, 11, 0.3);
-            clip-path: polygon(
-                50% 0%, 
-                65% 0%, 
-                80% 3%, 
-                92% 8%, 
-                100% 15%, 
-                100% 75%, 
-                95% 88%, 
-                80% 96%, 
-                50% 100%, 
-                20% 96%, 
-                5% 88%, 
-                0% 75%, 
-                0% 15%, 
-                8% 8%, 
-                20% 3%, 
-                35% 0%
-            );
-            pointer-events: none;
-            z-index: 1;
-            box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.1);
-        }
-
-        /* --- КАПИТОНЕ --- */
-        .capitone {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                /* Стяжки */
-                radial-gradient(circle at 10% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 30% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 50% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 70% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 90% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                
-                radial-gradient(circle at 10% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 30% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 50% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 70% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 90% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                
-                radial-gradient(circle at 10% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 30% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 50% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 70% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 90% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                
-                radial-gradient(circle at 10% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 30% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 50% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 70% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 90% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                
-                radial-gradient(circle at 10% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 30% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 50% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 70% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 90% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                
-                radial-gradient(circle at 10% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 30% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 50% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 70% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                radial-gradient(circle at 90% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
-                
-                /* Тени */
-                linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.7) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.7) 51%, transparent 52%);
-            background-size: 
-                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                20% 20%, 20% 20%;
-            background-position: 
-                0 0, 0 0, 0 0, 0 0, 0 0,
-                0 0, 0 0, 0 0, 0 0, 0 0,
-                0 0, 0 0, 0 0, 0 0, 0 0,
-                0 0, 0 0, 0 0, 0 0, 0 0,
-                0 0, 0 0, 0 0, 0 0, 0 0,
-                0 0, 0 0, 0 0, 0 0, 0 0,
-                0 0, 0 0;
-            opacity: 0.95;
-        }
-
-        .capitone::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 30% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 50% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 70% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 90% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                
-                radial-gradient(circle at 10% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 30% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 50% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 70% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 90% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                
-                radial-gradient(circle at 10% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 30% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 50% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 70% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 90% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                
-                radial-gradient(circle at 10% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 30% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 50% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 70% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 90% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                
-                radial-gradient(circle at 10% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 30% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 50% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 70% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 90% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                
-                radial-gradient(circle at 10% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 30% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 50% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 70% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
-                radial-gradient(circle at 90% 86%, #5A0000 0%, #5A0000 7px, transparent 8px);
-            background-size: 100% 100%;
-            z-index: 2;
-        }
-
-        .shield-glare {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 3;
-            animation: glareMove 12s ease-in-out infinite;
-        }
-
-        @keyframes glareMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10%, 10%); }
-        }
-
-        /* ============================================
-           КОНТЕНТ ВНУТРИ ЩИТА
-           ============================================ */
-        .shield-content {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 100%;
-        }
-
-        /* --- ЗАГОЛОВОК --- */
-        .header-block {
-            text-align: center;
-            margin-bottom: 50px;
         }
 
         .top-badge {
@@ -422,7 +144,7 @@
                 0 0 20px rgba(255, 215, 0, 0.8),
                 0 0 40px rgba(255, 0, 0, 0.4),
                 0 2px 4px rgba(0, 0, 0, 1);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             box-shadow: 
                 0 0 30px rgba(255, 215, 0, 0.3),
                 inset 0 0 20px rgba(255, 215, 0, 0.1);
@@ -456,10 +178,10 @@
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 7rem;
+            font-size: 8rem;
             font-weight: 900;
             color: #FFD700;
-            letter-spacing: 24px;
+            letter-spacing: 28px;
             text-transform: uppercase;
             line-height: 1;
             text-shadow: 
@@ -468,6 +190,7 @@
                 0 0 60px rgba(0, 0, 0, 0.8),
                 0 0 50px rgba(255, 215, 0, 0.6),
                 0 0 100px rgba(139, 0, 0, 0.6),
+                0 0 150px rgba(255, 0, 0, 0.3),
                 0 4px 8px rgba(0, 0, 0, 1),
                 0 8px 16px rgba(0, 0, 0, 0.8);
             animation: glowText 4s ease-in-out infinite;
@@ -482,6 +205,7 @@
                     0 0 60px rgba(0, 0, 0, 0.8),
                     0 0 50px rgba(255, 215, 0, 0.6),
                     0 0 100px rgba(139, 0, 0, 0.6),
+                    0 0 150px rgba(255, 0, 0, 0.3),
                     0 4px 8px rgba(0, 0, 0, 1),
                     0 8px 16px rgba(0, 0, 0, 0.8);
             }
@@ -492,6 +216,7 @@
                     0 0 60px rgba(0, 0, 0, 0.8),
                     0 0 80px rgba(255, 215, 0, 1),
                     0 0 160px rgba(139, 0, 0, 0.9),
+                    0 0 240px rgba(255, 0, 0, 0.5),
                     0 4px 8px rgba(0, 0, 0, 1),
                     0 8px 16px rgba(0, 0, 0, 0.8);
             }
@@ -499,42 +224,52 @@
 
         .subtitle {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: #FFFFFF;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-shadow: 
                 0 0 20px rgba(0, 0, 0, 1),
                 0 0 40px rgba(0, 0, 0, 0.9),
-                0 0 60px rgba(139, 0, 0, 0.7),
-                0 0 30px rgba(255, 215, 0, 0.4),
+                0 0 60px rgba(139, 0, 0, 0.8),
+                0 0 40px rgba(255, 215, 0, 0.5),
                 0 3px 6px rgba(0, 0, 0, 1);
             margin-top: 15px;
         }
 
         .tagline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-style: italic;
             color: #FFD700;
-            letter-spacing: 10px;
+            letter-spacing: 12px;
             text-transform: uppercase;
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 0 30px rgba(0, 0, 0, 0.9),
-                0 0 20px rgba(255, 215, 0, 0.5),
+                0 0 25px rgba(255, 215, 0, 0.6),
                 0 2px 4px rgba(0, 0, 0, 1);
-            margin-top: 22px;
+            margin-top: 25px;
         }
 
-        /* --- РАЗДЕЛИТЕЛЬ --- */
+        /* ============================================
+           РАЗДЕЛИТЕЛЬ
+           ============================================ */
         .lace-divider {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin: 0 auto 60px;
-            max-width: 850px;
+            gap: 25px;
+            margin: 0 auto 70px;
+            max-width: 900px;
             width: 100%;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 2s ease 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .lace-divider .line {
@@ -555,7 +290,7 @@
             top: 50%;
             transform: translateY(-50%);
             color: #FFD700;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             opacity: 1;
             text-shadow: 0 0 15px rgba(255, 215, 0, 1);
         }
@@ -565,8 +300,8 @@
 
         .lace-divider .symbol {
             color: #FFD700;
-            font-size: 1.6rem;
-            letter-spacing: 20px;
+            font-size: 1.8rem;
+            letter-spacing: 22px;
             font-family: 'Cinzel', serif;
             text-shadow: 
                 0 0 30px rgba(255, 215, 0, 1),
@@ -583,20 +318,31 @@
             }
         }
 
-        /* --- КАРТОЧКИ --- */
+        /* ============================================
+           КАРТОЧКИ-ПОРТАЛЫ
+           ============================================ */
         .portals {
             display: flex;
-            gap: 60px;
+            gap: 70px;
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
-            margin-bottom: 70px;
+            max-width: 1000px;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.6s ease 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .card {
             position: relative;
-            width: 370px;
-            height: 560px;
+            width: 380px;
+            height: 580px;
             background: linear-gradient(165deg, #2B0A0A 0%, #1A0505 40%, #0D0202 60%, #2B0A0A 100%);
             border: 2px solid rgba(212, 175, 55, 0.6);
             border-radius: 6px;
@@ -608,7 +354,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 42px;
+            padding: 45px;
             
             box-shadow: 
                 0 0 0 1px rgba(212, 175, 55, 0.2),
@@ -617,6 +363,7 @@
                 0 0 60px rgba(139, 0, 0, 0.3);
         }
 
+        /* Двойная рамка */
         .card::before {
             content: '';
             position: absolute;
@@ -630,6 +377,7 @@
             z-index: 1;
         }
 
+        /* Уголок-кружево */
         .card::after {
             content: '❦';
             position: absolute;
@@ -682,11 +430,12 @@
             transform: rotate(-20deg) scale(1.5);
         }
 
+        /* Масть */
         .card .suit {
             position: absolute;
-            top: 38px;
-            left: 38px;
-            font-size: 5.5rem;
+            top: 40px;
+            left: 40px;
+            font-size: 6rem;
             opacity: 0.18;
             transition: all 0.7s ease;
             z-index: 2;
@@ -699,12 +448,13 @@
             text-shadow: 0 0 60px currentColor, 0 0 100px currentColor;
         }
 
+        /* Номер карты */
         .card .card-number {
             position: absolute;
-            bottom: 38px;
-            right: 38px;
+            bottom: 40px;
+            right: 40px;
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: rgba(212, 175, 55, 0.3);
             letter-spacing: 4px;
             transition: all 0.7s ease;
@@ -718,10 +468,10 @@
 
         .card h2 {
             font-family: 'Cinzel', serif;
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             color: #FFD700;
-            margin-bottom: 18px;
-            letter-spacing: 8px;
+            margin-bottom: 20px;
+            letter-spacing: 9px;
             text-transform: uppercase;
             transition: all 0.7s ease;
             position: relative;
@@ -738,14 +488,14 @@
                 0 0 30px rgba(0, 0, 0, 1),
                 0 0 60px rgba(255, 215, 0, 1),
                 0 0 100px rgba(139, 0, 0, 0.9);
-            letter-spacing: 12px;
+            letter-spacing: 13px;
         }
 
         .card p {
             font-size: 1rem;
             line-height: 1.8;
             color: #E8D8C8;
-            margin-bottom: 32px;
+            margin-bottom: 35px;
             font-style: italic;
             position: relative;
             z-index: 2;
@@ -759,14 +509,15 @@
             color: #FFFFFF;
         }
 
+        /* Кнопка */
         .card .btn-portal {
             display: inline-block;
-            padding: 18px 45px;
+            padding: 20px 50px;
             border: 2px solid #B8860B;
             color: #FFD700;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            letter-spacing: 7px;
+            font-size: 1.2rem;
+            letter-spacing: 8px;
             text-transform: uppercase;
             text-align: center;
             transition: all 0.6s ease;
@@ -803,10 +554,11 @@
                 0 0 80px rgba(255, 215, 0, 1),
                 0 0 120px rgba(255, 215, 0, 0.6);
             border-color: #FFFFFF;
-            letter-spacing: 10px;
+            letter-spacing: 11px;
             text-shadow: none;
         }
 
+        /* --- 18+ КАРТОЧКА --- */
         .card.adult .suit { color: #FF0000; }
 
         .card.adult:hover {
@@ -836,6 +588,7 @@
                 0 0 120px rgba(139, 0, 0, 0.9);
         }
 
+        /* --- GORE КАРТОЧКА --- */
         .card.gore .suit { color: #8A8A8A; }
 
         .card.gore:hover {
@@ -864,7 +617,9 @@
                 0 0 120px rgba(80, 80, 80, 0.9);
         }
 
-        /* --- ПРЕДУПРЕЖДЕНИЕ 18+ --- */
+        /* ============================================
+           ПРЕДУПРЕЖДЕНИЕ 18+
+           ============================================ */
         .warning {
             text-align: center;
             font-family: 'Cormorant Garamond', serif;
@@ -872,25 +627,26 @@
             color: #E8D8C8;
             letter-spacing: 2px;
             border-top: 2px solid rgba(212, 175, 55, 0.3);
-            padding-top: 45px;
-            max-width: 800px;
+            padding-top: 50px;
+            max-width: 850px;
             width: 100%;
             position: relative;
-            z-index: 10;
+            z-index: 2;
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 2px 4px rgba(0, 0, 0, 1);
+            animation: fadeIn 2s ease 0.9s both;
         }
 
         .warning .badge {
             display: inline-block;
             border: 2px solid #FF0000;
             color: #FF4444;
-            padding: 10px 28px;
+            padding: 12px 32px;
             border-radius: 2px;
-            font-size: 1rem;
-            letter-spacing: 10px;
-            margin-bottom: 25px;
+            font-size: 1.05rem;
+            letter-spacing: 12px;
+            margin-bottom: 28px;
             font-family: 'Cinzel', serif;
             position: relative;
             animation: pulseRed 2.5s ease infinite;
@@ -921,12 +677,12 @@
             top: 50%;
             transform: translateY(-50%);
             color: rgba(255, 0, 0, 0.9);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             text-shadow: 0 0 20px rgba(255, 0, 0, 1);
         }
 
-        .warning .badge::before { left: -26px; }
-        .warning .badge::after { right: -26px; }
+        .warning .badge::before { left: -30px; }
+        .warning .badge::after { right: -30px; }
 
         .warning p {
             line-height: 2;
@@ -935,11 +691,11 @@
 
         .warning .rabbit-hint {
             display: block;
-            margin-top: 25px;
+            margin-top: 28px;
             font-family: 'Great Vibes', cursive;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #FFD700;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             transition: all 0.5s ease;
             text-shadow: 
                 0 0 20px rgba(0, 0, 0, 1),
@@ -959,11 +715,11 @@
            ПОДВАЛ
            ============================================ */
         .footer {
-            margin-top: 25px;
+            margin-top: 35px;
             text-align: center;
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 7px;
+            font-size: 0.8rem;
+            letter-spacing: 8px;
             color: rgba(197, 160, 89, 0.4);
             text-transform: uppercase;
             position: relative;
@@ -982,151 +738,143 @@
            АДАПТИВ
            ============================================ */
         @media (max-width: 1024px) {
-            .shield {
-                padding: 70px 50px 60px;
-            }
             h1 {
-                font-size: 5rem;
-                letter-spacing: 16px;
+                font-size: 5.5rem;
+                letter-spacing: 18px;
             }
             .subtitle {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
         }
 
         @media (max-width: 768px) {
-            .shield {
-                padding: 60px 30px 50px;
-            }
             h1 {
-                font-size: 3.5rem;
-                letter-spacing: 10px;
+                font-size: 4rem;
+                letter-spacing: 12px;
             }
             .subtitle {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .tagline {
-                font-size: 0.85rem;
-                letter-spacing: 5px;
+                font-size: 0.9rem;
+                letter-spacing: 6px;
             }
             .portals {
-                gap: 40px;
+                gap: 45px;
             }
             .card {
                 width: 100%;
-                max-width: 370px;
-                height: 520px;
-                padding: 35px;
+                max-width: 380px;
+                height: 540px;
+                padding: 38px;
             }
             .card h2 {
-                font-size: 2rem;
-                letter-spacing: 6px;
+                font-size: 2.2rem;
+                letter-spacing: 7px;
             }
             .card p {
                 font-size: 0.95rem;
             }
             .rabbit-ears .ear {
-                height: 200px;
-                width: 55px;
+                height: 220px;
+                width: 60px;
             }
         }
 
         @media (max-width: 480px) {
-            .shield {
-                padding: 45px 20px 40px;
-            }
             h1 {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
                 letter-spacing: 6px;
             }
             .subtitle {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
             .tagline {
                 font-size: 0.75rem;
-                letter-spacing: 3px;
+                letter-spacing: 4px;
             }
             .top-badge {
                 font-size: 0.65rem;
                 letter-spacing: 6px;
-                padding: 7px 16px;
+                padding: 8px 18px;
             }
             .card {
-                height: 480px;
-                padding: 28px;
+                height: 500px;
+                padding: 30px;
             }
             .card h2 {
-                font-size: 1.7rem;
+                font-size: 1.8rem;
             }
             .card .btn-portal {
-                padding: 15px 32px;
-                font-size: 0.95rem;
-                letter-spacing: 5px;
+                padding: 16px 35px;
+                font-size: 1rem;
+                letter-spacing: 6px;
             }
             .warning {
                 font-size: 0.9rem;
+            }
+            .warning .badge {
+                font-size: 0.9rem;
+                letter-spacing: 8px;
+                padding: 10px 22px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- УШИ КРОЛИКА (ФОН) -->
     <div class="rabbit-ears">
         <div class="ear"></div>
         <div class="ear"></div>
     </div>
 
-    <div class="shield-wrapper">
-        <div class="inner-border"></div>
-        <div class="shield">
-            <div class="capitone"></div>
-            <div class="shield-glare"></div>
-            
-            <div class="shield-content">
-                
-                <div class="header-block">
-                    <div class="top-badge">Вход по приглашению</div>
-                    <h1>FENBO</h1>
-                    <div class="subtitle">Фенбо</div>
-                    <div class="tagline">✦ Искусство, которое не для всех ✦</div>
-                </div>
-
-                <div class="lace-divider">
-                    <div class="line"></div>
-                    <div class="symbol">♠ ♥ ♦ ♣</div>
-                    <div class="line"></div>
-                </div>
-
-                <div class="portals">
-                    <a href="porno.html" class="card adult">
-                        <div class="suit">♥</div>
-                        <div class="corner">❦</div>
-                        <div class="card-number">XVIII</div>
-                        <h2>Плоть</h2>
-                        <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых.</p>
-                        <div class="btn-portal">Войти</div>
-                    </a>
-
-                    <a href="gore.html" class="card gore">
-                        <div class="suit">♠</div>
-                        <div class="corner">❦</div>
-                        <div class="card-number">XIII</div>
-                        <h2>Пепел</h2>
-                        <p>Мрак, анатомия, эстетика разрушения. Искусство на грани.</p>
-                        <div class="btn-portal">Войти</div>
-                    </a>
-                </div>
-
-                <div class="warning">
-                    <div class="badge">18+</div>
-                    <p>Сайт содержит материалы, предназначенные только для взрослой аудитории. Продолжая, вы подтверждаете, что вам исполнилось 18 лет, и вы осознаете, что увидите.</p>
-                    <span class="rabbit-hint">Следуй за белым кроликом...</span>
-                </div>
-
-            </div>
-        </div>
+    <!-- ЗАГОЛОВОК -->
+    <div class="header">
+        <div class="top-badge">Вход по приглашению</div>
+        <h1>FENBO</h1>
+        <div class="subtitle">Фенбо</div>
+        <div class="tagline">✦ Искусство, которое не для всех ✦</div>
     </div>
 
+    <!-- РАЗДЕЛИТЕЛЬ -->
+    <div class="lace-divider">
+        <div class="line"></div>
+        <div class="symbol">♠ ♥ ♦ ♣</div>
+        <div class="line"></div>
+    </div>
+
+    <!-- КАРТОЧКИ-ПОРТАЛЫ -->
+    <div class="portals">
+        
+        <a href="porno.html" class="card adult">
+            <div class="suit">♥</div>
+            <div class="corner">❦</div>
+            <div class="card-number">XVIII</div>
+            <h2>Плоть</h2>
+            <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых.</p>
+            <div class="btn-portal">Войти</div>
+        </a>
+
+        <a href="gore.html" class="card gore">
+            <div class="suit">♠</div>
+            <div class="corner">❦</div>
+            <div class="card-number">XIII</div>
+            <h2>Пепел</h2>
+            <p>Мрак, анатомия, эстетика разрушения. Искусство на грани.</p>
+            <div class="btn-portal">Войти</div>
+        </a>
+
+    </div>
+
+    <!-- ПРЕДУПРЕЖДЕНИЕ 18+ -->
+    <div class="warning">
+        <div class="badge">18+</div>
+        <p>Сайт содержит материалы, предназначенные только для взрослой аудитории. Продолжая, вы подтверждаете, что вам исполнилось 18 лет, и вы осознаете, что увидите.</p>
+        <span class="rabbit-hint">Следуй за белым кроликом...</span>
+    </div>
+
+    <!-- ПОДВАЛ -->
     <div class="footer">
         ✦ FENBO ✦ 2025 ✦ <span>Все права защищены</span> ✦
     </div>
