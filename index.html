@@ -61,7 +61,7 @@
         }
 
         /* ============================================
-           УШИ КРОЛИКА
+           УШИ КРОЛИКА (без анимации)
            ============================================ */
         .rabbit-ears {
             position: fixed;
@@ -73,12 +73,6 @@
             opacity: 0.15;
             pointer-events: none;
             z-index: 0;
-            animation: breathe 8s ease-in-out infinite;
-        }
-
-        @keyframes breathe {
-            0%, 100% { opacity: 0.1; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.2; transform: translateX(-50%) scale(1.03); }
         }
 
         .rabbit-ears .ear {
@@ -108,18 +102,18 @@
         }
 
         /* ============================================
-           ЗАГОЛОВОК
+           ЗАГОЛОВОК (без пульсации)
            ============================================ */
         .header {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
             z-index: 2;
-            animation: fadeInDown 1.4s ease;
+            animation: fadeInDown 1s ease;
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
+            from { opacity: 0; transform: translateY(-40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -134,7 +128,6 @@
             text-transform: uppercase;
             position: relative;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
             text-shadow: 
                 0 0 25px rgba(255, 215, 0, 0.9),
                 0 0 50px rgba(255, 0, 0, 0.5),
@@ -142,20 +135,7 @@
             margin-bottom: 40px;
             box-shadow: 
                 0 0 40px rgba(255, 215, 0, 0.4),
-                0 0 80px rgba(180, 0, 0, 0.3),
-                inset 0 0 25px rgba(255, 215, 0, 0.15);
-            animation: pulseBadge 3s ease-in-out infinite;
-        }
-
-        @keyframes pulseBadge {
-            0%, 100% { 
-                box-shadow: 0 0 40px rgba(255, 215, 0, 0.4), 0 0 80px rgba(180, 0, 0, 0.3), inset 0 0 25px rgba(255, 215, 0, 0.15);
-                border-color: rgba(255, 215, 0, 0.7);
-            }
-            50% { 
-                box-shadow: 0 0 80px rgba(255, 215, 0, 0.7), 0 0 150px rgba(255, 0, 0, 0.5), inset 0 0 40px rgba(255, 215, 0, 0.25);
-                border-color: rgba(255, 215, 0, 1);
-            }
+                0 0 80px rgba(180, 0, 0, 0.3);
         }
 
         .top-badge::before,
@@ -189,36 +169,7 @@
                 0 0 100px rgba(180, 0, 0, 0.7),
                 0 0 180px rgba(255, 0, 0, 0.4),
                 0 4px 0 rgba(120, 80, 0, 1),
-                0 6px 8px rgba(0, 0, 0, 1),
-                0 10px 20px rgba(0, 0, 0, 0.8);
-            animation: glowText 4s ease-in-out infinite;
-        }
-
-        @keyframes glowText {
-            0%, 100% { 
-                text-shadow: 
-                    0 0 15px rgba(0, 0, 0, 1),
-                    0 0 30px rgba(0, 0, 0, 0.95),
-                    0 0 60px rgba(0, 0, 0, 0.9),
-                    0 0 50px rgba(255, 215, 0, 0.7),
-                    0 0 100px rgba(180, 0, 0, 0.7),
-                    0 0 180px rgba(255, 0, 0, 0.4),
-                    0 4px 0 rgba(120, 80, 0, 1),
-                    0 6px 8px rgba(0, 0, 0, 1),
-                    0 10px 20px rgba(0, 0, 0, 0.8);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 15px rgba(0, 0, 0, 1),
-                    0 0 30px rgba(0, 0, 0, 0.95),
-                    0 0 60px rgba(0, 0, 0, 0.9),
-                    0 0 90px rgba(255, 215, 0, 1),
-                    0 0 180px rgba(180, 0, 0, 1),
-                    0 0 280px rgba(255, 0, 0, 0.6),
-                    0 4px 0 rgba(120, 80, 0, 1),
-                    0 6px 8px rgba(0, 0, 0, 1),
-                    0 10px 20px rgba(0, 0, 0, 0.8);
-            }
+                0 6px 8px rgba(0, 0, 0, 1);
         }
 
         .subtitle {
@@ -230,8 +181,7 @@
                 0 0 20px rgba(0, 0, 0, 1),
                 0 0 40px rgba(0, 0, 0, 0.95),
                 0 0 60px rgba(180, 0, 0, 0.9),
-                0 0 50px rgba(255, 215, 0, 0.6),
-                0 3px 6px rgba(0, 0, 0, 1);
+                0 0 50px rgba(255, 215, 0, 0.6);
             margin-top: 15px;
         }
 
@@ -245,13 +195,12 @@
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 0 30px rgba(0, 0, 0, 0.95),
-                0 0 30px rgba(255, 215, 0, 0.7),
-                0 2px 4px rgba(0, 0, 0, 1);
+                0 0 30px rgba(255, 215, 0, 0.7);
             margin-top: 28px;
         }
 
         /* ============================================
-           РАЗДЕЛИТЕЛЬ
+           РАЗДЕЛИТЕЛЬ (без пульсации)
            ============================================ */
         .lace-divider {
             display: flex;
@@ -263,12 +212,6 @@
             width: 100%;
             position: relative;
             z-index: 2;
-            animation: fadeIn 1.6s ease 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .lace-divider .line {
@@ -290,7 +233,6 @@
             transform: translateY(-50%);
             color: #FFD700;
             font-size: 0.9rem;
-            opacity: 1;
             text-shadow: 0 0 20px rgba(255, 215, 0, 1);
         }
 
@@ -305,16 +247,6 @@
             text-shadow: 
                 0 0 40px rgba(255, 215, 0, 1),
                 0 0 80px rgba(180, 0, 0, 0.9);
-            animation: suitPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes suitPulse {
-            0%, 100% { 
-                text-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(180, 0, 0, 0.9);
-            }
-            50% { 
-                text-shadow: 0 0 70px rgba(255, 215, 0, 1), 0 0 140px rgba(180, 0, 0, 1), 0 0 200px rgba(255, 0, 0, 0.7);
-            }
         }
 
         /* ============================================
@@ -329,11 +261,11 @@
             align-items: center;
             margin-bottom: 90px;
             z-index: 2;
-            animation: fadeInUp 1.4s ease 0.5s both;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(60px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -347,7 +279,7 @@
         }
 
         /* ============================================
-           БОКОВЫЕ КАРТЫ
+           БОКОВЫЕ КАРТЫ (без парения, без анимации блика)
            ============================================ */
         .side-card {
             position: absolute;
@@ -364,7 +296,7 @@
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
-            transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 1.2s ease;
         }
 
         .side-card:hover .side-card-inner {
@@ -384,8 +316,7 @@
             overflow: hidden;
             box-shadow: 
                 0 25px 70px rgba(0, 0, 0, 0.95),
-                0 0 50px rgba(180, 0, 0, 0.3),
-                inset 0 0 80px rgba(0, 0, 0, 0.9);
+                0 0 50px rgba(180, 0, 0, 0.3);
         }
 
         .side-card-front {
@@ -408,7 +339,6 @@
             text-shadow: 
                 0 0 40px rgba(184, 134, 11, 0.5),
                 0 0 80px rgba(180, 0, 0, 0.3);
-            transition: all 0.4s ease;
         }
 
         .side-card-front::before {
@@ -420,7 +350,6 @@
             bottom: 12px;
             border: 1px solid rgba(184, 134, 11, 0.3);
             border-radius: 5px;
-            box-shadow: inset 0 0 20px rgba(184, 134, 11, 0.1);
         }
 
         .side-card-front .shine {
@@ -429,16 +358,9 @@
             left: -100%;
             width: 60%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
             transform: skewX(-25deg);
-            animation: shineSweep 5s ease-in-out infinite;
             pointer-events: none;
-        }
-
-        @keyframes shineSweep {
-            0% { left: -100%; }
-            15% { left: 150%; }
-            100% { left: 150%; }
         }
 
         .side-card-back {
@@ -465,7 +387,6 @@
         .side-card-back .face-suit {
             font-size: 6rem;
             font-family: 'Cinzel', serif;
-            transition: all 0.4s ease;
             filter: drop-shadow(0 0 20px currentColor);
         }
 
@@ -486,7 +407,6 @@
             align-items: center;
             gap: 2px;
             color: rgba(255, 215, 0, 0.8);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
 
         .side-card-back .face-corner.top-left {
@@ -503,45 +423,21 @@
         .side-card.pos-1 {
             left: -240px;
             transform: translateY(-50%) rotate(-15deg) scale(0.85);
-            animation: float1 6s ease-in-out infinite;
         }
 
         .side-card.pos-2 {
             left: 120px;
             transform: translateY(-50%) rotate(-8deg) scale(0.9);
-            animation: float2 7s ease-in-out infinite;
         }
 
         .side-card.pos-3 {
             right: 120px;
             transform: translateY(-50%) rotate(8deg) scale(0.9);
-            animation: float3 7s ease-in-out infinite;
         }
 
         .side-card.pos-4 {
             right: -240px;
             transform: translateY(-50%) rotate(15deg) scale(0.85);
-            animation: float4 6s ease-in-out infinite;
-        }
-
-        @keyframes float1 {
-            0%, 100% { transform: translateY(-50%) rotate(-15deg) scale(0.85) translateX(0); }
-            50% { transform: translateY(-53%) rotate(-14deg) scale(0.85) translateX(-10px); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translateY(-50%) rotate(-8deg) scale(0.9) translateX(0); }
-            50% { transform: translateY(-47%) rotate(-10deg) scale(0.9) translateX(-8px); }
-        }
-
-        @keyframes float3 {
-            0%, 100% { transform: translateY(-50%) rotate(8deg) scale(0.9) translateX(0); }
-            50% { transform: translateY(-53%) rotate(10deg) scale(0.9) translateX(8px); }
-        }
-
-        @keyframes float4 {
-            0%, 100% { transform: translateY(-50%) rotate(15deg) scale(0.85) translateX(0); }
-            50% { transform: translateY(-47%) rotate(14deg) scale(0.85) translateX(10px); }
         }
 
         .side-card:hover {
@@ -554,13 +450,11 @@
             box-shadow: 
                 0 40px 100px rgba(180, 0, 0, 0.9),
                 0 0 0 3px rgba(255, 215, 0, 0.7),
-                0 0 100px rgba(255, 215, 0, 0.7),
-                0 0 200px rgba(180, 0, 0, 0.6),
-                inset 0 0 100px rgba(0, 0, 0, 0.95);
+                0 0 100px rgba(255, 215, 0, 0.7);
         }
 
         /* ============================================
-           ГЛАВНЫЕ КАРТЫ
+           ГЛАВНЫЕ КАРТЫ — упрощённые анимации
            ============================================ */
         .main-cards {
             position: relative;
@@ -590,7 +484,6 @@
             border-radius: 14px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             text-decoration: none;
             color: inherit;
             display: flex;
@@ -598,12 +491,11 @@
             justify-content: flex-end;
             padding: 50px;
             z-index: 5;
-            
             box-shadow: 
                 0 0 0 1px rgba(212, 175, 55, 0.3),
-                inset 0 0 180px rgba(0, 0, 0, 0.95),
                 0 30px 80px rgba(0, 0, 0, 0.9),
                 0 0 80px rgba(180, 0, 0, 0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
         .card.left-card {
@@ -615,11 +507,11 @@
         }
 
         .card.left-card:hover {
-            transform: rotate(-2deg) translateY(-20px) scale(1.04);
+            transform: rotate(-4deg) translateY(-15px) scale(1.03);
         }
 
         .card.right-card:hover {
-            transform: rotate(2deg) translateY(-20px) scale(1.04);
+            transform: rotate(4deg) translateY(-15px) scale(1.03);
         }
 
         .card::before {
@@ -644,7 +536,6 @@
             bottom: 20px;
             border: 1px solid rgba(212, 175, 55, 0.3);
             pointer-events: none;
-            transition: all 0.5s ease;
             z-index: 1;
             border-radius: 10px;
         }
@@ -667,7 +558,6 @@
             right: 32px;
             color: rgba(212, 175, 55, 0.6);
             font-size: 2.6rem;
-            transition: all 0.4s ease;
             z-index: 2;
             text-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
         }
@@ -678,7 +568,6 @@
             left: 32px;
             color: rgba(212, 175, 55, 0.5);
             font-size: 1.5rem;
-            transition: all 0.4s ease;
             z-index: 2;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
@@ -694,7 +583,6 @@
             align-items: center;
             gap: 2px;
             z-index: 3;
-            transition: all 0.4s ease;
         }
 
         .card .card-corner.top-left {
@@ -726,19 +614,18 @@
             transform: translate(-50%, -50%);
             font-size: 10rem;
             opacity: 0.07;
-            transition: all 0.4s ease;
             z-index: 1;
             font-family: 'Cinzel', serif;
         }
 
+        /* HOVER — упрощённый */
         .card:hover {
             border-color: #FFD700;
             box-shadow: 
-                0 60px 150px rgba(180, 0, 0, 1),
-                0 0 0 4px rgba(255, 215, 0, 0.9),
-                inset 0 0 220px rgba(0, 0, 0, 0.98),
-                0 0 150px rgba(255, 215, 0, 0.8),
-                0 0 280px rgba(180, 0, 0, 0.7);
+                0 50px 120px rgba(180, 0, 0, 1),
+                0 0 0 3px rgba(255, 215, 0, 0.8),
+                0 0 120px rgba(255, 215, 0, 0.7),
+                0 0 200px rgba(180, 0, 0, 0.6);
         }
 
         .card:hover .inner-frame {
@@ -747,33 +634,32 @@
             left: 26px;
             right: 26px;
             bottom: 26px;
-            box-shadow: inset 0 0 35px rgba(255, 215, 0, 0.2);
         }
 
         .card:hover::after {
             color: #FFD700;
-            transform: rotate(35deg) scale(1.7);
-            text-shadow: 0 0 70px rgba(255, 215, 0, 1);
+            transform: rotate(35deg) scale(1.6);
+            text-shadow: 0 0 50px rgba(255, 215, 0, 1);
         }
 
         .card:hover .corner {
             color: #FFD700;
-            transform: rotate(-25deg) scale(1.6);
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+            transform: rotate(-25deg) scale(1.5);
+            text-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
         }
 
         .card:hover .suit-center {
-            opacity: 0.75;
-            transform: translate(-50%, -50%) scale(1.25) rotate(-12deg);
-            text-shadow: 0 0 80px currentColor, 0 0 160px currentColor;
+            opacity: 0.7;
+            transform: translate(-50%, -50%) scale(1.2) rotate(-10deg);
+            text-shadow: 0 0 60px currentColor, 0 0 120px currentColor;
         }
 
         .card:hover .card-corner {
-            transform: scale(1.2);
+            transform: scale(1.15);
         }
 
         .card:hover .card-corner.bottom-right {
-            transform: rotate(180deg) scale(1.2);
+            transform: rotate(180deg) scale(1.15);
         }
 
         .card h2 {
@@ -783,13 +669,13 @@
             margin-bottom: 25px;
             letter-spacing: 11px;
             text-transform: uppercase;
-            transition: all 0.4s ease;
             position: relative;
             z-index: 2;
             text-shadow: 
                 0 0 20px rgba(0, 0, 0, 1),
                 0 0 40px rgba(0, 0, 0, 0.9),
                 0 0 40px rgba(255, 215, 0, 0.6);
+            transition: color 0.25s ease, letter-spacing 0.25s ease, text-shadow 0.25s ease;
         }
 
         .card:hover h2 {
@@ -809,10 +695,10 @@
             font-style: italic;
             position: relative;
             z-index: 2;
-            transition: all 0.4s ease;
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 2px 4px rgba(0, 0, 0, 1);
+            transition: color 0.25s ease;
         }
 
         .card:hover p {
@@ -829,39 +715,21 @@
             letter-spacing: 9px;
             text-transform: uppercase;
             text-align: center;
-            transition: all 0.4s ease;
             background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
             position: relative;
             z-index: 2;
             overflow: hidden;
-            box-shadow: 
-                0 0 30px rgba(184, 134, 11, 0.5),
-                inset 0 0 20px rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 30px rgba(184, 134, 11, 0.5);
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-        }
-
-        .card .btn-portal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .card:hover .btn-portal::before {
-            left: 100%;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, letter-spacing 0.25s ease;
         }
 
         .card:hover .btn-portal {
             background: #FFD700;
             color: #1A0505;
             box-shadow: 
-                0 0 100px rgba(255, 215, 0, 1),
-                0 0 160px rgba(255, 215, 0, 0.7);
+                0 0 80px rgba(255, 215, 0, 1),
+                0 0 120px rgba(255, 215, 0, 0.6);
             border-color: #FFFFFF;
             letter-spacing: 12px;
             text-shadow: none;
@@ -874,11 +742,9 @@
         .card.adult:hover {
             border-color: #FF0000;
             box-shadow: 
-                0 60px 150px rgba(180, 0, 0, 1),
-                0 0 0 4px rgba(255, 0, 0, 1),
-                inset 0 0 220px rgba(0, 0, 0, 0.98),
-                0 0 150px rgba(255, 0, 0, 0.8),
-                0 0 280px rgba(180, 0, 0, 0.7);
+                0 50px 120px rgba(180, 0, 0, 1),
+                0 0 0 3px rgba(255, 0, 0, 0.9),
+                0 0 120px rgba(255, 0, 0, 0.7);
         }
 
         .card.adult:hover h2 {
@@ -894,8 +760,8 @@
             color: #FFFFFF;
             border-color: #FF6666;
             box-shadow: 
-                0 0 100px rgba(255, 0, 0, 1),
-                0 0 160px rgba(180, 0, 0, 1);
+                0 0 80px rgba(255, 0, 0, 1),
+                0 0 120px rgba(180, 0, 0, 0.9);
         }
 
         .card.gore .suit-center { color: #8A8A8A; }
@@ -905,10 +771,9 @@
         .card.gore:hover {
             border-color: #C0C0C0;
             box-shadow: 
-                0 60px 150px rgba(60, 60, 60, 0.95),
-                0 0 0 4px rgba(200, 200, 200, 0.9),
-                inset 0 0 220px rgba(0, 0, 0, 0.98),
-                0 0 150px rgba(150, 150, 150, 0.6);
+                0 50px 120px rgba(60, 60, 60, 0.95),
+                0 0 0 3px rgba(200, 200, 200, 0.8),
+                0 0 120px rgba(150, 150, 150, 0.6);
         }
 
         .card.gore:hover h2 {
@@ -924,12 +789,12 @@
             color: #FFFFFF;
             border-color: #C0C0C0;
             box-shadow: 
-                0 0 100px rgba(150, 150, 150, 1),
-                0 0 160px rgba(80, 80, 80, 0.9);
+                0 0 80px rgba(150, 150, 150, 1),
+                0 0 120px rgba(80, 80, 80, 0.9);
         }
 
         /* ============================================
-           ПРЕДУПРЕЖДЕНИЕ 18+
+           ПРЕДУПРЕЖДЕНИЕ 18+ (без пульсации)
            ============================================ */
         .warning {
             text-align: center;
@@ -946,7 +811,6 @@
             text-shadow: 
                 0 0 15px rgba(0, 0, 0, 1),
                 0 2px 4px rgba(0, 0, 0, 1);
-            animation: fadeIn 1.6s ease 0.9s both;
         }
 
         .warning .badge {
@@ -960,25 +824,12 @@
             margin-bottom: 30px;
             font-family: 'Cinzel', serif;
             position: relative;
-            animation: pulseRed 2.5s ease infinite;
             background: rgba(180, 0, 0, 0.3);
             text-shadow: 
                 0 0 30px rgba(255, 0, 0, 1),
                 0 0 60px rgba(255, 0, 0, 0.7);
             box-shadow: 
-                0 0 50px rgba(180, 0, 0, 0.7),
-                inset 0 0 30px rgba(255, 0, 0, 0.3);
-        }
-
-        @keyframes pulseRed {
-            0%, 100% { 
-                box-shadow: 0 0 50px rgba(180, 0, 0, 0.7), inset 0 0 30px rgba(255, 0, 0, 0.3);
-                border-color: rgba(255, 0, 0, 0.8);
-            }
-            50% { 
-                box-shadow: 0 0 100px rgba(255, 0, 0, 1), inset 0 0 50px rgba(255, 0, 0, 0.5);
-                border-color: rgba(255, 0, 0, 1);
-            }
+                0 0 50px rgba(180, 0, 0, 0.7);
         }
 
         .warning .badge::before,
@@ -1007,19 +858,10 @@
             font-size: 2.2rem;
             color: #FFD700;
             letter-spacing: 5px;
-            transition: all 0.4s ease;
             text-shadow: 
                 0 0 20px rgba(0, 0, 0, 1),
                 0 0 50px rgba(255, 215, 0, 0.7),
                 0 0 80px rgba(180, 0, 0, 0.6);
-        }
-
-        .warning .rabbit-hint:hover {
-            color: #FFFFFF;
-            text-shadow: 
-                0 0 30px rgba(0, 0, 0, 1),
-                0 0 80px rgba(255, 215, 0, 1),
-                0 0 140px rgba(180, 0, 0, 1);
         }
 
         /* ============================================
@@ -1049,10 +891,7 @@
            АДАПТИВ — ПК
            ============================================ */
         @media (max-width: 1700px) {
-            .side-card {
-                width: 240px;
-                height: 390px;
-            }
+            .side-card { width: 240px; height: 390px; }
             .side-card.pos-1 { left: -220px; }
             .side-card.pos-2 { left: 100px; }
             .side-card.pos-3 { right: 100px; }
@@ -1060,10 +899,7 @@
         }
 
         @media (max-width: 1500px) {
-            .side-card {
-                width: 210px;
-                height: 340px;
-            }
+            .side-card { width: 210px; height: 340px; }
             .side-card.pos-1 { left: -220px; }
             .side-card.pos-2 { left: 90px; }
             .side-card.pos-3 { right: 90px; }
@@ -1071,190 +907,56 @@
         }
 
         @media (max-width: 1300px) {
-            .side-card {
-                display: none;
-            }
+            .side-card { display: none; }
         }
 
         /* ============================================
            ПЛАНШЕТЫ (768px - 1024px)
            ============================================ */
         @media (min-width: 768px) and (max-width: 1024px) {
-            body {
-                padding: 50px 25px 30px;
-            }
-
-            h1 {
-                font-size: 5.5rem;
-                letter-spacing: 18px;
-            }
-
-            .subtitle {
-                font-size: 2.4rem;
-            }
-
-            .tagline {
-                font-size: 0.9rem;
-                letter-spacing: 10px;
-            }
-
-            .top-badge {
-                font-size: 0.7rem;
-                letter-spacing: 12px;
-                padding: 10px 26px;
-            }
-
-            .card {
-                width: 360px;
-                height: 550px;
-                padding: 40px;
-            }
-
-            .card h2 {
-                font-size: 2.6rem;
-                letter-spacing: 10px;
-            }
-
-            .card p {
-                font-size: 1rem;
-            }
-
-            .card .btn-portal {
-                padding: 20px 48px;
-                font-size: 1.2rem;
-                letter-spacing: 9px;
-            }
-
-            .card .card-corner {
-                font-size: 1.5rem;
-            }
-
-            .card .card-corner .num {
-                font-size: 1.4rem;
-            }
-
-            .card .card-corner .suit-small {
-                font-size: 1.2rem;
-            }
-
-            .card .suit-center {
-                font-size: 9rem;
-            }
-
-            .warning {
-                font-size: 1rem;
-                padding-top: 45px;
-            }
-
-            .warning .badge {
-                font-size: 1rem;
-                letter-spacing: 12px;
-                padding: 12px 30px;
-            }
-
-            .warning .rabbit-hint {
-                font-size: 1.9rem;
-            }
-
-            .footer {
-                font-size: 0.75rem;
-                letter-spacing: 8px;
-                margin-top: 35px;
-            }
+            body { padding: 50px 25px 30px; }
+            h1 { font-size: 5.5rem; letter-spacing: 18px; }
+            .subtitle { font-size: 2.4rem; }
+            .tagline { font-size: 0.9rem; letter-spacing: 10px; }
+            .top-badge { font-size: 0.7rem; letter-spacing: 12px; padding: 10px 26px; }
+            .card { width: 360px; height: 550px; padding: 40px; }
+            .card h2 { font-size: 2.6rem; letter-spacing: 10px; }
+            .card p { font-size: 1rem; }
+            .card .btn-portal { padding: 20px 48px; font-size: 1.2rem; letter-spacing: 9px; }
+            .card .card-corner { font-size: 1.5rem; }
+            .card .card-corner .num { font-size: 1.4rem; }
+            .card .card-corner .suit-small { font-size: 1.2rem; }
+            .card .suit-center { font-size: 9rem; }
+            .warning { font-size: 1rem; padding-top: 45px; }
+            .warning .badge { font-size: 1rem; letter-spacing: 12px; padding: 12px 30px; }
+            .warning .rabbit-hint { font-size: 1.9rem; }
+            .footer { font-size: 0.75rem; letter-spacing: 8px; margin-top: 35px; }
         }
 
         /* ============================================
-           МОБИЛЬНЫЕ (до 768px) — ДВЕ КАРТЫ В РЯД, КОНТЕНТ ВНИЗУ
+           МОБИЛЬНЫЕ (до 768px)
            ============================================ */
         @media (max-width: 768px) {
-            body {
-                padding: 25px 8px 20px;
-                justify-content: flex-start;
-            }
-
-            .rabbit-ears {
-                gap: 45px;
-                top: 0;
-            }
-
-            .rabbit-ears .ear {
-                width: 45px;
-                height: 170px;
-                filter: blur(6px);
-            }
-
-            .rabbit-ears .ear::after {
-                width: 14px;
-                height: 60%;
-            }
-
-            .header {
-                margin-bottom: 20px;
-                padding: 0 5px;
-            }
-
-            .top-badge {
-                font-size: 0.5rem;
-                letter-spacing: 6px;
-                padding: 6px 14px;
-                margin-bottom: 15px;
-                border-width: 1.5px;
-            }
-
+            body { padding: 25px 8px 20px; justify-content: flex-start; }
+            .rabbit-ears { gap: 45px; top: 0; }
+            .rabbit-ears .ear { width: 45px; height: 170px; filter: blur(6px); }
+            .rabbit-ears .ear::after { width: 14px; height: 60%; }
+            .header { margin-bottom: 20px; padding: 0 5px; }
+            .top-badge { font-size: 0.5rem; letter-spacing: 6px; padding: 6px 14px; margin-bottom: 15px; border-width: 1.5px; }
             .top-badge::before { left: -12px; }
             .top-badge::after { right: -12px; }
-
-            h1 {
-                font-size: 2.8rem;
-                letter-spacing: 8px;
-            }
-
-            .subtitle {
-                font-size: 1.4rem;
-                margin-top: 6px;
-                letter-spacing: 3px;
-            }
-
-            .tagline {
-                font-size: 0.6rem;
-                letter-spacing: 4px;
-                margin-top: 10px;
-            }
-
-            .lace-divider {
-                gap: 10px;
-                margin-bottom: 25px;
-                padding: 0 10px;
-            }
-
-            .lace-divider .symbol {
-                font-size: 1rem;
-                letter-spacing: 6px;
-            }
-
-            .lace-divider .line {
-                height: 2px;
-            }
-
+            h1 { font-size: 2.8rem; letter-spacing: 8px; }
+            .subtitle { font-size: 1.4rem; margin-top: 6px; letter-spacing: 3px; }
+            .tagline { font-size: 0.6rem; letter-spacing: 4px; margin-top: 10px; }
+            .lace-divider { gap: 10px; margin-bottom: 25px; padding: 0 10px; }
+            .lace-divider .symbol { font-size: 1rem; letter-spacing: 6px; }
+            .lace-divider .line { height: 2px; }
             .lace-divider .line::before,
-            .lace-divider .line::after {
-                font-size: 0.55rem;
-            }
+            .lace-divider .line::after { font-size: 0.55rem; }
+            .game-field { margin-bottom: 30px; padding: 0; }
+            .cards-stage { min-height: auto; }
+            .side-card { display: none; }
 
-            .game-field {
-                margin-bottom: 30px;
-                padding: 0;
-            }
-
-            .cards-stage {
-                min-height: auto;
-            }
-
-            .side-card {
-                display: none;
-            }
-
-            /* ГЛАВНЫЕ КАРТЫ — ДВЕ В РЯД, ВЕРТИКАЛЬНЫЕ, КОНТЕНТ ВНИЗУ */
             .main-cards {
                 flex-direction: row;
                 align-items: stretch;
@@ -1264,7 +966,6 @@
                 margin: 0 auto;
                 padding: 0 5px;
             }
-
             .main-card-wrapper {
                 flex: 1;
                 max-width: 48%;
@@ -1274,8 +975,6 @@
                 margin: 0;
                 padding: 0;
             }
-
-            /* Карта — вертикальная, контент ВНИЗУ (как на ПК) */
             .card {
                 width: 100%;
                 max-width: 100%;
@@ -1284,71 +983,20 @@
                 border-radius: 10px;
                 margin: 0 auto;
                 transform-origin: center center;
-                backdrop-filter: none;
                 justify-content: flex-end;
             }
-
-            .card.left-card {
-                transform: rotate(-2deg) translateX(0);
-            }
-
-            .card.right-card {
-                transform: rotate(2deg) translateX(0);
-            }
-
-            .card.left-card:active {
-                transform: rotate(-1deg) scale(0.97) translateX(0);
-            }
-
-            .card.right-card:active {
-                transform: rotate(1deg) scale(0.97) translateX(0);
-            }
-
-            /* Уголки */
-            .card .card-corner {
-                font-size: 0.9rem;
-                gap: 0;
-            }
-
-            .card .card-corner.top-left {
-                top: 10px;
-                left: 10px;
-            }
-
-            .card .card-corner.bottom-right {
-                bottom: 10px;
-                right: 10px;
-            }
-
-            .card .card-corner .num {
-                font-size: 0.85rem;
-                letter-spacing: 0;
-            }
-
-            .card .card-corner .suit-small {
-                font-size: 0.75rem;
-            }
-
-            /* Центральная масть */
-            .card .suit-center {
-                font-size: 4rem;
-            }
-
-            /* Заголовок */
-            .card h2 {
-                font-size: 1.15rem;
-                letter-spacing: 3px;
-                margin-bottom: 6px;
-            }
-
-            /* Описание */
-            .card p {
-                font-size: 0.62rem;
-                line-height: 1.45;
-                margin-bottom: 10px;
-            }
-
-            /* Кнопка */
+            .card.left-card { transform: rotate(-2deg) translateX(0); }
+            .card.right-card { transform: rotate(2deg) translateX(0); }
+            .card.left-card:active { transform: rotate(-1deg) scale(0.97) translateX(0); }
+            .card.right-card:active { transform: rotate(1deg) scale(0.97) translateX(0); }
+            .card .card-corner { font-size: 0.9rem; gap: 0; }
+            .card .card-corner.top-left { top: 10px; left: 10px; }
+            .card .card-corner.bottom-right { bottom: 10px; right: 10px; }
+            .card .card-corner .num { font-size: 0.85rem; letter-spacing: 0; }
+            .card .card-corner .suit-small { font-size: 0.75rem; }
+            .card .suit-center { font-size: 4rem; }
+            .card h2 { font-size: 1.15rem; letter-spacing: 3px; margin-bottom: 6px; }
+            .card p { font-size: 0.62rem; line-height: 1.45; margin-bottom: 10px; }
             .card .btn-portal {
                 padding: 10px 14px;
                 font-size: 0.7rem;
@@ -1359,436 +1007,119 @@
                 justify-content: center;
                 border-width: 1.5px;
             }
-
-            /* Уголки-кружево */
-            .card::after {
-                top: 10px;
-                right: 10px;
-                font-size: 1.1rem;
-            }
-
-            .card .corner {
-                bottom: 10px;
-                left: 10px;
-                font-size: 0.75rem;
-            }
-
-            /* Двойная рамка */
-            .card .inner-frame {
-                top: 6px;
-                left: 6px;
-                right: 6px;
-                bottom: 6px;
-                border-radius: 7px;
-            }
-
-            .card .inner-frame::before {
-                top: 2px;
-                left: 2px;
-                right: 2px;
-                bottom: 2px;
-                border-radius: 5px;
-            }
-
-            /* Тень при нажатии */
+            .card::after { top: 10px; right: 10px; font-size: 1.1rem; }
+            .card .corner { bottom: 10px; left: 10px; font-size: 0.75rem; }
+            .card .inner-frame { top: 6px; left: 6px; right: 6px; bottom: 6px; border-radius: 7px; }
+            .card .inner-frame::before { top: 2px; left: 2px; right: 2px; bottom: 2px; border-radius: 5px; }
             .card:active {
                 box-shadow: 
                     0 20px 50px rgba(180, 0, 0, 0.9),
                     0 0 0 2px rgba(255, 215, 0, 0.7),
-                    inset 0 0 120px rgba(0, 0, 0, 0.98),
                     0 0 50px rgba(255, 215, 0, 0.6);
             }
-
             .card.adult:active {
                 box-shadow: 
                     0 20px 50px rgba(180, 0, 0, 0.9),
                     0 0 0 2px rgba(255, 0, 0, 0.8),
-                    inset 0 0 120px rgba(0, 0, 0, 0.98),
                     0 0 50px rgba(255, 0, 0, 0.6);
             }
-
             .card.gore:active {
                 box-shadow: 
                     0 20px 50px rgba(60, 60, 60, 0.95),
                     0 0 0 2px rgba(200, 200, 200, 0.8),
-                    inset 0 0 120px rgba(0, 0, 0, 0.98),
                     0 0 50px rgba(150, 150, 150, 0.5);
             }
-
-            .warning {
-                font-size: 0.7rem;
-                padding-top: 22px;
-                letter-spacing: 1px;
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-
-            .warning .badge {
-                font-size: 0.7rem;
-                letter-spacing: 6px;
-                padding: 7px 16px;
-                margin-bottom: 12px;
-                border-width: 1.5px;
-            }
-
+            .warning { font-size: 0.7rem; padding-top: 22px; letter-spacing: 1px; padding-left: 5px; padding-right: 5px; }
+            .warning .badge { font-size: 0.7rem; letter-spacing: 6px; padding: 7px 16px; margin-bottom: 12px; border-width: 1.5px; }
             .warning .badge::before { left: -14px; }
             .warning .badge::after { right: -14px; }
-
-            .warning .rabbit-hint {
-                font-size: 1.2rem;
-                margin-top: 12px;
-            }
-
-            .footer {
-                font-size: 0.5rem;
-                letter-spacing: 4px;
-                margin-top: 22px;
-                padding: 0 5px;
-            }
+            .warning .rabbit-hint { font-size: 1.2rem; margin-top: 12px; }
+            .footer { font-size: 0.5rem; letter-spacing: 4px; margin-top: 22px; padding: 0 5px; }
         }
 
         /* ============================================
            МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px)
            ============================================ */
         @media (max-width: 480px) {
-            body {
-                padding: 20px 6px 15px;
-            }
-
-            .rabbit-ears {
-                gap: 30px;
-            }
-
-            .rabbit-ears .ear {
-                width: 35px;
-                height: 140px;
-            }
-
-            .rabbit-ears .ear::after {
-                width: 10px;
-            }
-
-            .header {
-                margin-bottom: 18px;
-            }
-
-            .top-badge {
-                font-size: 0.42rem;
-                letter-spacing: 4px;
-                padding: 5px 10px;
-                margin-bottom: 12px;
-            }
-
+            body { padding: 20px 6px 15px; }
+            .rabbit-ears { gap: 30px; }
+            .rabbit-ears .ear { width: 35px; height: 140px; }
+            .rabbit-ears .ear::after { width: 10px; }
+            .header { margin-bottom: 18px; }
+            .top-badge { font-size: 0.42rem; letter-spacing: 4px; padding: 5px 10px; margin-bottom: 12px; }
             .top-badge::before { left: -8px; }
             .top-badge::after { right: -8px; }
-
-            h1 {
-                font-size: 2.2rem;
-                letter-spacing: 6px;
-            }
-
-            .subtitle {
-                font-size: 1.15rem;
-            }
-
-            .tagline {
-                font-size: 0.5rem;
-                letter-spacing: 3px;
-                margin-top: 8px;
-            }
-
-            .lace-divider {
-                margin-bottom: 20px;
-                gap: 6px;
-            }
-
-            .lace-divider .symbol {
-                font-size: 0.8rem;
-                letter-spacing: 4px;
-            }
-
-            .game-field {
-                margin-bottom: 25px;
-            }
-
-            .main-cards {
-                gap: 7px;
-                padding: 0 3px;
-            }
-
-            .main-card-wrapper {
-                max-width: 49%;
-            }
-
-            .card {
-                height: 380px;
-                padding: 16px 11px;
-                border-radius: 9px;
-                justify-content: flex-end;
-            }
-
-            .card.left-card {
-                transform: rotate(-1.5deg) translateX(0);
-            }
-
-            .card.right-card {
-                transform: rotate(1.5deg) translateX(0);
-            }
-
-            .card.left-card:active {
-                transform: rotate(-0.8deg) scale(0.97) translateX(0);
-            }
-
-            .card.right-card:active {
-                transform: rotate(0.8deg) scale(0.97) translateX(0);
-            }
-
-            .card h2 {
-                font-size: 1rem;
-                letter-spacing: 2px;
-                margin-bottom: 5px;
-            }
-
-            .card p {
-                font-size: 0.56rem;
-                line-height: 1.4;
-                margin-bottom: 9px;
-            }
-
-            .card .btn-portal {
-                padding: 9px 10px;
-                font-size: 0.62rem;
-                letter-spacing: 2px;
-                min-height: 32px;
-                border-width: 1px;
-            }
-
-            .card .card-corner {
-                font-size: 0.78rem;
-            }
-
-            .card .card-corner.top-left {
-                top: 7px;
-                left: 7px;
-            }
-
-            .card .card-corner.bottom-right {
-                bottom: 7px;
-                right: 7px;
-            }
-
-            .card .card-corner .num {
-                font-size: 0.72rem;
-            }
-
-            .card .card-corner .suit-small {
-                font-size: 0.62rem;
-            }
-
-            .card .suit-center {
-                font-size: 3.2rem;
-            }
-
-            .card::after {
-                top: 8px;
-                right: 8px;
-                font-size: 0.9rem;
-            }
-
-            .card .corner {
-                bottom: 8px;
-                left: 8px;
-                font-size: 0.62rem;
-            }
-
-            .card .inner-frame {
-                top: 5px;
-                left: 5px;
-                right: 5px;
-                bottom: 5px;
-            }
-
-            .card .inner-frame::before {
-                top: 2px;
-                left: 2px;
-                right: 2px;
-                bottom: 2px;
-            }
-
-            .warning {
-                font-size: 0.65rem;
-                padding-top: 18px;
-            }
-
-            .warning .badge {
-                font-size: 0.65rem;
-                letter-spacing: 5px;
-                padding: 6px 12px;
-                margin-bottom: 10px;
-            }
-
+            h1 { font-size: 2.2rem; letter-spacing: 6px; }
+            .subtitle { font-size: 1.15rem; }
+            .tagline { font-size: 0.5rem; letter-spacing: 3px; margin-top: 8px; }
+            .lace-divider { margin-bottom: 20px; gap: 6px; }
+            .lace-divider .symbol { font-size: 0.8rem; letter-spacing: 4px; }
+            .game-field { margin-bottom: 25px; }
+            .main-cards { gap: 7px; padding: 0 3px; }
+            .main-card-wrapper { max-width: 49%; }
+            .card { height: 380px; padding: 16px 11px; border-radius: 9px; justify-content: flex-end; }
+            .card.left-card { transform: rotate(-1.5deg) translateX(0); }
+            .card.right-card { transform: rotate(1.5deg) translateX(0); }
+            .card.left-card:active { transform: rotate(-0.8deg) scale(0.97) translateX(0); }
+            .card.right-card:active { transform: rotate(0.8deg) scale(0.97) translateX(0); }
+            .card h2 { font-size: 1rem; letter-spacing: 2px; margin-bottom: 5px; }
+            .card p { font-size: 0.56rem; line-height: 1.4; margin-bottom: 9px; }
+            .card .btn-portal { padding: 9px 10px; font-size: 0.62rem; letter-spacing: 2px; min-height: 32px; border-width: 1px; }
+            .card .card-corner { font-size: 0.78rem; }
+            .card .card-corner.top-left { top: 7px; left: 7px; }
+            .card .card-corner.bottom-right { bottom: 7px; right: 7px; }
+            .card .card-corner .num { font-size: 0.72rem; }
+            .card .card-corner .suit-small { font-size: 0.62rem; }
+            .card .suit-center { font-size: 3.2rem; }
+            .card::after { top: 8px; right: 8px; font-size: 0.9rem; }
+            .card .corner { bottom: 8px; left: 8px; font-size: 0.62rem; }
+            .card .inner-frame { top: 5px; left: 5px; right: 5px; bottom: 5px; }
+            .card .inner-frame::before { top: 2px; left: 2px; right: 2px; bottom: 2px; }
+            .warning { font-size: 0.65rem; padding-top: 18px; }
+            .warning .badge { font-size: 0.65rem; letter-spacing: 5px; padding: 6px 12px; margin-bottom: 10px; }
             .warning .badge::before { left: -12px; }
             .warning .badge::after { right: -12px; }
-
-            .warning .rabbit-hint {
-                font-size: 1rem;
-                margin-top: 10px;
-            }
-
-            .footer {
-                font-size: 0.45rem;
-                letter-spacing: 3px;
-                margin-top: 18px;
-            }
+            .warning .rabbit-hint { font-size: 1rem; margin-top: 10px; }
+            .footer { font-size: 0.45rem; letter-spacing: 3px; margin-top: 18px; }
         }
 
         /* ============================================
            ОЧЕНЬ МАЛЕНЬКИЕ (до 380px)
            ============================================ */
         @media (max-width: 380px) {
-            .main-cards {
-                gap: 5px;
-            }
-
-            .card {
-                height: 350px;
-                padding: 14px 9px;
-            }
-
-            .card h2 {
-                font-size: 0.9rem;
-                letter-spacing: 2px;
-            }
-
-            .card p {
-                font-size: 0.52rem;
-                line-height: 1.35;
-            }
-
-            .card .btn-portal {
-                padding: 8px 8px;
-                font-size: 0.58rem;
-                letter-spacing: 2px;
-                min-height: 30px;
-            }
-
-            .card .suit-center {
-                font-size: 2.8rem;
-            }
-
-            .card .card-corner {
-                font-size: 0.7rem;
-            }
-
-            .card .card-corner .num {
-                font-size: 0.65rem;
-            }
-
-            .card .card-corner .suit-small {
-                font-size: 0.58rem;
-            }
+            .main-cards { gap: 5px; }
+            .card { height: 350px; padding: 14px 9px; }
+            .card h2 { font-size: 0.9rem; letter-spacing: 2px; }
+            .card p { font-size: 0.52rem; line-height: 1.35; }
+            .card .btn-portal { padding: 8px 8px; font-size: 0.58rem; letter-spacing: 2px; min-height: 30px; }
+            .card .suit-center { font-size: 2.8rem; }
+            .card .card-corner { font-size: 0.7rem; }
+            .card .card-corner .num { font-size: 0.65rem; }
+            .card .card-corner .suit-small { font-size: 0.58rem; }
         }
 
         /* ============================================
            ЛАНДШАФТ НА ТЕЛЕФОНЕ
            ============================================ */
         @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                padding: 15px 15px 10px;
-            }
-
-            .header {
-                margin-bottom: 12px;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-                letter-spacing: 8px;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .tagline {
-                font-size: 0.55rem;
-                letter-spacing: 4px;
-                margin-top: 6px;
-            }
-
-            .top-badge {
-                font-size: 0.45rem;
-                letter-spacing: 5px;
-                padding: 4px 12px;
-                margin-bottom: 8px;
-            }
-
-            .lace-divider {
-                margin-bottom: 15px;
-            }
-
-            .main-cards {
-                flex-direction: row;
-                gap: 15px;
-                justify-content: center;
-                align-items: stretch;
-            }
-
-            .main-card-wrapper {
-                max-width: 45%;
-            }
-
-            .card {
-                height: 300px;
-                padding: 14px 12px;
-                justify-content: flex-end;
-            }
-
-            .card h2 {
-                font-size: 1rem;
-                letter-spacing: 3px;
-                margin-bottom: 5px;
-            }
-
-            .card p {
-                font-size: 0.58rem;
-                line-height: 1.4;
-                margin-bottom: 8px;
-            }
-
-            .card .btn-portal {
-                padding: 8px 12px;
-                font-size: 0.65rem;
-                letter-spacing: 3px;
-                min-height: 30px;
-            }
-
-            .card .suit-center {
-                font-size: 3.5rem;
-            }
-
-            .warning {
-                padding-top: 12px;
-                font-size: 0.65rem;
-            }
-
-            .warning .badge {
-                font-size: 0.65rem;
-                letter-spacing: 5px;
-                padding: 5px 12px;
-                margin-bottom: 8px;
-            }
-
-            .warning .rabbit-hint {
-                font-size: 1rem;
-                margin-top: 8px;
-            }
-
-            .footer {
-                font-size: 0.5rem;
-                letter-spacing: 3px;
-                margin-top: 12px;
-            }
+            body { padding: 15px 15px 10px; }
+            .header { margin-bottom: 12px; }
+            h1 { font-size: 2.2rem; letter-spacing: 8px; }
+            .subtitle { font-size: 1.1rem; }
+            .tagline { font-size: 0.55rem; letter-spacing: 4px; margin-top: 6px; }
+            .top-badge { font-size: 0.45rem; letter-spacing: 5px; padding: 4px 12px; margin-bottom: 8px; }
+            .lace-divider { margin-bottom: 15px; }
+            .main-cards { flex-direction: row; gap: 15px; justify-content: center; align-items: stretch; }
+            .main-card-wrapper { max-width: 45%; }
+            .card { height: 300px; padding: 14px 12px; justify-content: flex-end; }
+            .card h2 { font-size: 1rem; letter-spacing: 3px; margin-bottom: 5px; }
+            .card p { font-size: 0.58rem; line-height: 1.4; margin-bottom: 8px; }
+            .card .btn-portal { padding: 8px 12px; font-size: 0.65rem; letter-spacing: 3px; min-height: 30px; }
+            .card .suit-center { font-size: 3.5rem; }
+            .warning { padding-top: 12px; font-size: 0.65rem; }
+            .warning .badge { font-size: 0.65rem; letter-spacing: 5px; padding: 5px 12px; margin-bottom: 8px; }
+            .warning .rabbit-hint { font-size: 1rem; margin-top: 8px; }
+            .footer { font-size: 0.5rem; letter-spacing: 3px; margin-top: 12px; }
         }
     </style>
 </head>
@@ -1822,77 +1153,45 @@
             <!-- БОКОВЫЕ КАРТЫ -->
             <div class="side-card pos-1">
                 <div class="side-card-inner">
-                    <div class="side-card-front">
-                        <div class="shine"></div>
-                    </div>
+                    <div class="side-card-front"><div class="shine"></div></div>
                     <div class="side-card-back">
-                        <div class="face-corner top-left">
-                            <span>♠</span>
-                            <span>A</span>
-                        </div>
+                        <div class="face-corner top-left"><span>♠</span><span>A</span></div>
                         <div class="face-suit" style="color: #8A8A8A;">♠</div>
                         <div class="face-num">ACE</div>
-                        <div class="face-corner bottom-right">
-                            <span>♠</span>
-                            <span>A</span>
-                        </div>
+                        <div class="face-corner bottom-right"><span>♠</span><span>A</span></div>
                     </div>
                 </div>
             </div>
             <div class="side-card pos-2">
                 <div class="side-card-inner">
-                    <div class="side-card-front">
-                        <div class="shine"></div>
-                    </div>
+                    <div class="side-card-front"><div class="shine"></div></div>
                     <div class="side-card-back">
-                        <div class="face-corner top-left">
-                            <span>♥</span>
-                            <span>K</span>
-                        </div>
+                        <div class="face-corner top-left"><span>♥</span><span>K</span></div>
                         <div class="face-suit" style="color: #FF0000;">♥</div>
                         <div class="face-num">KING</div>
-                        <div class="face-corner bottom-right">
-                            <span>♥</span>
-                            <span>K</span>
-                        </div>
+                        <div class="face-corner bottom-right"><span>♥</span><span>K</span></div>
                     </div>
                 </div>
             </div>
             <div class="side-card pos-3">
                 <div class="side-card-inner">
-                    <div class="side-card-front">
-                        <div class="shine"></div>
-                    </div>
+                    <div class="side-card-front"><div class="shine"></div></div>
                     <div class="side-card-back">
-                        <div class="face-corner top-left">
-                            <span>♦</span>
-                            <span>Q</span>
-                        </div>
+                        <div class="face-corner top-left"><span>♦</span><span>Q</span></div>
                         <div class="face-suit" style="color: #FF0000;">♦</div>
                         <div class="face-num">QUEEN</div>
-                        <div class="face-corner bottom-right">
-                            <span>♦</span>
-                            <span>Q</span>
-                        </div>
+                        <div class="face-corner bottom-right"><span>♦</span><span>Q</span></div>
                     </div>
                 </div>
             </div>
             <div class="side-card pos-4">
                 <div class="side-card-inner">
-                    <div class="side-card-front">
-                        <div class="shine"></div>
-                    </div>
+                    <div class="side-card-front"><div class="shine"></div></div>
                     <div class="side-card-back">
-                        <div class="face-corner top-left">
-                            <span>♣</span>
-                            <span>J</span>
-                        </div>
+                        <div class="face-corner top-left"><span>♣</span><span>J</span></div>
                         <div class="face-suit" style="color: #8A8A8A;">♣</div>
                         <div class="face-num">JACK</div>
-                        <div class="face-corner bottom-right">
-                            <span>♣</span>
-                            <span>J</span>
-                        </div>
+                        <div class="face-corner bottom-right"><span>♣</span><span>J</span></div>
                     </div>
                 </div>
             </div>
