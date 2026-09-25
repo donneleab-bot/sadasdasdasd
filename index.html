@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Винный погреб | Винтаж</title>
+    <title>✦ КРУЖЕВО И КРОВЬ ✦ | 18+</title>
     
-    <!-- Подключаем винтажные шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
     <style>
         /* --- БАЗА --- */
@@ -19,163 +18,344 @@
         }
 
         body {
-            /* Твой паттерн как фон */
-            background-image: url('bg.jpg'); /* <-- ЗДЕСЬ НАЗВАНИЕ ТВОЕЙ КАРТИНКИ */
-            background-size: cover;
-            background-position: center;
+            /* Глубокий красновато-темный фон с намеком на кружево */
+            background-color: #1A0505;
+            background-image: 
+                /* Кружевной узор через радиальные градиенты */
+                radial-gradient(circle at 20% 30%, rgba(184, 134, 11, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(184, 134, 11, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 60%),
+                /* Тонкая сетка-кружево */
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(184, 134, 11, 0.03) 10px, rgba(184, 134, 11, 0.03) 11px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(184, 134, 11, 0.03) 10px, rgba(184, 134, 11, 0.03) 11px);
             background-attachment: fixed;
-            background-color: #2B0A0A; /* Запасной цвет, если картинка не загрузится */
             
             font-family: 'Lora', serif;
-            color: #E8D8C8; /* Цвет пергамента */
+            color: #E8D8C8;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
-            
-            /* Затемняющий слой поверх паттерна, чтобы текст читался */
+            padding: 40px 20px;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* Полупрозрачная черная пленка поверх фона */
+        /* Затемняющий слой + виньетка */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(20, 5, 5, 0.75); /* Чем больше число, тем темнее */
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 2, 2, 0.85) 100%);
             z-index: -1;
-        }
-
-        /* --- КОНТЕНТ --- */
-        .container {
-            max-width: 800px;
-            padding: 40px;
-            border: 1px solid rgba(184, 134, 11, 0.3); /* Тонкая золотая рамка */
-            position: relative;
-        }
-
-        /* Двойная рамка (винтажный прием) */
-        .container::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            right: 5px;
-            bottom: 5px;
-            border: 1px solid rgba(184, 134, 11, 0.15);
             pointer-events: none;
         }
 
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: #D4AF37; /* Золото */
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: #C5A059;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-
-        .divider {
-            width: 100px;
-            height: 1px;
-            background: #B8860B;
-            margin: 0 auto 30px auto;
+        /* --- ЗАГОЛОВОК --- */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
             position: relative;
         }
 
-        /* Ромбик на разделителе */
-        .divider::after {
-            content: '♦';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #D4AF37;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            line-height: 1.1;
+        }
+
+        .header h1 span {
+            color: #8B0000;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+        }
+
+        .header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #C5A059;
+            margin-top: 15px;
+            letter-spacing: 4px;
+        }
+
+        /* Кружевной разделитель */
+        .lace-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto;
+            max-width: 500px;
+        }
+
+        .lace-divider .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #B8860B, transparent);
+        }
+
+        .lace-divider .symbol {
             color: #B8860B;
-            font-size: 1.2rem;
-            background: transparent;
-            padding: 0 5px;
+            font-size: 1.5rem;
+            letter-spacing: 8px;
         }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            color: #D4C4B0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        /* --- КАРТОЧКИ-ПОРТАЛЫ --- */
+        .portals {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1100px;
+            width: 100%;
         }
 
-        /* --- КНОПКА --- */
-        .btn {
+        .card {
+            position: relative;
+            width: 340px;
+            height: 480px;
+            background: #2B0A0A;
+            border: 1px solid rgba(184, 134, 11, 0.4);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            
+            /* Кружевная рамка */
+            box-shadow: 
+                0 0 0 1px rgba(184, 134, 11, 0.1),
+                inset 0 0 60px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Двойная рамка */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        /* Уголки-кружево */
+        .card::after {
+            content: '❦';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: rgba(184, 134, 11, 0.3);
+            font-size: 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #D4AF37;
+            box-shadow: 
+                0 20px 60px rgba(139, 0, 0, 0.5),
+                0 0 0 1px rgba(212, 175, 55, 0.3),
+                inset 0 0 80px rgba(0, 0, 0, 0.9);
+        }
+
+        .card:hover::before {
+            border-color: rgba(212, 175, 55, 0.5);
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+        }
+
+        .card:hover::after {
+            color: #D4AF37;
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        /* Карта-масть */
+        .card .suit {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            font-size: 3rem;
+            opacity: 0.15;
+            transition: all 0.5s ease;
+        }
+
+        .card:hover .suit {
+            opacity: 0.4;
+            transform: scale(1.1);
+        }
+
+        /* Заголовок карточки */
+        .card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: #D4AF37;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.5s ease;
+        }
+
+        .card:hover h2 {
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #C5A059;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* Кнопка внутри карточки */
+        .card .btn-portal {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 12px 30px;
             border: 1px solid #B8860B;
             color: #D4AF37;
-            text-decoration: none;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
+            font-size: 1rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            text-align: center;
             transition: all 0.4s ease;
-            background: transparent;
-            cursor: pointer;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(2px);
         }
 
-        .btn:hover {
+        .card:hover .btn-portal {
             background: #B8860B;
             color: #1A0505;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
+            box-shadow: 0 0 25px rgba(184, 134, 11, 0.5);
+        }
+
+        /* Особый стиль для карточки 18+ */
+        .card.adult .suit {
+            color: #8B0000;
+        }
+
+        .card.adult:hover {
+            border-color: #8B0000;
+            box-shadow: 
+                0 20px 60px rgba(139, 0, 0, 0.7),
+                0 0 0 1px rgba(139, 0, 0, 0.5),
+                inset 0 0 80px rgba(0, 0, 0, 0.9);
+        }
+
+        .card.adult:hover h2 {
+            color: #FF4444;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+        }
+
+        .card.adult:hover .btn-portal {
+            background: #8B0000;
+            color: #E8D8C8;
+            border-color: #8B0000;
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
+        }
+
+        /* --- ПРЕДУПРЕЖДЕНИЕ 18+ --- */
+        .warning {
+            margin-top: 50px;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: rgba(197, 160, 89, 0.6);
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(184, 134, 11, 0.15);
+            padding-top: 30px;
+            max-width: 700px;
+        }
+
+        .warning .badge {
+            display: inline-block;
+            border: 1px solid #8B0000;
+            color: #8B0000;
+            padding: 4px 12px;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
         }
 
         /* --- АДАПТИВ --- */
-        @media (max-width: 600px) {
-            h1 {
+        @media (max-width: 768px) {
+            .header h1 {
                 font-size: 2.5rem;
+                letter-spacing: 4px;
             }
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            .container {
-                padding: 20px;
-            }
-            p {
+            .header .subtitle {
                 font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            .portals {
+                gap: 25px;
+            }
+            .card {
+                width: 100%;
+                max-width: 340px;
+                height: 420px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Винный погреб</h1>
-        <div class="subtitle">Искусство, проверенное временем</div>
+    <div class="header">
+        <h1>Кружево <span>и</span> Кровь</h1>
+        <div class="subtitle">✦ Искусство, которое не для всех ✦</div>
         
-        <div class="divider"></div>
+        <div class="lace-divider">
+            <div class="line"></div>
+            <div class="symbol">♠ ♥ ♦ ♣</div>
+            <div class="line"></div>
+        </div>
+    </div>
 
-        <p>
-            Добро пожаловать в наше хранилище. Здесь, в прохладной тишине подземелья, 
-            рождаются легенды. Мы бережно храним традиции виноделия с 1892 года.
-        </p>
+    <div class="portals">
+        
+        <!-- ПОРТАЛ 1: ПОРНО-АРТЫ -->
+        <a href="porno.html" class="card adult">
+            <div class="suit">♥</div>
+            <h2>Плоть</h2>
+            <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых.</p>
+            <div class="btn-portal">Войти</div>
+        </a>
 
-        <a href="#" class="btn">Открыть коллекцию</a>
+        <!-- ПОРТАЛ 2: РАСЧЛЕНЁНКА -->
+        <a href="gore.html" class="card">
+            <div class="suit">♠</div>
+            <h2>Пепел</h2>
+            <p>Мрак, анатомия, эстетика разрушения. Искусство на грани.</p>
+            <div class="btn-portal">Войти</div>
+        </a>
+
+    </div>
+
+    <div class="warning">
+        <div class="badge">18+</div>
+        <p>Сайт содержит материалы, предназначенные только для взрослой аудитории. Продолжая, вы подтверждаете, что вам исполнилось 18 лет.</p>
     </div>
 
 </body>
