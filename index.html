@@ -27,15 +27,16 @@
             background-color: #0A0101;
             background-image: 
                 /* Сочные пятна */
-                radial-gradient(ellipse at 20% 10%, rgba(139, 0, 0, 0.25) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 90%, rgba(139, 0, 0, 0.25) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 50%, rgba(184, 134, 11, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 15% 10%, rgba(139, 0, 0, 0.35) 0%, transparent 35%),
+                radial-gradient(ellipse at 85% 90%, rgba(139, 0, 0, 0.35) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 50%, rgba(184, 134, 11, 0.08) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 0, 0, 0.08) 0%, transparent 30%),
                 /* Казино-сетка */
-                repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(184, 134, 11, 0.03) 14px, rgba(184, 134, 11, 0.03) 15px),
-                repeating-linear-gradient(-45deg, transparent, transparent 14px, rgba(184, 134, 11, 0.03) 14px, rgba(184, 134, 11, 0.03) 15px),
+                repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(184, 134, 11, 0.04) 18px, rgba(184, 134, 11, 0.04) 19px),
+                repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(184, 134, 11, 0.04) 18px, rgba(184, 134, 11, 0.04) 19px),
                 /* Ромбы */
-                repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(139, 0, 0, 0.05) 60px, rgba(139, 0, 0, 0.05) 61px),
-                repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(139, 0, 0, 0.05) 60px, rgba(139, 0, 0, 0.05) 61px);
+                repeating-linear-gradient(0deg, transparent, transparent 70px, rgba(139, 0, 0, 0.06) 70px, rgba(139, 0, 0, 0.06) 71px),
+                repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(139, 0, 0, 0.06) 70px, rgba(139, 0, 0, 0.06) 71px);
             background-attachment: fixed;
             
             font-family: 'Lora', serif;
@@ -58,14 +59,14 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(ellipse at center, transparent 0%, rgba(3, 0, 0, 0.95) 100%),
-                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+                radial-gradient(ellipse at center, transparent 0%, rgba(3, 0, 0, 0.97) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
             z-index: -1;
             pointer-events: none;
         }
 
         /* ============================================
-           УШИ КРОЛИКА (ФОН)
+           УШИ КРОЛИКА
            ============================================ */
         .rabbit-ears {
             position: fixed;
@@ -74,20 +75,20 @@
             transform: translateX(-50%);
             display: flex;
             gap: 80px;
-            opacity: 0.08;
+            opacity: 0.1;
             pointer-events: none;
             z-index: 0;
             animation: breathe 8s ease-in-out infinite;
         }
 
         @keyframes breathe {
-            0%, 100% { opacity: 0.05; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.1; transform: translateX(-50%) scale(1.03); }
+            0%, 100% { opacity: 0.06; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.14; transform: translateX(-50%) scale(1.03); }
         }
 
         .rabbit-ears .ear {
             width: 70px;
-            height: 300px;
+            height: 320px;
             background: linear-gradient(180deg, transparent, #D4AF37 30%, #D4AF37 70%, transparent);
             border-radius: 50% 50% 0 0;
             transform: rotate(-10deg);
@@ -103,7 +104,7 @@
             transform: translateX(-50%);
             width: 20px;
             height: 60%;
-            background: linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.4), transparent);
+            background: linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.5), transparent);
             border-radius: 50%;
         }
 
@@ -128,47 +129,67 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- КРАСИВАЯ ОБВОДКА ВОКРУГ ЩИТА --- */
+        /* --- МНОГОСЛОЙНАЯ ОБВОДКА --- */
+        /* Внешнее свечение */
         .shield-wrapper::before {
             content: '';
             position: absolute;
-            top: -15px;
-            left: -15px;
-            right: -15px;
-            bottom: -15px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, 
-                rgba(212, 175, 55, 0.8) 0%, 
-                rgba(139, 0, 0, 0.6) 25%, 
-                rgba(212, 175, 55, 0.9) 50%, 
-                rgba(139, 0, 0, 0.6) 75%, 
-                rgba(212, 175, 55, 0.8) 100%);
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            border-radius: 30px;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 215, 0, 0.4) 0%, 
+                rgba(139, 0, 0, 0.3) 40%, 
+                transparent 70%);
             z-index: -1;
-            filter: blur(4px);
-            opacity: 0.7;
-            animation: borderGlow 4s ease-in-out infinite;
+            filter: blur(20px);
+            opacity: 0.8;
+            animation: outerGlow 5s ease-in-out infinite;
         }
 
-        @keyframes borderGlow {
-            0%, 100% { opacity: 0.5; filter: blur(4px); }
-            50% { opacity: 0.9; filter: blur(6px); }
+        @keyframes outerGlow {
+            0%, 100% { opacity: 0.6; filter: blur(20px); transform: scale(1); }
+            50% { opacity: 1; filter: blur(30px); transform: scale(1.02); }
         }
 
-        /* Двойная обводка */
+        /* Золотая гравировка */
         .shield-wrapper::after {
             content: '';
             position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            border-radius: 16px;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border: 3px solid transparent;
+            border-image: linear-gradient(135deg, 
+                #D4AF37 0%, 
+                #8B0000 25%, 
+                #FFD700 50%, 
+                #8B0000 75%, 
+                #D4AF37 100%) 1;
+            border-radius: 20px;
             z-index: -1;
             pointer-events: none;
             box-shadow: 
-                0 0 30px rgba(212, 175, 55, 0.2),
-                inset 0 0 30px rgba(212, 175, 55, 0.1);
+                0 0 40px rgba(255, 215, 0, 0.3),
+                0 0 80px rgba(139, 0, 0, 0.3),
+                inset 0 0 40px rgba(255, 215, 0, 0.1);
+        }
+
+        /* Дополнительная внутренняя обводка */
+        .shield-wrapper .inner-border {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 14px;
+            z-index: -1;
+            pointer-events: none;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
         }
 
         .shield {
@@ -194,23 +215,24 @@
             );
             background: #1A0505;
             box-shadow: 
-                0 0 0 1px rgba(184, 134, 11, 0.3),
-                inset 0 0 150px rgba(0, 0, 0, 0.95),
-                0 40px 100px rgba(0, 0, 0, 0.95),
-                0 0 80px rgba(139, 0, 0, 0.3);
+                0 0 0 1px rgba(184, 134, 11, 0.4),
+                inset 0 0 200px rgba(0, 0, 0, 0.95),
+                0 50px 120px rgba(0, 0, 0, 0.95),
+                0 0 100px rgba(139, 0, 0, 0.4),
+                0 0 200px rgba(255, 215, 0, 0.1);
             position: relative;
             overflow: hidden;
-            padding: 80px 60px 70px;
+            padding: 90px 70px 80px;
         }
 
         .shield::after {
             content: '';
             position: absolute;
-            top: 14px;
-            left: 14px;
-            right: 14px;
-            bottom: 14px;
-            border: 1px solid rgba(184, 134, 11, 0.25);
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            border: 2px solid rgba(184, 134, 11, 0.3);
             clip-path: polygon(
                 50% 0%, 
                 65% 0%, 
@@ -231,6 +253,7 @@
             );
             pointer-events: none;
             z-index: 1;
+            box-shadow: inset 0 0 30px rgba(255, 215, 0, 0.1);
         }
 
         /* --- КАПИТОНЕ --- */
@@ -241,44 +264,46 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 10% 8%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 30% 8%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 50% 8%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 70% 8%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 90% 8%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
+                /* Стяжки */
+                radial-gradient(circle at 10% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 30% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 50% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 70% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 90% 8%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
                 
-                radial-gradient(circle at 10% 22%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 30% 22%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 50% 22%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 70% 22%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 90% 22%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
+                radial-gradient(circle at 10% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 30% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 50% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 70% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 90% 22%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
                 
-                radial-gradient(circle at 10% 38%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 30% 38%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 50% 38%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 70% 38%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 90% 38%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
+                radial-gradient(circle at 10% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 30% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 50% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 70% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 90% 38%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
                 
-                radial-gradient(circle at 10% 54%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 30% 54%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 50% 54%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 70% 54%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 90% 54%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
+                radial-gradient(circle at 10% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 30% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 50% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 70% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 90% 54%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
                 
-                radial-gradient(circle at 10% 70%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 30% 70%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 50% 70%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 70% 70%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 90% 70%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
+                radial-gradient(circle at 10% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 30% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 50% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 70% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 90% 70%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
                 
-                radial-gradient(circle at 10% 86%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 30% 86%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 50% 86%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 70% 86%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
-                radial-gradient(circle at 90% 86%, rgba(139, 0, 0, 0.8) 0%, transparent 12%),
+                radial-gradient(circle at 10% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 30% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 50% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 70% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
+                radial-gradient(circle at 90% 86%, rgba(139, 0, 0, 0.9) 0%, transparent 12%),
                 
-                linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.6) 49%, rgba(0,0,0,0.6) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(0,0,0,0.6) 49%, rgba(0,0,0,0.6) 51%, transparent 52%);
+                /* Тени */
+                linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.7) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0,0,0,0.7) 49%, rgba(0,0,0,0.7) 51%, transparent 52%);
             background-size: 
                 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
                 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
@@ -286,7 +311,7 @@
                 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
                 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
                 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%,
-                18% 18%, 18% 18%;
+                20% 20%, 20% 20%;
             background-position: 
                 0 0, 0 0, 0 0, 0 0, 0 0,
                 0 0, 0 0, 0 0, 0 0, 0 0,
@@ -306,41 +331,41 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 10% 8%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 30% 8%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 50% 8%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 70% 8%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 90% 8%, #4A0000 0%, #4A0000 6px, transparent 7px),
+                radial-gradient(circle at 10% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 30% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 50% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 70% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 90% 8%, #5A0000 0%, #5A0000 7px, transparent 8px),
                 
-                radial-gradient(circle at 10% 22%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 30% 22%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 50% 22%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 70% 22%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 90% 22%, #4A0000 0%, #4A0000 6px, transparent 7px),
+                radial-gradient(circle at 10% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 30% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 50% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 70% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 90% 22%, #5A0000 0%, #5A0000 7px, transparent 8px),
                 
-                radial-gradient(circle at 10% 38%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 30% 38%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 50% 38%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 70% 38%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 90% 38%, #4A0000 0%, #4A0000 6px, transparent 7px),
+                radial-gradient(circle at 10% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 30% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 50% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 70% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 90% 38%, #5A0000 0%, #5A0000 7px, transparent 8px),
                 
-                radial-gradient(circle at 10% 54%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 30% 54%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 50% 54%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 70% 54%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 90% 54%, #4A0000 0%, #4A0000 6px, transparent 7px),
+                radial-gradient(circle at 10% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 30% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 50% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 70% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 90% 54%, #5A0000 0%, #5A0000 7px, transparent 8px),
                 
-                radial-gradient(circle at 10% 70%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 30% 70%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 50% 70%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 70% 70%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 90% 70%, #4A0000 0%, #4A0000 6px, transparent 7px),
+                radial-gradient(circle at 10% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 30% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 50% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 70% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 90% 70%, #5A0000 0%, #5A0000 7px, transparent 8px),
                 
-                radial-gradient(circle at 10% 86%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 30% 86%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 50% 86%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 70% 86%, #4A0000 0%, #4A0000 6px, transparent 7px),
-                radial-gradient(circle at 90% 86%, #4A0000 0%, #4A0000 6px, transparent 7px);
+                radial-gradient(circle at 10% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 30% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 50% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 70% 86%, #5A0000 0%, #5A0000 7px, transparent 8px),
+                radial-gradient(circle at 90% 86%, #5A0000 0%, #5A0000 7px, transparent 8px);
             background-size: 100% 100%;
             z-index: 2;
         }
@@ -351,15 +376,15 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
             pointer-events: none;
             z-index: 3;
-            animation: glareMove 10s ease-in-out infinite;
+            animation: glareMove 12s ease-in-out infinite;
         }
 
         @keyframes glareMove {
             0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(8%, 8%); }
+            50% { transform: translate(10%, 10%); }
         }
 
         /* ============================================
@@ -378,30 +403,41 @@
         /* --- ЗАГОЛОВОК --- */
         .header-block {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .top-badge {
             display: inline-block;
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            letter-spacing: 10px;
+            font-size: 0.75rem;
+            letter-spacing: 12px;
             color: #FFD700;
-            border: 1px solid rgba(255, 215, 0, 0.6);
-            padding: 8px 22px;
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            padding: 10px 28px;
             text-transform: uppercase;
             position: relative;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-            margin-bottom: 25px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.8),
+                0 0 40px rgba(255, 0, 0, 0.4),
+                0 2px 4px rgba(0, 0, 0, 1);
+            margin-bottom: 30px;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 0 20px rgba(255, 215, 0, 0.1);
             animation: pulseBadge 3s ease-in-out infinite;
         }
 
         @keyframes pulseBadge {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
-            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.4); }
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 20px rgba(255, 215, 0, 0.1);
+                border-color: rgba(255, 215, 0, 0.7);
+            }
+            50% { 
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.2);
+                border-color: rgba(255, 215, 0, 1);
+            }
         }
 
         .top-badge::before,
@@ -410,91 +446,106 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 215, 0, 0.8);
-            font-size: 0.7rem;
+            color: rgba(255, 215, 0, 0.9);
+            font-size: 0.8rem;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
         }
 
-        .top-badge::before { left: -18px; }
-        .top-badge::after { right: -18px; }
+        .top-badge::before { left: -22px; }
+        .top-badge::after { right: -22px; }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 6rem;
+            font-size: 7rem;
             font-weight: 900;
             color: #FFD700;
-            letter-spacing: 20px;
+            letter-spacing: 24px;
             text-transform: uppercase;
             line-height: 1;
             text-shadow: 
-                0 0 30px rgba(0, 0, 0, 0.9),
-                0 0 60px rgba(0, 0, 0, 0.7),
-                0 0 40px rgba(255, 215, 0, 0.5),
-                0 0 80px rgba(139, 0, 0, 0.5),
-                0 2px 4px rgba(0, 0, 0, 1);
+                0 0 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(0, 0, 0, 0.8),
+                0 0 50px rgba(255, 215, 0, 0.6),
+                0 0 100px rgba(139, 0, 0, 0.6),
+                0 4px 8px rgba(0, 0, 0, 1),
+                0 8px 16px rgba(0, 0, 0, 0.8);
             animation: glowText 4s ease-in-out infinite;
+            position: relative;
         }
 
         @keyframes glowText {
             0%, 100% { 
                 text-shadow: 
-                    0 0 30px rgba(0, 0, 0, 0.9),
-                    0 0 60px rgba(0, 0, 0, 0.7),
-                    0 0 40px rgba(255, 215, 0, 0.5),
-                    0 0 80px rgba(139, 0, 0, 0.5),
-                    0 2px 4px rgba(0, 0, 0, 1);
+                    0 0 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 60px rgba(0, 0, 0, 0.8),
+                    0 0 50px rgba(255, 215, 0, 0.6),
+                    0 0 100px rgba(139, 0, 0, 0.6),
+                    0 4px 8px rgba(0, 0, 0, 1),
+                    0 8px 16px rgba(0, 0, 0, 0.8);
             }
             50% { 
                 text-shadow: 
-                    0 0 30px rgba(0, 0, 0, 0.9),
-                    0 0 60px rgba(0, 0, 0, 0.7),
-                    0 0 70px rgba(255, 215, 0, 0.9),
-                    0 0 140px rgba(139, 0, 0, 0.8),
-                    0 2px 4px rgba(0, 0, 0, 1);
+                    0 0 20px rgba(0, 0, 0, 1),
+                    0 0 40px rgba(0, 0, 0, 0.9),
+                    0 0 60px rgba(0, 0, 0, 0.8),
+                    0 0 80px rgba(255, 215, 0, 1),
+                    0 0 160px rgba(139, 0, 0, 0.9),
+                    0 4px 8px rgba(0, 0, 0, 1),
+                    0 8px 16px rgba(0, 0, 0, 0.8);
             }
         }
 
         .subtitle {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.4rem;
-            color: #E8D8C8;
-            letter-spacing: 2px;
+            font-size: 2.8rem;
+            color: #FFFFFF;
+            letter-spacing: 3px;
             text-shadow: 
-                0 0 20px rgba(0, 0, 0, 0.9),
-                0 0 40px rgba(139, 0, 0, 0.5),
-                0 2px 4px rgba(0, 0, 0, 1);
-            margin-top: 10px;
+                0 0 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 60px rgba(139, 0, 0, 0.7),
+                0 0 30px rgba(255, 215, 0, 0.4),
+                0 3px 6px rgba(0, 0, 0, 1);
+            margin-top: 15px;
         }
 
         .tagline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-style: italic;
-            color: #C5A059;
-            letter-spacing: 8px;
+            color: #FFD700;
+            letter-spacing: 10px;
             text-transform: uppercase;
             text-shadow: 
-                0 0 15px rgba(0, 0, 0, 0.9),
+                0 0 15px rgba(0, 0, 0, 1),
+                0 0 30px rgba(0, 0, 0, 0.9),
+                0 0 20px rgba(255, 215, 0, 0.5),
                 0 2px 4px rgba(0, 0, 0, 1);
-            margin-top: 18px;
+            margin-top: 22px;
         }
 
-        /* --- РАЗДЕЛИТЕЛЬ С КАЗИНО-СИМВОЛАМИ --- */
+        /* --- РАЗДЕЛИТЕЛЬ --- */
         .lace-divider {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            margin: 0 auto 50px;
-            max-width: 800px;
+            margin: 0 auto 60px;
+            max-width: 850px;
             width: 100%;
         }
 
         .lace-divider .line {
             flex: 1;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, transparent, #B8860B, #FFD700, #B8860B, transparent);
             position: relative;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.5),
+                0 0 30px rgba(139, 0, 0, 0.3);
+            border-radius: 2px;
         }
 
         .lace-divider .line::before,
@@ -504,9 +555,9 @@
             top: 50%;
             transform: translateY(-50%);
             color: #FFD700;
-            font-size: 0.6rem;
-            opacity: 0.9;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            font-size: 0.7rem;
+            opacity: 1;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 1);
         }
 
         .lace-divider .line::before { left: 15%; }
@@ -514,16 +565,22 @@
 
         .lace-divider .symbol {
             color: #FFD700;
-            font-size: 1.5rem;
-            letter-spacing: 18px;
+            font-size: 1.6rem;
+            letter-spacing: 20px;
             font-family: 'Cinzel', serif;
-            text-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+            text-shadow: 
+                0 0 30px rgba(255, 215, 0, 1),
+                0 0 60px rgba(139, 0, 0, 0.8);
             animation: suitPulse 3s ease-in-out infinite;
         }
 
         @keyframes suitPulse {
-            0%, 100% { text-shadow: 0 0 25px rgba(255, 215, 0, 0.8); }
-            50% { text-shadow: 0 0 45px rgba(255, 215, 0, 1), 0 0 70px rgba(139, 0, 0, 0.8); }
+            0%, 100% { 
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(139, 0, 0, 0.8);
+            }
+            50% { 
+                text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(139, 0, 0, 1), 0 0 150px rgba(255, 0, 0, 0.5);
+            }
         }
 
         /* --- КАРТОЧКИ --- */
@@ -533,15 +590,15 @@
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         .card {
             position: relative;
-            width: 360px;
-            height: 540px;
+            width: 370px;
+            height: 560px;
             background: linear-gradient(165deg, #2B0A0A 0%, #1A0505 40%, #0D0202 60%, #2B0A0A 100%);
-            border: 2px solid rgba(212, 175, 55, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.6);
             border-radius: 6px;
             overflow: hidden;
             cursor: pointer;
@@ -551,23 +608,23 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 40px;
+            padding: 42px;
             
             box-shadow: 
-                0 0 0 1px rgba(212, 175, 55, 0.15),
-                inset 0 0 120px rgba(0, 0, 0, 0.95),
-                0 20px 60px rgba(0, 0, 0, 0.8),
-                0 0 40px rgba(139, 0, 0, 0.2);
+                0 0 0 1px rgba(212, 175, 55, 0.2),
+                inset 0 0 150px rgba(0, 0, 0, 0.95),
+                0 25px 70px rgba(0, 0, 0, 0.85),
+                0 0 60px rgba(139, 0, 0, 0.3);
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: 14px;
-            left: 14px;
-            right: 14px;
-            bottom: 14px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
             pointer-events: none;
             transition: all 0.7s ease;
             z-index: 1;
@@ -576,139 +633,152 @@
         .card::after {
             content: '❦';
             position: absolute;
-            top: 25px;
-            right: 25px;
-            color: rgba(212, 175, 55, 0.4);
-            font-size: 2.2rem;
+            top: 28px;
+            right: 28px;
+            color: rgba(212, 175, 55, 0.5);
+            font-size: 2.4rem;
             transition: all 0.7s ease;
             z-index: 2;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         .card .corner {
             position: absolute;
-            bottom: 25px;
-            left: 25px;
-            color: rgba(212, 175, 55, 0.3);
-            font-size: 1.3rem;
+            bottom: 28px;
+            left: 28px;
+            color: rgba(212, 175, 55, 0.4);
+            font-size: 1.4rem;
             transition: all 0.7s ease;
             z-index: 2;
         }
 
         .card:hover {
-            transform: translateY(-20px) scale(1.04);
+            transform: translateY(-25px) scale(1.05);
             border-color: #FFD700;
             box-shadow: 
-                0 50px 120px rgba(139, 0, 0, 0.9),
-                0 0 0 2px rgba(255, 215, 0, 0.6),
-                inset 0 0 150px rgba(0, 0, 0, 0.98),
-                0 0 80px rgba(255, 215, 0, 0.3);
+                0 60px 150px rgba(139, 0, 0, 1),
+                0 0 0 3px rgba(255, 215, 0, 0.7),
+                inset 0 0 200px rgba(0, 0, 0, 0.98),
+                0 0 120px rgba(255, 215, 0, 0.5),
+                0 0 200px rgba(139, 0, 0, 0.5);
         }
 
         .card:hover::before {
-            border-color: rgba(255, 215, 0, 0.8);
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
+            border-color: rgba(255, 215, 0, 0.9);
+            top: 22px;
+            left: 22px;
+            right: 22px;
+            bottom: 22px;
         }
 
         .card:hover::after {
             color: #FFD700;
-            transform: rotate(25deg) scale(1.5);
-            text-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+            transform: rotate(30deg) scale(1.6);
+            text-shadow: 0 0 50px rgba(255, 215, 0, 1);
         }
 
         .card:hover .corner {
             color: #FFD700;
-            transform: rotate(-15deg) scale(1.4);
+            transform: rotate(-20deg) scale(1.5);
         }
 
         .card .suit {
             position: absolute;
-            top: 35px;
-            left: 35px;
-            font-size: 5rem;
-            opacity: 0.15;
+            top: 38px;
+            left: 38px;
+            font-size: 5.5rem;
+            opacity: 0.18;
             transition: all 0.7s ease;
             z-index: 2;
             font-family: 'Cinzel', serif;
         }
 
         .card:hover .suit {
-            opacity: 0.7;
-            transform: scale(1.3) rotate(-10deg);
-            text-shadow: 0 0 40px currentColor;
+            opacity: 0.85;
+            transform: scale(1.4) rotate(-12deg);
+            text-shadow: 0 0 60px currentColor, 0 0 100px currentColor;
         }
 
         .card .card-number {
             position: absolute;
-            bottom: 35px;
-            right: 35px;
+            bottom: 38px;
+            right: 38px;
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: rgba(212, 175, 55, 0.25);
-            letter-spacing: 3px;
+            font-size: 2rem;
+            color: rgba(212, 175, 55, 0.3);
+            letter-spacing: 4px;
             transition: all 0.7s ease;
             z-index: 2;
         }
 
         .card:hover .card-number {
-            color: rgba(255, 215, 0, 0.9);
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            color: rgba(255, 215, 0, 1);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
         }
 
         .card h2 {
             font-family: 'Cinzel', serif;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
             color: #FFD700;
-            margin-bottom: 15px;
-            letter-spacing: 7px;
+            margin-bottom: 18px;
+            letter-spacing: 8px;
             text-transform: uppercase;
             transition: all 0.7s ease;
             position: relative;
             z-index: 2;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            text-shadow: 
+                0 0 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 30px rgba(255, 215, 0, 0.5);
         }
 
         .card:hover h2 {
-            color: #FFD700;
-            text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 80px rgba(139, 0, 0, 0.8);
-            letter-spacing: 10px;
+            color: #FFFFFF;
+            text-shadow: 
+                0 0 30px rgba(0, 0, 0, 1),
+                0 0 60px rgba(255, 215, 0, 1),
+                0 0 100px rgba(139, 0, 0, 0.9);
+            letter-spacing: 12px;
         }
 
         .card p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.8;
-            color: #C5A059;
-            margin-bottom: 30px;
+            color: #E8D8C8;
+            margin-bottom: 32px;
             font-style: italic;
             position: relative;
             z-index: 2;
             transition: all 0.7s ease;
+            text-shadow: 
+                0 0 15px rgba(0, 0, 0, 1),
+                0 2px 4px rgba(0, 0, 0, 1);
         }
 
         .card:hover p {
-            color: #E8D8C8;
+            color: #FFFFFF;
         }
 
         .card .btn-portal {
             display: inline-block;
-            padding: 16px 40px;
+            padding: 18px 45px;
             border: 2px solid #B8860B;
             color: #FFD700;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            letter-spacing: 6px;
+            font-size: 1.15rem;
+            letter-spacing: 7px;
             text-transform: uppercase;
             text-align: center;
             transition: all 0.6s ease;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(6px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
             position: relative;
             z-index: 2;
             overflow: hidden;
-            box-shadow: 0 0 20px rgba(184, 134, 11, 0.3);
+            box-shadow: 
+                0 0 25px rgba(184, 134, 11, 0.4),
+                inset 0 0 15px rgba(255, 215, 0, 0.1);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
 
         .card .btn-portal::before {
@@ -718,7 +788,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
             transition: left 0.8s ease;
         }
 
@@ -729,92 +799,119 @@
         .card:hover .btn-portal {
             background: #FFD700;
             color: #1A0505;
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.9);
-            border-color: #FFD700;
-            letter-spacing: 8px;
+            box-shadow: 
+                0 0 80px rgba(255, 215, 0, 1),
+                0 0 120px rgba(255, 215, 0, 0.6);
+            border-color: #FFFFFF;
+            letter-spacing: 10px;
+            text-shadow: none;
         }
 
-        .card.adult .suit { color: #8B0000; }
+        .card.adult .suit { color: #FF0000; }
 
         .card.adult:hover {
             border-color: #FF0000;
             box-shadow: 
-                0 50px 120px rgba(139, 0, 0, 1),
-                0 0 0 2px rgba(255, 0, 0, 0.8),
-                inset 0 0 150px rgba(0, 0, 0, 0.98),
-                0 0 80px rgba(255, 0, 0, 0.4);
+                0 60px 150px rgba(139, 0, 0, 1),
+                0 0 0 3px rgba(255, 0, 0, 0.9),
+                inset 0 0 200px rgba(0, 0, 0, 0.98),
+                0 0 120px rgba(255, 0, 0, 0.6),
+                0 0 200px rgba(139, 0, 0, 0.6);
         }
 
         .card.adult:hover h2 {
             color: #FF4444;
-            text-shadow: 0 0 50px rgba(255, 0, 0, 1), 0 0 100px rgba(139, 0, 0, 1);
+            text-shadow: 
+                0 0 30px rgba(0, 0, 0, 1),
+                0 0 60px rgba(255, 0, 0, 1),
+                0 0 120px rgba(139, 0, 0, 1);
         }
 
         .card.adult:hover .btn-portal {
-            background: #8B0000;
-            color: #FFD700;
+            background: #FF0000;
+            color: #FFFFFF;
             border-color: #FF4444;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 1);
+            box-shadow: 
+                0 0 80px rgba(255, 0, 0, 1),
+                0 0 120px rgba(139, 0, 0, 0.9);
         }
 
-        .card.gore .suit { color: #4A4A4A; }
+        .card.gore .suit { color: #8A8A8A; }
 
         .card.gore:hover {
-            border-color: #8A8A8A;
+            border-color: #C0C0C0;
             box-shadow: 
-                0 50px 120px rgba(60, 60, 60, 0.9),
-                0 0 0 2px rgba(150, 150, 150, 0.7),
-                inset 0 0 150px rgba(0, 0, 0, 0.98),
-                0 0 80px rgba(100, 100, 100, 0.4);
+                0 60px 150px rgba(60, 60, 60, 0.95),
+                0 0 0 3px rgba(200, 200, 200, 0.8),
+                inset 0 0 200px rgba(0, 0, 0, 0.98),
+                0 0 120px rgba(150, 150, 150, 0.5);
         }
 
         .card.gore:hover h2 {
-            color: #C0C0C0;
-            text-shadow: 0 0 50px rgba(200, 200, 200, 0.9);
+            color: #E0E0E0;
+            text-shadow: 
+                0 0 30px rgba(0, 0, 0, 1),
+                0 0 60px rgba(200, 200, 200, 1),
+                0 0 120px rgba(150, 150, 150, 0.9);
         }
 
         .card.gore:hover .btn-portal {
-            background: #4A4A4A;
-            color: #E8D8C8;
-            border-color: #8A8A8A;
-            box-shadow: 0 0 60px rgba(100, 100, 100, 0.9);
+            background: #8A8A8A;
+            color: #FFFFFF;
+            border-color: #C0C0C0;
+            box-shadow: 
+                0 0 80px rgba(150, 150, 150, 1),
+                0 0 120px rgba(80, 80, 80, 0.9);
         }
 
         /* --- ПРЕДУПРЕЖДЕНИЕ 18+ --- */
         .warning {
             text-align: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            color: rgba(197, 160, 89, 0.8);
+            font-size: 1.05rem;
+            color: #E8D8C8;
             letter-spacing: 2px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding-top: 40px;
-            max-width: 750px;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            padding-top: 45px;
+            max-width: 800px;
             width: 100%;
             position: relative;
             z-index: 10;
+            text-shadow: 
+                0 0 15px rgba(0, 0, 0, 1),
+                0 2px 4px rgba(0, 0, 0, 1);
         }
 
         .warning .badge {
             display: inline-block;
-            border: 2px solid #8B0000;
+            border: 2px solid #FF0000;
             color: #FF4444;
-            padding: 8px 24px;
+            padding: 10px 28px;
             border-radius: 2px;
-            font-size: 0.9rem;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
+            font-size: 1rem;
+            letter-spacing: 10px;
+            margin-bottom: 25px;
             font-family: 'Cinzel', serif;
             position: relative;
             animation: pulseRed 2.5s ease infinite;
-            background: rgba(139, 0, 0, 0.15);
-            text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-            box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+            background: rgba(139, 0, 0, 0.25);
+            text-shadow: 
+                0 0 25px rgba(255, 0, 0, 0.9),
+                0 0 50px rgba(255, 0, 0, 0.5);
+            box-shadow: 
+                0 0 40px rgba(139, 0, 0, 0.6),
+                inset 0 0 20px rgba(255, 0, 0, 0.2);
         }
 
         @keyframes pulseRed {
-            0%, 100% { box-shadow: 0 0 20px rgba(139, 0, 0, 0.4); border-color: rgba(139, 0, 0, 0.6); }
-            50% { box-shadow: 0 0 50px rgba(255, 0, 0, 0.6); border-color: rgba(255, 0, 0, 1); }
+            0%, 100% { 
+                box-shadow: 0 0 40px rgba(139, 0, 0, 0.6), inset 0 0 20px rgba(255, 0, 0, 0.2);
+                border-color: rgba(255, 0, 0, 0.7);
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(255, 0, 0, 0.9), inset 0 0 40px rgba(255, 0, 0, 0.4);
+                border-color: rgba(255, 0, 0, 1);
+            }
         }
 
         .warning .badge::before,
@@ -823,51 +920,62 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 0, 0, 0.7);
-            font-size: 0.7rem;
+            color: rgba(255, 0, 0, 0.9);
+            font-size: 0.8rem;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 1);
         }
 
-        .warning .badge::before { left: -22px; }
-        .warning .badge::after { right: -22px; }
+        .warning .badge::before { left: -26px; }
+        .warning .badge::after { right: -26px; }
 
         .warning p {
-            line-height: 1.9;
+            line-height: 2;
             font-style: italic;
         }
 
         .warning .rabbit-hint {
             display: block;
-            margin-top: 20px;
+            margin-top: 25px;
             font-family: 'Great Vibes', cursive;
-            font-size: 1.6rem;
-            color: rgba(197, 160, 89, 0.6);
+            font-size: 1.8rem;
+            color: #FFD700;
             letter-spacing: 3px;
             transition: all 0.5s ease;
+            text-shadow: 
+                0 0 20px rgba(0, 0, 0, 1),
+                0 0 40px rgba(255, 215, 0, 0.6),
+                0 0 60px rgba(139, 0, 0, 0.5);
         }
 
         .warning .rabbit-hint:hover {
-            color: rgba(255, 215, 0, 1);
-            text-shadow: 0 0 35px rgba(255, 215, 0, 0.8);
+            color: #FFFFFF;
+            text-shadow: 
+                0 0 30px rgba(0, 0, 0, 1),
+                0 0 60px rgba(255, 215, 0, 1),
+                0 0 100px rgba(139, 0, 0, 0.9);
         }
 
         /* ============================================
            ПОДВАЛ
            ============================================ */
         .footer {
-            margin-top: 20px;
+            margin-top: 25px;
             text-align: center;
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            letter-spacing: 6px;
-            color: rgba(197, 160, 89, 0.3);
+            font-size: 0.75rem;
+            letter-spacing: 7px;
+            color: rgba(197, 160, 89, 0.4);
             text-transform: uppercase;
             position: relative;
             z-index: 2;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 1);
         }
 
         .footer span {
-            color: rgba(255, 0, 0, 0.7);
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+            color: #FF4444;
+            text-shadow: 
+                0 0 15px rgba(255, 0, 0, 0.7),
+                0 0 30px rgba(139, 0, 0, 0.5);
         }
 
         /* ============================================
@@ -875,109 +983,107 @@
            ============================================ */
         @media (max-width: 1024px) {
             .shield {
-                padding: 60px 40px 50px;
+                padding: 70px 50px 60px;
             }
             h1 {
-                font-size: 4rem;
-                letter-spacing: 12px;
+                font-size: 5rem;
+                letter-spacing: 16px;
             }
             .subtitle {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
         }
 
         @media (max-width: 768px) {
             .shield {
-                padding: 50px 25px 40px;
+                padding: 60px 30px 50px;
             }
             h1 {
-                font-size: 3rem;
-                letter-spacing: 8px;
+                font-size: 3.5rem;
+                letter-spacing: 10px;
             }
             .subtitle {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             .tagline {
-                font-size: 0.8rem;
-                letter-spacing: 4px;
+                font-size: 0.85rem;
+                letter-spacing: 5px;
             }
             .portals {
-                gap: 35px;
+                gap: 40px;
             }
             .card {
                 width: 100%;
-                max-width: 360px;
-                height: 500px;
-                padding: 30px;
+                max-width: 370px;
+                height: 520px;
+                padding: 35px;
             }
             .card h2 {
-                font-size: 1.9rem;
-                letter-spacing: 5px;
+                font-size: 2rem;
+                letter-spacing: 6px;
             }
             .card p {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
             .rabbit-ears .ear {
-                height: 180px;
-                width: 50px;
+                height: 200px;
+                width: 55px;
             }
         }
 
         @media (max-width: 480px) {
             .shield {
-                padding: 40px 18px 35px;
+                padding: 45px 20px 40px;
             }
             h1 {
-                font-size: 2.2rem;
-                letter-spacing: 5px;
+                font-size: 2.4rem;
+                letter-spacing: 6px;
             }
             .subtitle {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .tagline {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
                 letter-spacing: 3px;
             }
             .top-badge {
-                font-size: 0.6rem;
-                letter-spacing: 5px;
-                padding: 6px 14px;
+                font-size: 0.65rem;
+                letter-spacing: 6px;
+                padding: 7px 16px;
             }
             .card {
-                height: 460px;
-                padding: 25px;
+                height: 480px;
+                padding: 28px;
             }
             .card h2 {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
             .card .btn-portal {
-                padding: 14px 30px;
-                font-size: 0.9rem;
-                letter-spacing: 4px;
+                padding: 15px 32px;
+                font-size: 0.95rem;
+                letter-spacing: 5px;
             }
             .warning {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- УШИ КРОЛИКА -->
     <div class="rabbit-ears">
         <div class="ear"></div>
         <div class="ear"></div>
     </div>
 
-    <!-- ЩИТ-КАПИТОНЕ -->
     <div class="shield-wrapper">
+        <div class="inner-border"></div>
         <div class="shield">
             <div class="capitone"></div>
             <div class="shield-glare"></div>
             
             <div class="shield-content">
                 
-                <!-- ЗАГОЛОВОК -->
                 <div class="header-block">
                     <div class="top-badge">Вход по приглашению</div>
                     <h1>FENBO</h1>
@@ -985,14 +1091,12 @@
                     <div class="tagline">✦ Искусство, которое не для всех ✦</div>
                 </div>
 
-                <!-- РАЗДЕЛИТЕЛЬ -->
                 <div class="lace-divider">
                     <div class="line"></div>
                     <div class="symbol">♠ ♥ ♦ ♣</div>
                     <div class="line"></div>
                 </div>
 
-                <!-- КАРТОЧКИ -->
                 <div class="portals">
                     <a href="porno.html" class="card adult">
                         <div class="suit">♥</div>
@@ -1013,7 +1117,6 @@
                     </a>
                 </div>
 
-                <!-- ПРЕДУПРЕЖДЕНИЕ -->
                 <div class="warning">
                     <div class="badge">18+</div>
                     <p>Сайт содержит материалы, предназначенные только для взрослой аудитории. Продолжая, вы подтверждаете, что вам исполнилось 18 лет, и вы осознаете, что увидите.</p>
@@ -1024,7 +1127,6 @@
         </div>
     </div>
 
-    <!-- ПОДВАЛ -->
     <div class="footer">
         ✦ FENBO ✦ 2025 ✦ <span>Все права защищены</span> ✦
     </div>
