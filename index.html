@@ -98,7 +98,7 @@
             margin-bottom: 50px;
             position: relative;
             z-index: 2;
-            animation: fadeInDown 1s ease;
+            animation: fadeInDown 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         @keyframes fadeInDown {
@@ -232,7 +232,7 @@
             align-items: center;
             margin-bottom: 90px;
             z-index: 2;
-            animation: fadeInUp 1s ease 0.3s both;
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
         }
 
         @keyframes fadeInUp {
@@ -250,17 +250,16 @@
         }
 
         /* ============================================
-           БОКОВЫЕ КАРТЫ — ЛЕВИТАЦИЯ + КЛИК-ТОРНАДО
+           БОКОВЫЕ КАРТЫ — ЛЕВИТАЦИЯ + ЭЛЕГАНТНЫЙ ПЕРЕВОРОТ
            ============================================ */
         .side-card {
             position: absolute;
             top: 50%;
             width: 270px;
             height: 440px;
-            perspective: 1400px;
+            perspective: 1600px;
             z-index: 1;
             cursor: pointer;
-            transition: z-index 0.01s;
         }
 
         .side-card-inner {
@@ -268,102 +267,61 @@
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
-            /* Скорость вращения задаётся через JS-переменную --speed */
-            transition: transform 0.1s linear;
+            transform: rotateY(0deg);
+            transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Hover — мягкий переворот */
-        .side-card:hover .side-card-inner {
-            transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+        /* Класс flipped — карта повёрнута на 180° (лицом) */
+        .side-card.flipped .side-card-inner {
             transform: rotateY(180deg);
         }
 
-        /* КЛИК — торнадо (скорость задаётся через JS) */
-        .side-card.spinning .side-card-inner {
-            transition: transform 0.1s linear;
+        /* Быстрый переворот при частых кликах */
+        .side-card.flipped.fast .side-card-inner {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Тонкое золотое кольцо вокруг карты */
-        .side-card .tornado-ring {
+        /* Золотой ореол — тонкий, дорогой, появляется при клике */
+        .side-card .aura {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 105%;
-            height: 105%;
+            top: 50%; left: 50%;
+            width: 108%;
+            height: 108%;
             transform: translate(-50%, -50%);
             border-radius: 12px;
             pointer-events: none;
-            opacity: 0;
             z-index: -1;
-            border: 2px solid transparent;
-            background:
-                linear-gradient(#0000, #0000) padding-box,
-                conic-gradient(
-                    from 0deg,
-                    transparent 0deg,
-                    rgba(255, 215, 0, 0.9) 40deg,
-                    transparent 80deg,
-                    transparent 180deg,
-                    rgba(255, 215, 0, 0.9) 220deg,
-                    transparent 260deg,
-                    transparent 360deg
-                ) border-box;
-            box-shadow:
-                0 0 20px rgba(255, 215, 0, 0.8),
-                0 0 40px rgba(255, 215, 0, 0.5),
-                inset 0 0 15px rgba(255, 215, 0, 0.3);
-            transition: opacity 0.3s ease;
-        }
-
-        .side-card.spinning .tornado-ring {
-            opacity: 1;
-            animation: tornadoRingSpin 1s linear infinite;
-        }
-
-        @keyframes tornadoRingSpin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Второе кольцо (тоньше, чуть больше) */
-        .side-card .tornado-ring-2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 115%;
-            height: 115%;
-            transform: translate(-50%, -50%);
-            border-radius: 14px;
-            pointer-events: none;
             opacity: 0;
+            background: radial-gradient(ellipse at center,
+                rgba(255, 215, 0, 0.25) 0%,
+                rgba(255, 215, 0, 0.12) 40%,
+                rgba(255, 215, 0, 0.04) 70%,
+                transparent 100%);
+            filter: blur(8px);
+            transition: opacity 0.6s ease;
+        }
+
+        .side-card.flipped .aura { opacity: 1; }
+
+        /* Тонкая золотая рамка-свечение */
+        .side-card .golden-frame {
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            border-radius: 13px;
+            pointer-events: none;
             z-index: -2;
-            border: 1px solid transparent;
-            background:
-                linear-gradient(#0000, #0000) padding-box,
-                conic-gradient(
-                    from 0deg,
-                    transparent 0deg,
-                    rgba(180, 0, 0, 0.8) 60deg,
-                    transparent 120deg,
-                    transparent 240deg,
-                    rgba(180, 0, 0, 0.8) 300deg,
-                    transparent 360deg
-                ) border-box;
-            box-shadow:
-                0 0 25px rgba(180, 0, 0, 0.7),
-                0 0 50px rgba(180, 0, 0, 0.4);
-            transition: opacity 0.3s ease;
+            opacity: 0;
+            background: linear-gradient(135deg,
+                rgba(255, 215, 0, 0.6) 0%,
+                rgba(184, 134, 11, 0.2) 25%,
+                rgba(255, 215, 0, 0.6) 50%,
+                rgba(184, 134, 11, 0.2) 75%,
+                rgba(255, 215, 0, 0.6) 100%);
+            filter: blur(3px);
+            transition: opacity 0.6s ease;
         }
 
-        .side-card.spinning .tornado-ring-2 {
-            opacity: 1;
-            animation: tornadoRingSpin2 1.4s linear infinite reverse;
-        }
-
-        @keyframes tornadoRingSpin2 {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+        .side-card.flipped .golden-frame { opacity: 0.85; }
 
         .side-card-front,
         .side-card-back {
@@ -375,6 +333,17 @@
             border: 2px solid rgba(184, 134, 11, 0.5);
             overflow: hidden;
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(180, 0, 0, 0.3);
+            transition: border-color 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .side-card.flipped .side-card-front,
+        .side-card.flipped .side-card-back {
+            border-color: rgba(255, 215, 0, 0.9);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.95),
+                0 0 0 1px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.5),
+                0 0 80px rgba(255, 215, 0, 0.3);
         }
 
         .side-card-front {
@@ -403,15 +372,6 @@
             top: 12px; left: 12px; right: 12px; bottom: 12px;
             border: 1px solid rgba(184, 134, 11, 0.3);
             border-radius: 5px;
-        }
-
-        .side-card-front .shine {
-            position: absolute;
-            top: 0; left: -100%;
-            width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
-            transform: skewX(-25deg);
-            pointer-events: none;
         }
 
         .side-card-back {
@@ -462,46 +422,39 @@
         /* Позиции + ЛЕВИТАЦИЯ */
         .side-card.pos-1 {
             left: -240px;
-            animation: levitate1 6s ease-in-out infinite;
+            animation: levitate1 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
         .side-card.pos-2 {
             left: 120px;
-            animation: levitate2 7s ease-in-out infinite;
+            animation: levitate2 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
         .side-card.pos-3 {
             right: 120px;
-            animation: levitate3 7s ease-in-out infinite;
+            animation: levitate3 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
         .side-card.pos-4 {
             right: -240px;
-            animation: levitate4 6s ease-in-out infinite;
+            animation: levitate4 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
 
         @keyframes levitate1 {
             0%, 100% { transform: translateY(-50%) rotate(-15deg) scale(0.85); }
-            50% { transform: translateY(-53%) rotate(-14deg) scale(0.85); }
+            50% { transform: translateY(-52%) rotate(-14deg) scale(0.85); }
         }
         @keyframes levitate2 {
             0%, 100% { transform: translateY(-50%) rotate(-8deg) scale(0.9); }
-            50% { transform: translateY(-47%) rotate(-9deg) scale(0.9); }
+            50% { transform: translateY(-48%) rotate(-9deg) scale(0.9); }
         }
         @keyframes levitate3 {
             0%, 100% { transform: translateY(-50%) rotate(8deg) scale(0.9); }
-            50% { transform: translateY(-53%) rotate(9deg) scale(0.9); }
+            50% { transform: translateY(-52%) rotate(9deg) scale(0.9); }
         }
         @keyframes levitate4 {
             0%, 100% { transform: translateY(-50%) rotate(15deg) scale(0.85); }
-            50% { transform: translateY(-47%) rotate(14deg) scale(0.85); }
+            50% { transform: translateY(-48%) rotate(14deg) scale(0.85); }
         }
 
         .side-card:hover { z-index: 10; }
-        .side-card.spinning { z-index: 100; animation: none !important; transform: translateY(-50%) !important; }
-
-        .side-card:hover .side-card-front,
-        .side-card:hover .side-card-back {
-            border-color: #FFD700;
-            box-shadow: 0 40px 100px rgba(180, 0, 0, 0.9), 0 0 0 3px rgba(255, 215, 0, 0.7), 0 0 100px rgba(255, 215, 0, 0.7);
-        }
 
         /* ============================================
            ГЛАВНЫЕ КАРТЫ — ЛЕВИТАЦИЯ
@@ -522,8 +475,8 @@
             align-items: center;
         }
 
-        .main-card-wrapper:nth-child(1) { animation: levitateMain1 7s ease-in-out infinite; }
-        .main-card-wrapper:nth-child(2) { animation: levitateMain2 8s ease-in-out infinite; }
+        .main-card-wrapper:nth-child(1) { animation: levitateMain1 7s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+        .main-card-wrapper:nth-child(2) { animation: levitateMain2 8s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
 
         @keyframes levitateMain1 {
             0%, 100% { transform: translateY(0px); }
@@ -557,7 +510,7 @@
                 0 0 0 1px rgba(212, 175, 55, 0.3),
                 0 30px 80px rgba(0, 0, 0, 0.9),
                 0 0 80px rgba(180, 0, 0, 0.4);
-            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.45s ease;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease;
         }
 
         .card.left-card { transform: rotate(-4deg); }
@@ -1136,10 +1089,10 @@
             
             <!-- БОКОВЫЕ КАРТЫ -->
             <div class="side-card pos-1">
-                <div class="tornado-ring"></div>
-                <div class="tornado-ring-2"></div>
+                <div class="aura"></div>
+                <div class="golden-frame"></div>
                 <div class="side-card-inner">
-                    <div class="side-card-front"><div class="shine"></div></div>
+                    <div class="side-card-front"></div>
                     <div class="side-card-back">
                         <div class="face-corner top-left"><span>♠</span><span>A</span></div>
                         <div class="face-suit" style="color: #8A8A8A;">♠</div>
@@ -1149,10 +1102,10 @@
                 </div>
             </div>
             <div class="side-card pos-2">
-                <div class="tornado-ring"></div>
-                <div class="tornado-ring-2"></div>
+                <div class="aura"></div>
+                <div class="golden-frame"></div>
                 <div class="side-card-inner">
-                    <div class="side-card-front"><div class="shine"></div></div>
+                    <div class="side-card-front"></div>
                     <div class="side-card-back">
                         <div class="face-corner top-left"><span>♥</span><span>K</span></div>
                         <div class="face-suit" style="color: #FF0000;">♥</div>
@@ -1162,10 +1115,10 @@
                 </div>
             </div>
             <div class="side-card pos-3">
-                <div class="tornado-ring"></div>
-                <div class="tornado-ring-2"></div>
+                <div class="aura"></div>
+                <div class="golden-frame"></div>
                 <div class="side-card-inner">
-                    <div class="side-card-front"><div class="shine"></div></div>
+                    <div class="side-card-front"></div>
                     <div class="side-card-back">
                         <div class="face-corner top-left"><span>♦</span><span>Q</span></div>
                         <div class="face-suit" style="color: #FF0000;">♦</div>
@@ -1175,10 +1128,10 @@
                 </div>
             </div>
             <div class="side-card pos-4">
-                <div class="tornado-ring"></div>
-                <div class="tornado-ring-2"></div>
+                <div class="aura"></div>
+                <div class="golden-frame"></div>
                 <div class="side-card-inner">
-                    <div class="side-card-front"><div class="shine"></div></div>
+                    <div class="side-card-front"></div>
                     <div class="side-card-back">
                         <div class="face-corner top-left"><span>♣</span><span>J</span></div>
                         <div class="face-suit" style="color: #8A8A8A;">♣</div>
@@ -1246,71 +1199,30 @@
     </div>
 
     <!-- ============================================
-         СКРИПТ: клик → ускорение вращения
+         СКРИПТ: элегантный переворот по клику
          ============================================ -->
     <script>
         document.querySelectorAll('.side-card').forEach(card => {
-            let rotation = 0;
-            let speed = 0;
-            let targetSpeed = 0;
-            let lastClickTime = 0;
-            let rafId = null;
+            let clickTimes = [];
 
-            const inner = card.querySelector('.side-card-inner');
+            card.addEventListener('click', () => {
+                const now = Date.now();
+                clickTimes.push(now);
+                // Оставляем только клики за последние 2 секунды
+                clickTimes = clickTimes.filter(t => now - t < 2000);
 
-            function animate() {
-                // Плавное изменение скорости (ускорение/затухание)
-                speed += (targetSpeed - speed) * 0.08;
+                // Переворачиваем карту
+                card.classList.toggle('flipped');
 
-                // Если скорость стала очень маленькой и цель — 0, останавливаем
-                if (Math.abs(speed) < 0.05 && targetSpeed === 0) {
-                    speed = 0;
-                    rotation = 0;
-                    inner.style.transform = '';
-                    card.classList.remove('spinning');
-                    rafId = null;
-                    return;
+                // Если кликов за 2 сек больше 3 — добавляем класс "fast"
+                if (clickTimes.length > 3) {
+                    card.classList.add('fast');
+                    // Снимаем через 1.5 сек
+                    clearTimeout(card._fastTimer);
+                    card._fastTimer = setTimeout(() => {
+                        card.classList.remove('fast');
+                    }, 1500);
                 }
-
-                rotation += speed;
-                inner.style.transform = `rotateY(${rotation}deg)`;
-                rafId = requestAnimationFrame(animate);
-            }
-
-            card.addEventListener('click', (e) => {
-                // Если клик по ссылке внутри карты — не обрабатываем (на всякий случай)
-                // Но у боковых карт ссылок нет, так что просто обрабатываем клик
-
-                const now = performance.now();
-                const timeSinceLast = now - lastClickTime;
-
-                // Быстрые клики → большее ускорение
-                if (timeSinceLast < 400) {
-                    // Серия быстрых кликов — прибавляем больше
-                    targetSpeed += 8;
-                } else {
-                    // Одиночный клик — базовое ускорение
-                    targetSpeed += 5;
-                }
-
-                // Ограничение максимальной скорости
-                if (targetSpeed > 60) targetSpeed = 60;
-
-                lastClickTime = now;
-                card.classList.add('spinning');
-
-                // Запускаем цикл, если ещё не запущен
-                if (!rafId) {
-                    // Начальное вращение — сразу придаём импульс
-                    speed = Math.max(speed, 3);
-                    rafId = requestAnimationFrame(animate);
-                }
-
-                // Таймер затухания — если новых кликов нет 1.5 сек, скорость падает
-                clearTimeout(card._decayTimer);
-                card._decayTimer = setTimeout(() => {
-                    targetSpeed = 0;
-                }, 1500);
             });
         });
     </script>
