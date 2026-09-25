@@ -1164,75 +1164,72 @@
         }
 
         /* ============================================
-           МОБИЛЬНЫЕ (до 768px) — УЛУЧШЕННАЯ ВЕРСИЯ
+           МОБИЛЬНЫЕ (до 768px) — ДВЕ КАРТЫ В РЯД, ПО ЦЕНТРУ
            ============================================ */
         @media (max-width: 768px) {
             body {
-                padding: 30px 14px 20px;
+                padding: 25px 10px 20px;
                 justify-content: flex-start;
             }
 
-            /* Уши кролика — меньше */
             .rabbit-ears {
                 gap: 50px;
                 top: 0;
             }
 
             .rabbit-ears .ear {
-                width: 50px;
-                height: 200px;
+                width: 45px;
+                height: 180px;
                 filter: blur(6px);
             }
 
             .rabbit-ears .ear::after {
-                width: 16px;
+                width: 14px;
                 height: 60%;
             }
 
-            /* Заголовок — компактнее */
             .header {
-                margin-bottom: 30px;
+                margin-bottom: 25px;
                 padding: 0 5px;
             }
 
             .top-badge {
-                font-size: 0.55rem;
-                letter-spacing: 7px;
-                padding: 7px 16px;
-                margin-bottom: 20px;
+                font-size: 0.5rem;
+                letter-spacing: 6px;
+                padding: 6px 14px;
+                margin-bottom: 18px;
                 border-width: 1.5px;
             }
 
-            .top-badge::before { left: -14px; }
-            .top-badge::after { right: -14px; }
+            .top-badge::before { left: -12px; }
+            .top-badge::after { right: -12px; }
 
             h1 {
-                font-size: 3.5rem;
-                letter-spacing: 10px;
+                font-size: 3rem;
+                letter-spacing: 8px;
             }
 
             .subtitle {
-                font-size: 1.7rem;
-                margin-top: 8px;
+                font-size: 1.5rem;
+                margin-top: 6px;
                 letter-spacing: 3px;
             }
 
             .tagline {
-                font-size: 0.7rem;
-                letter-spacing: 5px;
-                margin-top: 14px;
+                font-size: 0.65rem;
+                letter-spacing: 4px;
+                margin-top: 12px;
             }
 
-            /* Разделитель — компактнее */
             .lace-divider {
-                gap: 12px;
-                margin-bottom: 35px;
+                gap: 10px;
+                margin-bottom: 30px;
                 padding: 0 10px;
             }
 
             .lace-divider .symbol {
-                font-size: 1.1rem;
-                letter-spacing: 8px;
+                font-size: 1rem;
+                letter-spacing: 6px;
             }
 
             .lace-divider .line {
@@ -1241,290 +1238,52 @@
 
             .lace-divider .line::before,
             .lace-divider .line::after {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
             }
 
-            /* Игровое поле */
             .game-field {
-                margin-bottom: 40px;
+                margin-bottom: 35px;
+                padding: 0;
             }
 
             .cards-stage {
                 min-height: auto;
             }
 
-            /* Боковые карты скрыты */
             .side-card {
                 display: none;
             }
 
-            /* Главные карты — вертикально, ровно по центру */
+            /* ГЛАВНЫЕ КАРТЫ — ДВЕ В РЯД, ПО ЦЕНТРУ */
             .main-cards {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
                 justify-content: center;
-                gap: 30px;
+                gap: 12px;
                 width: 100%;
                 margin: 0 auto;
                 padding: 0 5px;
             }
 
             .main-card-wrapper {
-                width: 100%;
+                flex: 1;
+                max-width: 48%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin: 0 auto;
+                margin: 0;
                 padding: 0;
             }
 
             .card {
                 width: 100%;
-                max-width: 380px;
-                height: 520px;
-                padding: 32px 26px;
-                border-radius: 14px;
+                max-width: 100%;
+                height: 420px;
+                padding: 22px 16px;
+                border-radius: 10px;
                 margin: 0 auto;
                 transform-origin: center center;
-                /* Убираем тяжёлый backdrop-filter */
                 backdrop-filter: none;
-            }
-
-            /* Наклон сохраняем, но центрируем */
-            .card.left-card {
-                transform: rotate(-2.5deg) translateX(0);
-            }
-
-            .card.right-card {
-                transform: rotate(2.5deg) translateX(0);
-            }
-
-            .card.left-card:active {
-                transform: rotate(-1deg) scale(0.97) translateX(0);
-            }
-
-            .card.right-card:active {
-                transform: rotate(1deg) scale(0.97) translateX(0);
-            }
-
-            /* Уголки карт — крупнее для читаемости */
-            .card .card-corner {
-                font-size: 1.4rem;
-                gap: 1px;
-            }
-
-            .card .card-corner.top-left {
-                top: 16px;
-                left: 16px;
-            }
-
-            .card .card-corner.bottom-right {
-                bottom: 16px;
-                right: 16px;
-            }
-
-            .card .card-corner .num {
-                font-size: 1.3rem;
-                letter-spacing: 1px;
-            }
-
-            .card .card-corner .suit-small {
-                font-size: 1.15rem;
-            }
-
-            /* Центральная масть */
-            .card .suit-center {
-                font-size: 7.5rem;
-            }
-
-            /* Заголовок карты */
-            .card h2 {
-                font-size: 2.1rem;
-                letter-spacing: 6px;
-                margin-bottom: 12px;
-            }
-
-            /* Описание */
-            .card p {
-                font-size: 0.9rem;
-                line-height: 1.65;
-                margin-bottom: 22px;
-            }
-
-            /* Кнопка — крупная, удобная */
-            .card .btn-portal {
-                padding: 16px 32px;
-                font-size: 1rem;
-                letter-spacing: 6px;
-                min-height: 52px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-width: 2px;
-            }
-
-            /* Уголки-кружево */
-            .card::after {
-                top: 20px;
-                right: 20px;
-                font-size: 1.8rem;
-            }
-
-            .card .corner {
-                bottom: 20px;
-                left: 20px;
-                font-size: 1.1rem;
-            }
-
-            /* Двойная рамка */
-            .card .inner-frame {
-                top: 12px;
-                left: 12px;
-                right: 12px;
-                bottom: 12px;
-                border-radius: 10px;
-            }
-
-            .card .inner-frame::before {
-                top: 5px;
-                left: 5px;
-                right: 5px;
-                bottom: 5px;
-                border-radius: 7px;
-            }
-
-            /* Тень при нажатии — мягче */
-            .card:active {
-                box-shadow: 
-                    0 30px 80px rgba(180, 0, 0, 0.9),
-                    0 0 0 3px rgba(255, 215, 0, 0.7),
-                    inset 0 0 180px rgba(0, 0, 0, 0.98),
-                    0 0 80px rgba(255, 215, 0, 0.6);
-            }
-
-            .card.adult:active {
-                box-shadow: 
-                    0 30px 80px rgba(180, 0, 0, 0.9),
-                    0 0 0 3px rgba(255, 0, 0, 0.8),
-                    inset 0 0 180px rgba(0, 0, 0, 0.98),
-                    0 0 80px rgba(255, 0, 0, 0.6);
-            }
-
-            .card.gore:active {
-                box-shadow: 
-                    0 30px 80px rgba(60, 60, 60, 0.95),
-                    0 0 0 3px rgba(200, 200, 200, 0.8),
-                    inset 0 0 180px rgba(0, 0, 0, 0.98),
-                    0 0 80px rgba(150, 150, 150, 0.5);
-            }
-
-            /* Предупреждение */
-            .warning {
-                font-size: 0.85rem;
-                padding-top: 30px;
-                letter-spacing: 1px;
-                padding-left: 5px;
-                padding-right: 5px;
-            }
-
-            .warning .badge {
-                font-size: 0.85rem;
-                letter-spacing: 9px;
-                padding: 10px 22px;
-                margin-bottom: 18px;
-                border-width: 1.5px;
-            }
-
-            .warning .badge::before { left: -20px; }
-            .warning .badge::after { right: -20px; }
-
-            .warning .rabbit-hint {
-                font-size: 1.5rem;
-                margin-top: 20px;
-            }
-
-            /* Подвал */
-            .footer {
-                font-size: 0.6rem;
-                letter-spacing: 5px;
-                margin-top: 30px;
-                padding: 0 5px;
-            }
-        }
-
-        /* ============================================
-           МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px)
-           ============================================ */
-        @media (max-width: 480px) {
-            body {
-                padding: 25px 10px 15px;
-            }
-
-            .rabbit-ears {
-                gap: 35px;
-            }
-
-            .rabbit-ears .ear {
-                width: 40px;
-                height: 160px;
-            }
-
-            .rabbit-ears .ear::after {
-                width: 12px;
-            }
-
-            .header {
-                margin-bottom: 25px;
-            }
-
-            .top-badge {
-                font-size: 0.5rem;
-                letter-spacing: 6px;
-                padding: 6px 14px;
-                margin-bottom: 18px;
-            }
-
-            .top-badge::before { left: -12px; }
-            .top-badge::after { right: -12px; }
-
-            h1 {
-                font-size: 2.7rem;
-                letter-spacing: 8px;
-            }
-
-            .subtitle {
-                font-size: 1.4rem;
-            }
-
-            .tagline {
-                font-size: 0.6rem;
-                letter-spacing: 4px;
-                margin-top: 10px;
-            }
-
-            .lace-divider {
-                margin-bottom: 25px;
-                gap: 10px;
-            }
-
-            .lace-divider .symbol {
-                font-size: 0.95rem;
-                letter-spacing: 6px;
-            }
-
-            .game-field {
-                margin-bottom: 30px;
-            }
-
-            .main-cards {
-                gap: 22px;
-            }
-
-            .card {
-                max-width: 100%;
-                height: 490px;
-                padding: 26px 22px;
-                border-radius: 12px;
             }
 
             .card.left-card {
@@ -1543,123 +1302,160 @@
                 transform: rotate(1deg) scale(0.97) translateX(0);
             }
 
-            .card h2 {
-                font-size: 1.8rem;
-                letter-spacing: 5px;
-                margin-bottom: 10px;
-            }
-
-            .card p {
-                font-size: 0.82rem;
-                line-height: 1.6;
-                margin-bottom: 18px;
-            }
-
-            .card .btn-portal {
-                padding: 15px 28px;
-                font-size: 0.92rem;
-                letter-spacing: 5px;
-                min-height: 48px;
-            }
-
             .card .card-corner {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                gap: 1px;
             }
 
             .card .card-corner.top-left {
-                top: 13px;
-                left: 13px;
+                top: 10px;
+                left: 10px;
             }
 
             .card .card-corner.bottom-right {
-                bottom: 13px;
-                right: 13px;
+                bottom: 10px;
+                right: 10px;
             }
 
             .card .card-corner .num {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
+                letter-spacing: 0;
             }
 
             .card .card-corner .suit-small {
-                font-size: 1rem;
+                font-size: 0.85rem;
             }
 
             .card .suit-center {
-                font-size: 6rem;
+                font-size: 4.5rem;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+                letter-spacing: 4px;
+                margin-bottom: 8px;
+            }
+
+            .card p {
+                font-size: 0.7rem;
+                line-height: 1.5;
+                margin-bottom: 14px;
+            }
+
+            .card .btn-portal {
+                padding: 12px 16px;
+                font-size: 0.75rem;
+                letter-spacing: 4px;
+                min-height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-width: 1.5px;
             }
 
             .card::after {
-                top: 15px;
-                right: 15px;
-                font-size: 1.5rem;
+                top: 12px;
+                right: 12px;
+                font-size: 1.3rem;
             }
 
             .card .corner {
-                bottom: 15px;
-                left: 15px;
-                font-size: 0.95rem;
+                bottom: 12px;
+                left: 12px;
+                font-size: 0.85rem;
             }
 
             .card .inner-frame {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
+                top: 8px;
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+                border-radius: 8px;
             }
 
             .card .inner-frame::before {
-                top: 4px;
-                left: 4px;
-                right: 4px;
-                bottom: 4px;
+                top: 3px;
+                left: 3px;
+                right: 3px;
+                bottom: 3px;
+                border-radius: 5px;
+            }
+
+            .card:active {
+                box-shadow: 
+                    0 25px 60px rgba(180, 0, 0, 0.9),
+                    0 0 0 2px rgba(255, 215, 0, 0.7),
+                    inset 0 0 150px rgba(0, 0, 0, 0.98),
+                    0 0 60px rgba(255, 215, 0, 0.6);
+            }
+
+            .card.adult:active {
+                box-shadow: 
+                    0 25px 60px rgba(180, 0, 0, 0.9),
+                    0 0 0 2px rgba(255, 0, 0, 0.8),
+                    inset 0 0 150px rgba(0, 0, 0, 0.98),
+                    0 0 60px rgba(255, 0, 0, 0.6);
+            }
+
+            .card.gore:active {
+                box-shadow: 
+                    0 25px 60px rgba(60, 60, 60, 0.95),
+                    0 0 0 2px rgba(200, 200, 200, 0.8),
+                    inset 0 0 150px rgba(0, 0, 0, 0.98),
+                    0 0 60px rgba(150, 150, 150, 0.5);
             }
 
             .warning {
-                font-size: 0.78rem;
-                padding-top: 22px;
+                font-size: 0.75rem;
+                padding-top: 25px;
+                letter-spacing: 1px;
+                padding-left: 5px;
+                padding-right: 5px;
             }
 
             .warning .badge {
-                font-size: 0.78rem;
+                font-size: 0.75rem;
                 letter-spacing: 7px;
                 padding: 8px 18px;
                 margin-bottom: 15px;
+                border-width: 1.5px;
             }
 
             .warning .badge::before { left: -16px; }
             .warning .badge::after { right: -16px; }
 
             .warning .rabbit-hint {
-                font-size: 1.25rem;
+                font-size: 1.3rem;
                 margin-top: 15px;
             }
 
             .footer {
                 font-size: 0.55rem;
                 letter-spacing: 4px;
-                margin-top: 22px;
+                margin-top: 25px;
+                padding: 0 5px;
             }
         }
 
         /* ============================================
-           ОЧЕНЬ МАЛЕНЬКИЕ (до 380px)
+           МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px)
            ============================================ */
-        @media (max-width: 380px) {
+        @media (max-width: 480px) {
             body {
-                padding: 20px 8px 12px;
+                padding: 20px 8px 15px;
             }
 
             .rabbit-ears {
-                gap: 28px;
+                gap: 35px;
             }
 
             .rabbit-ears .ear {
-                width: 34px;
-                height: 140px;
+                width: 38px;
+                height: 150px;
             }
 
             .rabbit-ears .ear::after {
-                width: 10px;
+                width: 12px;
             }
 
             .header {
@@ -1677,7 +1473,7 @@
             .top-badge::after { right: -10px; }
 
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
                 letter-spacing: 6px;
             }
 
@@ -1688,10 +1484,12 @@
             .tagline {
                 font-size: 0.55rem;
                 letter-spacing: 3px;
+                margin-top: 8px;
             }
 
             .lace-divider {
-                margin-bottom: 20px;
+                margin-bottom: 22px;
+                gap: 8px;
             }
 
             .lace-divider .symbol {
@@ -1700,69 +1498,183 @@
             }
 
             .game-field {
-                margin-bottom: 25px;
+                margin-bottom: 28px;
             }
 
             .main-cards {
-                gap: 18px;
+                gap: 8px;
+                padding: 0 3px;
+            }
+
+            .main-card-wrapper {
+                max-width: 49%;
             }
 
             .card {
-                height: 450px;
-                padding: 22px 18px;
+                height: 380px;
+                padding: 18px 12px;
+                border-radius: 9px;
+            }
+
+            .card.left-card {
+                transform: rotate(-1.5deg) translateX(0);
+            }
+
+            .card.right-card {
+                transform: rotate(1.5deg) translateX(0);
+            }
+
+            .card.left-card:active {
+                transform: rotate(-0.8deg) scale(0.97) translateX(0);
+            }
+
+            .card.right-card:active {
+                transform: rotate(0.8deg) scale(0.97) translateX(0);
             }
 
             .card h2 {
-                font-size: 1.5rem;
-                letter-spacing: 4px;
+                font-size: 1.1rem;
+                letter-spacing: 3px;
+                margin-bottom: 6px;
             }
 
             .card p {
-                font-size: 0.75rem;
-                line-height: 1.5;
-                margin-bottom: 15px;
+                font-size: 0.62rem;
+                line-height: 1.45;
+                margin-bottom: 12px;
             }
 
             .card .btn-portal {
-                padding: 13px 22px;
-                font-size: 0.85rem;
-                letter-spacing: 4px;
-                min-height: 44px;
+                padding: 10px 12px;
+                font-size: 0.68rem;
+                letter-spacing: 3px;
+                min-height: 38px;
+                border-width: 1.5px;
             }
 
             .card .card-corner {
-                font-size: 1rem;
-            }
-
-            .card .card-corner .num {
-                font-size: 0.95rem;
-            }
-
-            .card .card-corner .suit-small {
                 font-size: 0.85rem;
             }
 
+            .card .card-corner.top-left {
+                top: 8px;
+                left: 8px;
+            }
+
+            .card .card-corner.bottom-right {
+                bottom: 8px;
+                right: 8px;
+            }
+
+            .card .card-corner .num {
+                font-size: 0.8rem;
+            }
+
+            .card .card-corner .suit-small {
+                font-size: 0.7rem;
+            }
+
             .card .suit-center {
-                font-size: 5rem;
+                font-size: 3.5rem;
+            }
+
+            .card::after {
+                top: 10px;
+                right: 10px;
+                font-size: 1rem;
+            }
+
+            .card .corner {
+                bottom: 10px;
+                left: 10px;
+                font-size: 0.7rem;
+            }
+
+            .card .inner-frame {
+                top: 6px;
+                left: 6px;
+                right: 6px;
+                bottom: 6px;
+            }
+
+            .card .inner-frame::before {
+                top: 2px;
+                left: 2px;
+                right: 2px;
+                bottom: 2px;
             }
 
             .warning {
-                font-size: 0.72rem;
+                font-size: 0.7rem;
+                padding-top: 20px;
             }
 
             .warning .badge {
-                font-size: 0.72rem;
+                font-size: 0.7rem;
                 letter-spacing: 6px;
                 padding: 7px 14px;
+                margin-bottom: 12px;
             }
+
+            .warning .badge::before { left: -14px; }
+            .warning .badge::after { right: -14px; }
 
             .warning .rabbit-hint {
                 font-size: 1.1rem;
+                margin-top: 12px;
             }
 
             .footer {
                 font-size: 0.5rem;
                 letter-spacing: 3px;
+                margin-top: 20px;
+            }
+        }
+
+        /* ============================================
+           ОЧЕНЬ МАЛЕНЬКИЕ (до 380px)
+           ============================================ */
+        @media (max-width: 380px) {
+            .main-cards {
+                gap: 6px;
+            }
+
+            .card {
+                height: 340px;
+                padding: 15px 10px;
+            }
+
+            .card h2 {
+                font-size: 0.95rem;
+                letter-spacing: 2px;
+            }
+
+            .card p {
+                font-size: 0.55rem;
+                line-height: 1.4;
+            }
+
+            .card .btn-portal {
+                padding: 8px 10px;
+                font-size: 0.6rem;
+                letter-spacing: 2px;
+                min-height: 34px;
+            }
+
+            .card .suit-center {
+                font-size: 3rem;
+            }
+
+            .card .card-corner {
+                font-size: 0.75rem;
+            }
+
+            .card .card-corner .num {
+                font-size: 0.7rem;
+            }
+
+            .card .card-corner .suit-small {
+                font-size: 0.65rem;
             }
         }
 
@@ -1806,38 +1718,38 @@
 
             .main-cards {
                 flex-direction: row;
-                gap: 20px;
+                gap: 15px;
                 justify-content: center;
                 align-items: center;
             }
 
             .card {
-                height: 360px;
-                padding: 18px 16px;
-                max-width: 280px;
+                height: 340px;
+                padding: 16px 14px;
+                max-width: 260px;
             }
 
             .card h2 {
-                font-size: 1.4rem;
-                letter-spacing: 4px;
+                font-size: 1.2rem;
+                letter-spacing: 3px;
                 margin-bottom: 6px;
             }
 
             .card p {
-                font-size: 0.7rem;
-                line-height: 1.5;
-                margin-bottom: 12px;
+                font-size: 0.65rem;
+                line-height: 1.45;
+                margin-bottom: 10px;
             }
 
             .card .btn-portal {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-                letter-spacing: 4px;
-                min-height: 40px;
+                padding: 9px 18px;
+                font-size: 0.75rem;
+                letter-spacing: 3px;
+                min-height: 36px;
             }
 
             .card .suit-center {
-                font-size: 4.5rem;
+                font-size: 4rem;
             }
 
             .warning {
