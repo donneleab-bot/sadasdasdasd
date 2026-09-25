@@ -335,7 +335,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Контейнер для всех карт */
         .cards-stage {
             position: relative;
             display: flex;
@@ -346,7 +345,7 @@
         }
 
         /* ============================================
-           БОКОВЫЕ КАРТЫ (ВСЕГДА ВИДНЫ, ПАРЯТ)
+           БОКОВЫЕ КАРТЫ (ИНТЕРАКТИВНЫЕ, ПАРЯТ)
            ============================================ */
         .side-card {
             position: absolute;
@@ -355,15 +354,15 @@
             height: 440px;
             background: linear-gradient(165deg, #1A0505 0%, #0D0202 50%, #1A0505 100%);
             border: 2px solid rgba(184, 134, 11, 0.4);
-            border-radius: 6px;
+            border-radius: 8px;
             z-index: 1;
             box-shadow: 
                 0 20px 60px rgba(0, 0, 0, 0.9),
                 0 0 40px rgba(139, 0, 0, 0.2),
                 inset 0 0 60px rgba(0, 0, 0, 0.8);
             overflow: hidden;
-            opacity: 0.7;
-            transition: opacity 0.4s ease;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* Рубашка боковых карт */
@@ -380,6 +379,7 @@
                 repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.08) 12px, rgba(184, 134, 11, 0.08) 13px),
                 repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.08) 12px, rgba(184, 134, 11, 0.08) 13px);
             background-color: #1A0505;
+            transition: all 0.4s ease;
         }
 
         .side-card .card-back::after {
@@ -387,6 +387,7 @@
             font-size: 4rem;
             color: rgba(184, 134, 11, 0.2);
             text-shadow: 0 0 30px rgba(184, 134, 11, 0.3);
+            transition: all 0.4s ease;
         }
 
         .side-card .card-back::before {
@@ -397,10 +398,39 @@
             right: 10px;
             bottom: 10px;
             border: 1px solid rgba(184, 134, 11, 0.2);
-            border-radius: 3px;
+            border-radius: 4px;
+            transition: all 0.4s ease;
         }
 
-        /* Позиции боковых карт с анимацией парения */
+        /* Искры на боковых картах (при наведении) */
+        .side-card .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+            transition: opacity 0.3s ease;
+        }
+
+        .side-card:hover .sparkle {
+            animation: sparkleAnim 1.5s ease-in-out infinite;
+        }
+
+        .side-card .sparkle:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+        .side-card .sparkle:nth-child(2) { top: 60%; left: 80%; animation-delay: 0.3s; }
+        .side-card .sparkle:nth-child(3) { top: 80%; left: 30%; animation-delay: 0.6s; }
+        .side-card .sparkle:nth-child(4) { top: 30%; left: 70%; animation-delay: 0.9s; }
+        .side-card .sparkle:nth-child(5) { top: 50%; left: 50%; animation-delay: 1.2s; }
+
+        @keyframes sparkleAnim {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Позиции боковых карт */
         .side-card.pos-1 {
             left: -50px;
             transform: translateY(-50%) rotate(-18deg) scale(0.85);
@@ -446,133 +476,83 @@
             50% { transform: translateY(-48%) rotate(16deg) scale(0.85) translateX(8px); }
         }
 
-        /* При наведении на сцену — боковые карты становятся ярче */
-        .cards-stage:hover .side-card {
-            opacity: 1;
+        /* HOVER на боковых картах — крутятся, светятся */
+        .side-card:hover {
+            z-index: 10;
+            border-color: #FFD700;
+            box-shadow: 
+                0 30px 80px rgba(139, 0, 0, 0.8),
+                0 0 0 2px rgba(255, 215, 0, 0.6),
+                0 0 80px rgba(255, 215, 0, 0.5),
+                0 0 150px rgba(139, 0, 0, 0.5),
+                inset 0 0 80px rgba(0, 0, 0, 0.9);
+        }
+
+        .side-card:hover .card-back::after {
+            color: rgba(255, 215, 0, 0.8);
+            text-shadow: 0 0 50px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 215, 0, 0.5);
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .side-card:hover .card-back::before {
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        /* Индивидуальные hover-анимации для каждой боковой карты */
+        .side-card.pos-1:hover {
+            animation: spin1 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .side-card.pos-2:hover {
+            animation: spin2 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .side-card.pos-3:hover {
+            animation: spin3 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .side-card.pos-4:hover {
+            animation: spin4 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes spin1 {
+            0% { transform: translateY(-50%) rotate(-18deg) scale(0.85); }
+            50% { transform: translateY(-50%) rotate(-360deg) scale(1.1); }
+            100% { transform: translateY(-50%) rotate(-378deg) scale(1.05); }
+        }
+
+        @keyframes spin2 {
+            0% { transform: translateY(-50%) rotate(-12deg) scale(0.9); }
+            50% { transform: translateY(-50%) rotate(-360deg) scale(1.15); }
+            100% { transform: translateY(-50%) rotate(-372deg) scale(1.08); }
+        }
+
+        @keyframes spin3 {
+            0% { transform: translateY(-50%) rotate(12deg) scale(0.9); }
+            50% { transform: translateY(-50%) rotate(360deg) scale(1.15); }
+            100% { transform: translateY(-50%) rotate(372deg) scale(1.08); }
+        }
+
+        @keyframes spin4 {
+            0% { transform: translateY(-50%) rotate(18deg) scale(0.85); }
+            50% { transform: translateY(-50%) rotate(360deg) scale(1.1); }
+            100% { transform: translateY(-50%) rotate(378deg) scale(1.05); }
         }
 
         /* ============================================
-           ЦЕНТРАЛЬНЫЕ КАРТЫ (ГЛАВНЫЕ)
+           ГЛАВНЫЕ КАРТЫ — МЯГКИЕ, СТОЯТ БОКОМ
            ============================================ */
         .main-cards {
             position: relative;
             display: flex;
             gap: 80px;
             z-index: 5;
-            transition: gap 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .cards-stage:hover .main-cards {
-            gap: 280px;
-        }
-
-        /* Обертка для главной карты — чтобы выдвигать скрытые из-под неё */
         .main-card-wrapper {
             position: relative;
         }
 
-        /* ============================================
-           СКРЫТЫЕ КАРТЫ (ВЫДВИГАЮТСЯ ИЗ-ПОД ГЛАВНЫХ)
-           ============================================ */
-        .hidden-card {
-            position: absolute;
-            top: 50%;
-            width: 340px;
-            height: 520px;
-            background: linear-gradient(165deg, #1A0505 0%, #0D0202 50%, #1A0505 100%);
-            border: 2px solid rgba(184, 134, 11, 0.4);
-            border-radius: 6px;
-            z-index: -1;
-            box-shadow: 
-                0 20px 60px rgba(0, 0, 0, 0.9),
-                0 0 40px rgba(139, 0, 0, 0.2);
-            overflow: hidden;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* Левая скрытая карта */
-        .hidden-card.left {
-            left: 0;
-            transform: translateY(-50%) translateX(-50%) rotate(-5deg) scale(0.9);
-        }
-
-        /* Правая скрытая карта */
-        .hidden-card.right {
-            right: 0;
-            transform: translateY(-50%) translateX(50%) rotate(5deg) scale(0.9);
-        }
-
-        /* Рубашка скрытых карт */
-        .hidden-card .card-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.08) 12px, rgba(184, 134, 11, 0.08) 13px),
-                repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.08) 12px, rgba(184, 134, 11, 0.08) 13px);
-            background-color: #1A0505;
-        }
-
-        .hidden-card .card-back::after {
-            content: '❦';
-            font-size: 5rem;
-            color: rgba(184, 134, 11, 0.2);
-            text-shadow: 0 0 30px rgba(184, 134, 11, 0.3);
-        }
-
-        .hidden-card .card-back::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            border-radius: 3px;
-        }
-
-        /* При наведении на сцену — выдвигаем скрытые карты */
-        .cards-stage:hover .hidden-card.left {
-            opacity: 1;
-            transform: translateY(-50%) translateX(-95%) rotate(-15deg) scale(0.85);
-        }
-
-        .cards-stage:hover .hidden-card.right {
-            opacity: 1;
-            transform: translateY(-50%) translateX(95%) rotate(15deg) scale(0.85);
-        }
-
-        /* Вторая пара скрытых карт (дальше) */
-        .hidden-card.far-left {
-            left: 0;
-            transform: translateY(-50%) translateX(-50%) rotate(-5deg) scale(0.9);
-        }
-
-        .hidden-card.far-right {
-            right: 0;
-            transform: translateY(-50%) translateX(50%) rotate(5deg) scale(0.9);
-        }
-
-        .cards-stage:hover .hidden-card.far-left {
-            opacity: 0.8;
-            transform: translateY(-50%) translateX(-170%) rotate(-25deg) scale(0.75);
-        }
-
-        .cards-stage:hover .hidden-card.far-right {
-            opacity: 0.8;
-            transform: translateY(-50%) translateX(170%) rotate(25deg) scale(0.75);
-        }
-
-        /* ============================================
-           ГЛАВНЫЕ КАРТЫ — МЯГКИЕ, ПРИВЛЕКАТЕЛЬНЫЕ, СТОЯТ БОКОМ
-           ============================================ */
         .card {
             position: relative;
             width: 380px;
@@ -598,7 +578,7 @@
                 0 0 60px rgba(139, 0, 0, 0.3);
         }
 
-        /* Легкий наклон — стоят боком */
+        /* Легкий наклон */
         .card.left-card {
             transform: rotate(-3deg);
         }
@@ -1034,12 +1014,6 @@
             .side-card {
                 display: none;
             }
-            .hidden-card {
-                display: none;
-            }
-            .cards-stage:hover .main-cards {
-                gap: 80px;
-            }
         }
 
         @media (max-width: 1024px) {
@@ -1069,9 +1043,6 @@
             }
             .main-cards {
                 flex-direction: column;
-                gap: 45px;
-            }
-            .cards-stage:hover .main-cards {
                 gap: 45px;
             }
             .card {
@@ -1165,18 +1136,42 @@
     <div class="game-field">
         <div class="cards-stage">
             
-            <!-- БОКОВЫЕ КАРТЫ (ВСЕГДА ВИДНЫ, ПАРЯТ) -->
+            <!-- БОКОВЫЕ КАРТЫ (ИНТЕРАКТИВНЫЕ) -->
             <div class="side-card pos-1">
-                <div class="card-back"></div>
+                <div class="card-back">
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
             </div>
             <div class="side-card pos-2">
-                <div class="card-back"></div>
+                <div class="card-back">
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
             </div>
             <div class="side-card pos-3">
-                <div class="card-back"></div>
+                <div class="card-back">
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
             </div>
             <div class="side-card pos-4">
-                <div class="card-back"></div>
+                <div class="card-back">
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
             </div>
 
             <!-- ГЛАВНЫЕ КАРТЫ -->
@@ -1184,14 +1179,6 @@
                 
                 <!-- ЛЕВАЯ ГЛАВНАЯ КАРТА (18+) -->
                 <div class="main-card-wrapper">
-                    <!-- Скрытые карты, выдвигаются влево -->
-                    <div class="hidden-card far-left">
-                        <div class="card-back"></div>
-                    </div>
-                    <div class="hidden-card left">
-                        <div class="card-back"></div>
-                    </div>
-                    
                     <a href="porno.html" class="card adult left-card">
                         <div class="card-corner top-left">
                             <span class="num">XVIII</span>
@@ -1211,14 +1198,6 @@
 
                 <!-- ПРАВАЯ ГЛАВНАЯ КАРТА (GORE) -->
                 <div class="main-card-wrapper">
-                    <!-- Скрытые карты, выдвигаются вправо -->
-                    <div class="hidden-card far-right">
-                        <div class="card-back"></div>
-                    </div>
-                    <div class="hidden-card right">
-                        <div class="card-back"></div>
-                    </div>
-                    
                     <a href="gore.html" class="card gore right-card">
                         <div class="card-corner top-left">
                             <span class="num">XIII</span>
