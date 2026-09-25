@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✦ КРУЖЕВО И КРОВЬ ✦ | 18+</title>
+    <title>✦ КРОЛИЧЬЯ НОРА ✦ | 18+</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
-        /* --- БАЗА --- */
+        /* ============================================
+           БАЗА
+           ============================================ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            /* Глубокий красновато-темный фон с намеком на кружево */
-            background-color: #1A0505;
+            background-color: #0D0202;
             background-image: 
-                /* Кружевной узор через радиальные градиенты */
-                radial-gradient(circle at 20% 30%, rgba(184, 134, 11, 0.08) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(184, 134, 11, 0.08) 0%, transparent 25%),
-                radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 60%),
-                /* Тонкая сетка-кружево */
-                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(184, 134, 11, 0.03) 10px, rgba(184, 134, 11, 0.03) 11px),
-                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(184, 134, 11, 0.03) 10px, rgba(184, 134, 11, 0.03) 11px);
+                /* Кружевной узор — многослойный */
+                radial-gradient(circle at 15% 20%, rgba(184, 134, 11, 0.06) 0%, transparent 20%),
+                radial-gradient(circle at 85% 80%, rgba(184, 134, 11, 0.06) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.12) 0%, transparent 55%),
+                /* Сетка-кружево */
+                repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.025) 12px, rgba(184, 134, 11, 0.025) 13px),
+                repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(184, 134, 11, 0.025) 12px, rgba(184, 134, 11, 0.025) 13px),
+                /* Ромбы */
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(139, 0, 0, 0.04) 40px, rgba(139, 0, 0, 0.04) 41px),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(139, 0, 0, 0.04) 40px, rgba(139, 0, 0, 0.04) 41px);
             background-attachment: fixed;
             
             font-family: 'Lora', serif;
@@ -37,12 +45,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 60px 20px 40px;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Затемняющий слой + виньетка */
+        /* Виньетка + шум */
         body::before {
             content: '';
             position: fixed;
@@ -50,41 +58,135 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 2, 2, 0.85) 100%);
+            background: 
+                radial-gradient(ellipse at center, transparent 0%, rgba(5, 1, 1, 0.9) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- ЗАГОЛОВОК --- */
+        /* ============================================
+           КРОЛИК — СИЛУЭТ НА ФОНЕ
+           ============================================ */
+        .rabbit-silhouette {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(ellipse at 50% 30%, #D4AF37 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        /* Уши кролика — через псевдоэлементы */
+        .rabbit-ears {
+            position: fixed;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 30px;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .rabbit-ears .ear {
+            width: 40px;
+            height: 180px;
+            background: linear-gradient(180deg, transparent, #D4AF37, transparent);
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-8deg);
+            filter: blur(2px);
+        }
+
+        .rabbit-ears .ear:last-child {
+            transform: rotate(8deg);
+        }
+
+        /* ============================================
+           ЗАГОЛОВОК
+           ============================================ */
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header .top-badge {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 8px;
+            color: #8B0000;
+            border: 1px solid rgba(139, 0, 0, 0.4);
+            padding: 6px 20px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
             position: relative;
         }
 
-        .header h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            color: #D4AF37;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-            line-height: 1.1;
+        .header .top-badge::before,
+        .header .top-badge::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(139, 0, 0, 0.6);
+            font-size: 0.6rem;
         }
 
-        .header h1 span {
+        .header .top-badge::before { left: -20px; }
+        .header .top-badge::after { right: -20px; }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: #D4AF37;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 40px rgba(212, 175, 55, 0.3),
+                0 0 80px rgba(139, 0, 0, 0.4);
+            line-height: 1;
+            position: relative;
+        }
+
+        .header h1 .accent {
             color: #8B0000;
-            text-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+            text-shadow: 
+                0 0 30px rgba(139, 0, 0, 0.8),
+                0 0 60px rgba(139, 0, 0, 0.5);
+            font-style: italic;
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400;
+            font-size: 6rem;
+            letter-spacing: 0;
+            display: inline-block;
+            transform: translateY(10px);
         }
 
         .header .subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-style: italic;
             color: #C5A059;
-            margin-top: 15px;
-            letter-spacing: 4px;
+            margin-top: 20px;
+            letter-spacing: 6px;
+            opacity: 0.8;
         }
 
         /* Кружевной разделитель */
@@ -93,163 +195,238 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin: 30px auto;
-            max-width: 500px;
+            margin: 35px auto 0;
+            max-width: 600px;
         }
 
         .lace-divider .line {
             flex: 1;
             height: 1px;
             background: linear-gradient(90deg, transparent, #B8860B, transparent);
+            position: relative;
+        }
+
+        .lace-divider .line::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: #B8860B;
+            border-radius: 50%;
         }
 
         .lace-divider .symbol {
             color: #B8860B;
-            font-size: 1.5rem;
-            letter-spacing: 8px;
+            font-size: 1.3rem;
+            letter-spacing: 12px;
+            font-family: 'Cinzel', serif;
         }
 
-        /* --- КАРТОЧКИ-ПОРТАЛЫ --- */
+        /* ============================================
+           КАРТОЧКИ-ПОРТАЛЫ
+           ============================================ */
         .portals {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
             justify-content: center;
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .card {
             position: relative;
-            width: 340px;
-            height: 480px;
-            background: #2B0A0A;
-            border: 1px solid rgba(184, 134, 11, 0.4);
+            width: 360px;
+            height: 520px;
+            background: linear-gradient(160deg, #2B0A0A 0%, #1A0505 50%, #2B0A0A 100%);
+            border: 1px solid rgba(184, 134, 11, 0.35);
             border-radius: 4px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 30px;
+            padding: 35px;
             
-            /* Кружевная рамка */
             box-shadow: 
-                0 0 0 1px rgba(184, 134, 11, 0.1),
-                inset 0 0 60px rgba(0, 0, 0, 0.8);
+                0 0 0 1px rgba(184, 134, 11, 0.08),
+                inset 0 0 80px rgba(0, 0, 0, 0.9),
+                0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
         /* Двойная рамка */
         .card::before {
             content: '';
             position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
-            bottom: 8px;
-            border: 1px solid rgba(184, 134, 11, 0.2);
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(184, 134, 11, 0.15);
             pointer-events: none;
-            transition: all 0.5s ease;
+            transition: all 0.6s ease;
+            z-index: 1;
         }
 
         /* Уголки-кружево */
         .card::after {
             content: '❦';
             position: absolute;
-            top: 15px;
-            right: 15px;
-            color: rgba(184, 134, 11, 0.3);
-            font-size: 1.5rem;
-            transition: all 0.5s ease;
+            top: 18px;
+            right: 18px;
+            color: rgba(184, 134, 11, 0.25);
+            font-size: 1.8rem;
+            transition: all 0.6s ease;
+            z-index: 2;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-15px) scale(1.03);
             border-color: #D4AF37;
             box-shadow: 
-                0 20px 60px rgba(139, 0, 0, 0.5),
-                0 0 0 1px rgba(212, 175, 55, 0.3),
-                inset 0 0 80px rgba(0, 0, 0, 0.9);
+                0 30px 80px rgba(139, 0, 0, 0.6),
+                0 0 0 1px rgba(212, 175, 55, 0.4),
+                inset 0 0 100px rgba(0, 0, 0, 0.95);
         }
 
         .card:hover::before {
-            border-color: rgba(212, 175, 55, 0.5);
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            bottom: 12px;
+            border-color: rgba(212, 175, 55, 0.6);
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
         }
 
         .card:hover::after {
             color: #D4AF37;
-            transform: rotate(15deg) scale(1.2);
+            transform: rotate(20deg) scale(1.3);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
         }
 
         /* Карта-масть */
         .card .suit {
             position: absolute;
-            top: 25px;
-            left: 25px;
-            font-size: 3rem;
-            opacity: 0.15;
-            transition: all 0.5s ease;
+            top: 30px;
+            left: 30px;
+            font-size: 4rem;
+            opacity: 0.12;
+            transition: all 0.6s ease;
+            z-index: 2;
+            font-family: 'Cinzel', serif;
         }
 
         .card:hover .suit {
-            opacity: 0.4;
-            transform: scale(1.1);
+            opacity: 0.5;
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        /* Номер карты */
+        .card .card-number {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: rgba(184, 134, 11, 0.2);
+            letter-spacing: 2px;
+            transition: all 0.6s ease;
+            z-index: 2;
+        }
+
+        .card:hover .card-number {
+            color: rgba(212, 175, 55, 0.5);
         }
 
         /* Заголовок карточки */
         .card h2 {
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #D4AF37;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
+            margin-bottom: 12px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            transition: all 0.5s ease;
+            transition: all 0.6s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .card:hover h2 {
             color: #FFD700;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            letter-spacing: 7px;
         }
 
         .card p {
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #C5A059;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-style: italic;
+            position: relative;
+            z-index: 2;
+            transition: all 0.6s ease;
+        }
+
+        .card:hover p {
+            color: #E8D8C8;
         }
 
         /* Кнопка внутри карточки */
         .card .btn-portal {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border: 1px solid #B8860B;
             color: #D4AF37;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             text-align: center;
-            transition: all 0.4s ease;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(2px);
+            transition: all 0.5s ease;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .card .btn-portal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .card:hover .btn-portal::before {
+            left: 100%;
         }
 
         .card:hover .btn-portal {
             background: #B8860B;
             color: #1A0505;
-            box-shadow: 0 0 25px rgba(184, 134, 11, 0.5);
+            box-shadow: 0 0 35px rgba(184, 134, 11, 0.6);
+            border-color: #D4AF37;
         }
 
-        /* Особый стиль для карточки 18+ */
+        /* --- ОСОБЫЙ СТИЛЬ ДЛЯ 18+ КАРТОЧКИ --- */
         .card.adult .suit {
             color: #8B0000;
         }
@@ -257,64 +434,179 @@
         .card.adult:hover {
             border-color: #8B0000;
             box-shadow: 
-                0 20px 60px rgba(139, 0, 0, 0.7),
-                0 0 0 1px rgba(139, 0, 0, 0.5),
-                inset 0 0 80px rgba(0, 0, 0, 0.9);
+                0 30px 80px rgba(139, 0, 0, 0.8),
+                0 0 0 1px rgba(139, 0, 0, 0.6),
+                inset 0 0 100px rgba(0, 0, 0, 0.95);
         }
 
         .card.adult:hover h2 {
             color: #FF4444;
-            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+            text-shadow: 0 0 30px rgba(139, 0, 0, 0.9);
         }
 
         .card.adult:hover .btn-portal {
             background: #8B0000;
             color: #E8D8C8;
             border-color: #8B0000;
-            box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
+            box-shadow: 0 0 35px rgba(139, 0, 0, 0.7);
         }
 
-        /* --- ПРЕДУПРЕЖДЕНИЕ 18+ --- */
+        /* --- ОСОБЫЙ СТИЛЬ ДЛЯ GORE КАРТОЧКИ --- */
+        .card.gore .suit {
+            color: #4A4A4A;
+        }
+
+        .card.gore:hover {
+            border-color: #6A6A6A;
+            box-shadow: 
+                0 30px 80px rgba(60, 60, 60, 0.7),
+                0 0 0 1px rgba(100, 100, 100, 0.5),
+                inset 0 0 100px rgba(0, 0, 0, 0.95);
+        }
+
+        .card.gore:hover h2 {
+            color: #C0C0C0;
+            text-shadow: 0 0 30px rgba(150, 150, 150, 0.7);
+        }
+
+        .card.gore:hover .btn-portal {
+            background: #4A4A4A;
+            color: #E8D8C8;
+            border-color: #6A6A6A;
+            box-shadow: 0 0 35px rgba(80, 80, 80, 0.6);
+        }
+
+        /* ============================================
+           ПРЕДУПРЕЖДЕНИЕ 18+
+           ============================================ */
         .warning {
-            margin-top: 50px;
+            margin-top: 60px;
             text-align: center;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            color: rgba(197, 160, 89, 0.6);
+            color: rgba(197, 160, 89, 0.5);
             letter-spacing: 2px;
-            border-top: 1px solid rgba(184, 134, 11, 0.15);
-            padding-top: 30px;
-            max-width: 700px;
+            border-top: 1px solid rgba(184, 134, 11, 0.12);
+            padding-top: 35px;
+            max-width: 750px;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease 0.8s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .warning .badge {
             display: inline-block;
             border: 1px solid #8B0000;
             color: #8B0000;
-            padding: 4px 12px;
+            padding: 5px 16px;
             border-radius: 2px;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            margin-bottom: 18px;
             font-family: 'Cinzel', serif;
+            position: relative;
+            animation: pulseRed 2s ease infinite;
         }
 
-        /* --- АДАПТИВ --- */
+        @keyframes pulseRed {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(139, 0, 0, 0.2); }
+        }
+
+        .warning .badge::before,
+        .warning .badge::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(139, 0, 0, 0.5);
+            font-size: 0.6rem;
+        }
+
+        .warning .badge::before { left: -18px; }
+        .warning .badge::after { right: -18px; }
+
+        .warning p {
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .warning .rabbit-hint {
+            display: block;
+            margin-top: 15px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.4rem;
+            color: rgba(197, 160, 89, 0.4);
+            letter-spacing: 2px;
+        }
+
+        /* ============================================
+           ПОДВАЛ
+           ============================================ */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: rgba(197, 160, 89, 0.25);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================
+           АДАПТИВ
+           ============================================ */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.5rem;
-                letter-spacing: 4px;
+                font-size: 2.8rem;
+                letter-spacing: 5px;
+            }
+            .header h1 .accent {
+                font-size: 3.5rem;
             }
             .header .subtitle {
-                font-size: 1rem;
-                letter-spacing: 2px;
+                font-size: 0.95rem;
+                letter-spacing: 3px;
             }
             .portals {
-                gap: 25px;
+                gap: 30px;
             }
             .card {
                 width: 100%;
-                max-width: 340px;
+                max-width: 360px;
+                height: 460px;
+                padding: 25px;
+            }
+            .card h2 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            .rabbit-ears .ear {
+                height: 120px;
+                width: 30px;
+            }
+            .rabbit-silhouette {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            .header h1 .accent {
+                font-size: 2.5rem;
+            }
+            .card {
                 height: 420px;
             }
         }
@@ -322,8 +614,17 @@
 </head>
 <body>
 
+    <!-- Фоновый силуэт кролика -->
+    <div class="rabbit-silhouette"></div>
+    <div class="rabbit-ears">
+        <div class="ear"></div>
+        <div class="ear"></div>
+    </div>
+
+    <!-- ЗАГОЛОВОК -->
     <div class="header">
-        <h1>Кружево <span>и</span> Кровь</h1>
+        <div class="top-badge">Вход по приглашению</div>
+        <h1>Кроличья <span class="accent">Нора</span></h1>
         <div class="subtitle">✦ Искусство, которое не для всех ✦</div>
         
         <div class="lace-divider">
@@ -333,29 +634,39 @@
         </div>
     </div>
 
+    <!-- ПОРТАЛЫ -->
     <div class="portals">
         
-        <!-- ПОРТАЛ 1: ПОРНО-АРТЫ -->
+        <!-- ПОРТАЛ 1: 18+ -->
         <a href="porno.html" class="card adult">
             <div class="suit">♥</div>
+            <div class="card-number">XVIII</div>
             <h2>Плоть</h2>
-            <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых.</p>
+            <p>Чувственность, обнаженная натура, искусство желания. Только для взрослых. Слабонервным вход воспрещен.</p>
             <div class="btn-portal">Войти</div>
         </a>
 
-        <!-- ПОРТАЛ 2: РАСЧЛЕНЁНКА -->
-        <a href="gore.html" class="card">
+        <!-- ПОРТАЛ 2: GORE -->
+        <a href="gore.html" class="card gore">
             <div class="suit">♠</div>
+            <div class="card-number">XIII</div>
             <h2>Пепел</h2>
-            <p>Мрак, анатомия, эстетика разрушения. Искусство на грани.</p>
+            <p>Мрак, анатомия, эстетика разрушения. Искусство на грани. Не для тех, кто боится крови.</p>
             <div class="btn-portal">Войти</div>
         </a>
 
     </div>
 
+    <!-- ПРЕДУПРЕЖДЕНИЕ -->
     <div class="warning">
         <div class="badge">18+</div>
-        <p>Сайт содержит материалы, предназначенные только для взрослой аудитории. Продолжая, вы подтверждаете, что вам исполнилось 18 лет.</p>
+        <p>Сайт содержит материалы, предназначенные только для взрослой аудитории. Продолжая, вы подтверждаете, что вам исполнилось 18 лет, и вы осознаете, что увидите.</p>
+        <span class="rabbit-hint">Следуй за белым кроликом...</span>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <div class="footer">
+        ✦ Кроличья Нора ✦ 2025 ✦ Все права защищены ✦
     </div>
 
 </body>
